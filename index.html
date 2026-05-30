@@ -3322,22 +3322,33 @@
       }
     });
 
-    // Smart nav: if in a case study view, go home first then scroll
-    document.querySelectorAll('.nav__links a, .nav__mobile a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (!href || href === '#') return;
-        if (viewHome && viewHome.hidden) {
-          e.preventDefault();
-          closeCaseStudy();
-          if (href.startsWith('#') && href.length > 1) {
-            setTimeout(() => {
-              const target = document.querySelector(href);
-              if (target) target.scrollIntoView({ behavior: 'smooth' });
-            }, 60);
-          }
-        }
-      });
+    // Smooth scroll for all anchor links (hero CTAs + nav + mobile nav)
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (!href || href === '#' || link.getAttribute('onclick')) return;
+
+      const targetId = href.slice(1);
+      e.preventDefault();
+
+      // Close mobile menu if open
+      if (mobileMenu.classList.contains('open')) {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+
+      // If in a non-home view, go home first then scroll
+      if (viewHome && viewHome.hidden) {
+        closeCaseStudy();
+        setTimeout(() => {
+          const target = document.getElementById(targetId);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 80);
+      } else {
+        const target = document.getElementById(targetId);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
 
   </script>
