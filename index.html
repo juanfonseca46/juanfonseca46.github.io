@@ -1056,6 +1056,28 @@
       grid-template-columns: 1fr;
     }
 
+    /* Category labels inside dark projects section */
+    .projects__category { margin-top: 40px; }
+    .projects__category:first-child { margin-top: 0; }
+
+    .projects__category-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(237, 240, 255, 0.38);
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .projects__coming-soon {
+      font-size: 0.875rem;
+      color: rgba(237, 240, 255, 0.35);
+      padding: 20px 0;
+      font-style: italic;
+    }
+
     /* ── Horizontal project card ── */
     .project-card--horizontal {
       border: 1px solid rgba(255, 255, 255, 0.09);
@@ -2330,7 +2352,10 @@
 
       <h2 class="section-title reveal">Proyectos</h2>
 
-      <div class="projects__grid">
+      <!-- Proyectos propios -->
+      <div class="projects__category">
+        <p class="projects__category-label">Proyectos propios</p>
+        <div class="projects__grid">
 
         <!-- ── Consuma Cultura ─────────────────────────────── -->
         <article class="project-card project-card--horizontal reveal">
@@ -2352,8 +2377,7 @@
             <!-- Content -->
             <div class="project-card__content">
               <div class="project-tags">
-                <span class="project-tag">UX Research</span>
-                <span class="project-tag">Journey Map</span>
+                <span class="project-tag">Cultura Tech</span>
                 <span class="project-tag project-tag--wip">En lanzamiento</span>
               </div>
               <h3 class="project-name">Consuma Cultura</h3>
@@ -2381,7 +2405,15 @@
 
         </article>
 
+        </div><!-- /projects__grid propios -->
+      </div><!-- /projects__category propios -->
+
+      <!-- Proyectos laborales -->
+      <div class="projects__category">
+        <p class="projects__category-label">Proyectos laborales</p>
+        <p class="projects__coming-soon">Disponibles próximamente — actualmente bajo NDA.</p>
       </div>
+
     </div>
   </section>
 
@@ -2654,8 +2686,7 @@
             <img src="./logo.png" alt="Logo Consuma Cultura" width="36" height="36">
           </div>
           <div class="project-tags">
-            <span class="project-tag">UX Research</span>
-            <span class="project-tag">Journey Map</span>
+            <span class="project-tag">Cultura Tech</span>
             <span class="project-tag project-tag--wip">En lanzamiento</span>
           </div>
         </div>
