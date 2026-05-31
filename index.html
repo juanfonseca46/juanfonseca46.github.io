@@ -2123,6 +2123,48 @@
       margin: 0;
     }
 
+    /* ── Fidu — resultado y logros ── */
+    .fidu-resultado {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .fidu-resultado .case-section-title {
+      font-size: clamp(1.1rem, 1.8vw, 1.375rem);
+      margin-bottom: 12px;
+    }
+
+    .fidu-resultado .about__body { margin-bottom: 20px; }
+
+    .fidu-logros {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .fidu-logro {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+    }
+
+    .fidu-logro-num {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+      padding-top: 2px;
+      width: 20px;
+    }
+
+    .fidu-logro p { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.65; margin: 0; }
+
     /* ── Lego imagen PNG ── */
     .lego-img-wrap {
       display: flex;
@@ -3534,84 +3576,6 @@
       </div>
     </div>
 
-    <!-- Sección: La solución -->
-    <div class="case-section">
-      <div class="container">
-        <h2 class="case-section-title">La solución</h2>
-
-        <div class="case-insight">
-          <p>Diseñamos un <strong>sistema modular para digitalizar fondos simples</strong>, independiente del nivel de riesgo. Cada módulo tiene una función específica y puede combinarse para construir el flujo de cualquier fondo. Básicamente, <strong>un sistema tipo Lego</strong>.</p>
-        </div>
-
-        <div class="fidu-solution-grid">
-
-          <!-- Flujo de pasos -->
-          <div class="fidu-flow">
-            <div class="fidu-flow-step">
-              <span class="fidu-flow-num">01</span>
-              <div>
-                <strong>Onboarding del producto</strong>
-                <p>Landing informativa donde el usuario conoce el fondo antes de iniciar</p>
-              </div>
-            </div>
-            <div class="fidu-flow-step">
-              <span class="fidu-flow-num">02</span>
-              <div>
-                <strong>Validación de persona especial</strong>
-                <p>Verificación de PEPs, operaciones en moneda extranjera y restricciones regulatorias</p>
-              </div>
-            </div>
-            <div class="fidu-flow-step">
-              <span class="fidu-flow-num">03</span>
-              <div>
-                <strong>Encuesta de perfilamiento</strong>
-                <p>5 preguntas para determinar el perfil de inversionista del usuario</p>
-              </div>
-            </div>
-            <div class="fidu-flow-step">
-              <span class="fidu-flow-num">04</span>
-              <div>
-                <strong>Recomendación del fondo</strong>
-                <p>El sistema recomienda un fondo según los resultados del perfilamiento</p>
-              </div>
-            </div>
-            <div class="fidu-flow-step">
-              <span class="fidu-flow-num">05</span>
-              <div>
-                <strong>Detalles y aceptación</strong>
-                <p>El usuario revisa las condiciones del fondo y lo acepta formalmente</p>
-              </div>
-            </div>
-            <div class="fidu-flow-step">
-              <span class="fidu-flow-num">06</span>
-              <div>
-                <strong>Habeas data y T&amp;C</strong>
-                <p>Consentimiento de tratamiento de datos y aceptación de términos</p>
-              </div>
-            </div>
-            <div class="fidu-flow-step">
-              <span class="fidu-flow-num">07</span>
-              <div>
-                <strong>Fondo creado ✓</strong>
-                <p>El fondo queda activo en la cuenta del usuario de forma inmediata</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Imagen Lego -->
-          <div class="lego-img-wrap">
-            <img
-              src="./Lego.png"
-              alt="Torre de bloques Lego representando el sistema modular"
-              class="lego-img"
-              loading="lazy"
-            >
-          </div>
-
-        </div>
-      </div>
-    </div>
-
     <!-- Sección 2: Proceso de diseño -->
     <div class="case-section">
       <div class="container">
@@ -3706,6 +3670,138 @@
             </div>
 
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 3: La solución -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title">La solución</h2>
+
+        <div class="case-insight">
+          <p>Diseñamos un <strong>sistema modular para digitalizar fondos simples</strong>, independiente del nivel de riesgo. Cada módulo tiene una función específica y puede combinarse para construir el flujo de cualquier fondo. Básicamente, <strong>un sistema tipo Lego</strong>.</p>
+        </div>
+
+        <div class="fidu-solution-grid">
+
+          <!-- Flujo de pasos -->
+          <div class="fidu-flow">
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">01</span>
+              <div>
+                <strong>Onboarding del producto</strong>
+                <p>Landing informativa donde el usuario conoce el fondo antes de iniciar</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">02</span>
+              <div>
+                <strong>Validación de persona especial</strong>
+                <p>Verificación de PEPs, operaciones en moneda extranjera y restricciones regulatorias</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">03</span>
+              <div>
+                <strong>Encuesta de perfilamiento</strong>
+                <p>5 preguntas para determinar el perfil de inversionista del usuario</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">04</span>
+              <div>
+                <strong>Recomendación del fondo</strong>
+                <p>El sistema recomienda un fondo según los resultados del perfilamiento</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">05</span>
+              <div>
+                <strong>Detalles y aceptación</strong>
+                <p>El usuario revisa las condiciones del fondo y lo acepta formalmente</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">06</span>
+              <div>
+                <strong>Habeas data y T&amp;C</strong>
+                <p>Consentimiento de tratamiento de datos y aceptación de términos</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">07</span>
+              <div>
+                <strong>Fondo creado ✓</strong>
+                <p>El fondo queda activo en la cuenta del usuario de forma inmediata</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imagen Lego -->
+          <div class="lego-img-wrap">
+            <img
+              src="./Lego.png"
+              alt="Torre de bloques Lego representando el sistema modular"
+              class="lego-img"
+              loading="lazy"
+            >
+          </div>
+
+        </div>
+
+        <!-- Más allá del fondo -->
+        <div class="fidu-resultado">
+          <h3 class="case-section-title">Más allá de digitalizar un fondo</h3>
+          <p class="about__body">
+            Al construir el sistema modular junto al equipo de desarrollo y negocio, logramos mucho más que la digitalización de un fondo: creamos la infraestructura para digitalizar todo el portafolio de fondos de inversión de Fiduciaria de Bogotá.
+          </p>
+          <div class="fidu-logros">
+            <div class="fidu-logro">
+              <span class="fidu-logro-num">01</span>
+              <p><strong>7 pasos independientes</strong> que se pueden organizar según la necesidad de cada fondo, sin reescribir código ni rediseñar desde cero.</p>
+            </div>
+            <div class="fidu-logro">
+              <span class="fidu-logro-num">02</span>
+              <p><strong>Ruta única de creación</strong> y sistema de recomendaciones basado en datos para mejorar continuamente la experiencia del cliente.</p>
+            </div>
+            <div class="fidu-logro">
+              <span class="fidu-logro-num">03</span>
+              <p><strong>Sistema agnóstico al riesgo</strong> que agiliza la digitalización de cualquier fondo simple sin importar sus condiciones particulares.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sección 4: Resultados -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title">Resultados</h2>
+        <div class="case-metrics">
+
+          <div class="case-metric-card">
+            <div class="case-metric-value">×7</div>
+            <div class="case-metric-label">Sistema modular — 7 pasos independientes y reconfigurables para digitalizar cualquier fondo simple del portafolio</div>
+          </div>
+
+          <div class="case-metric-card">
+            <div class="case-metric-value">1 base</div>
+            <div class="case-metric-label">Optimización de código y componentes de diseño reutilizables que aceleran la digitalización de nuevos fondos</div>
+          </div>
+
+          <div class="case-metric-card">
+            <div class="case-metric-value">20 min</div>
+            <div class="case-metric-label">Tiempo promedio de apertura: de +1 semana con traslados, papeleo y autorizaciones, a 20 min 100% digital</div>
+            <span class="case-metric-source">vs. +1 semana antes de la digitalización</span>
+          </div>
+
+          <div class="case-metric-card">
+            <div class="case-metric-value">Día 1</div>
+            <div class="case-metric-label">Estrategia de fondeo: el usuario puede realizar su primera inversión de inmediato al completar la apertura del fondo</div>
+          </div>
+
         </div>
       </div>
     </div>
