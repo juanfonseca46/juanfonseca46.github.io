@@ -1078,6 +1078,25 @@
       font-style: italic;
     }
 
+    /* Tag: proyecto implementado / finalizado */
+    .project-tag--done {
+      background: rgba(20, 184, 166, 0.07);
+      color: #0F766E;
+      border: 1px solid rgba(20, 184, 166, 0.22);
+    }
+    .project-card--horizontal .project-tag--done {
+      background: rgba(45, 212, 191, 0.13);
+      color: #5EEAD4;
+      border-color: rgba(45, 212, 191, 0.28);
+    }
+
+    /* Grid de proceso de diseño — 3 columnas */
+    .process-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 900px) { .process-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .process-grid { grid-template-columns: 1fr; } }
+
     /* ── Horizontal project card ── */
     .project-card--horizontal {
       border: 1px solid rgba(255, 255, 255, 0.09);
@@ -2411,7 +2430,51 @@
       <!-- Proyectos laborales -->
       <div class="projects__category">
         <p class="projects__category-label">Proyectos laborales</p>
-        <p class="projects__coming-soon">Disponibles próximamente — actualmente bajo NDA.</p>
+        <div class="projects__grid">
+
+          <!-- ── Fidubogotá ─────────────────────────────── -->
+          <article class="project-card project-card--horizontal reveal">
+            <div class="card-horizontal-inner">
+
+              <div class="project-logo-wrap" aria-hidden="true">
+                <img
+                  src="./Fidu.png"
+                  alt="Logo Fiduciaria de Bogotá"
+                  class="project-logo"
+                  width="48"
+                  height="48"
+                >
+              </div>
+
+              <div class="project-card__content">
+                <div class="project-tags">
+                  <span class="project-tag">Fintech</span>
+                  <span class="project-tag">Service Design</span>
+                  <span class="project-tag project-tag--done">Implementado</span>
+                </div>
+                <h3 class="project-name">Digitalización de producto de inversión</h3>
+                <p class="project-desc">
+                  Fiduciaria de Bogotá · Apertura del FIC Cubrir Internacional transformada de un proceso presencial de +1 semana a un flujo 100% digital en app.
+                </p>
+              </div>
+
+              <div class="project-card__action">
+                <button
+                  class="btn btn--ghost btn--icon"
+                  onclick="openCaseStudy('fidu')"
+                  aria-label="Ver caso de estudio Fidubogotá"
+                >
+                  Ver caso de estudio
+                  <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9 18 6-6-6-6"/>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
       </div>
 
     </div>
@@ -3133,6 +3196,165 @@
     </footer>
 
   </div><!-- /view-case-consuma -->
+
+
+  <!-- ============================================================
+       CASE STUDY VIEW — Fidubogotá
+       ============================================================ -->
+  <div id="view-case-fidu" class="case-view" hidden>
+
+    <!-- Back bar -->
+    <div class="case-back-bar">
+      <div class="container">
+        <button class="case-back-btn" onclick="closeCaseStudy()">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          Proyectos
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="case-hero">
+      <div class="container">
+        <div class="case-logo-row">
+          <div class="case-logo-box">
+            <img src="./Fidu.png" alt="Logo Fiduciaria de Bogotá" width="36" height="36">
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Fintech</span>
+            <span class="project-tag">Service Design</span>
+            <span class="project-tag project-tag--done">Implementado</span>
+          </div>
+        </div>
+        <h1 class="case-hero-title">Digitalización de producto<br>de inversión</h1>
+        <p class="case-hero-desc">
+          Transformamos la apertura del FIC Cubrir Internacional de Fiduciaria de Bogotá: de un proceso 100% presencial con más de una semana de duración, a un flujo digital completamente en app.
+        </p>
+        <div class="case-meta-row">
+          <span class="case-meta-text">Fiduciaria de Bogotá · Colombia · 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 1: El reto -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title">El reto</h2>
+
+        <div class="case-insight">
+          <p>El FIC Cubrir Internacional es un fondo de inversión colectivo simple de <strong>alto riesgo</strong>. Antes de su digitalización, el proceso de apertura era <strong>100% presencial</strong>: el usuario debía desplazarse a una oficina, completar una encuesta de perfil de inversionista, conocer el producto y decidir su apertura — con toda la carga legal y financiera por detrás.</p>
+        </div>
+
+        <div class="case-problem-grid">
+          <div class="case-problem-card">
+            <h4>Proceso presencial en cascada</h4>
+            <p>El flujo requería múltiples pasos secuenciales que dependían entre sí — validaciones, firmas y aceptaciones. El tiempo total superaba una semana.</p>
+            <ul class="case-problem-list">
+              <li>Desplazamiento obligatorio a oficina Fidubogotá</li>
+              <li>Cada paso desbloqueaba el siguiente en cascada</li>
+              <li>Validaciones manuales y firmas físicas</li>
+              <li>Tiempo total: <strong>+1 semana</strong></li>
+            </ul>
+          </div>
+          <div class="case-problem-card">
+            <h4>Alta carga cognitiva</h4>
+            <p>El usuario gestionaba varios formatos físicos independientes antes de poder abrir el fondo, generando fricción y abandono en el proceso.</p>
+            <ul class="case-problem-list">
+              <li>Encuesta de perfilamiento de inversionista (5 preguntas)</li>
+              <li>Presentación del fondo Cubrir Internacional</li>
+              <li>Formulario de aceptación del fondo</li>
+              <li>Recomendación profesional firmada</li>
+              <li>Gestión de habeas data</li>
+              <li>Términos y condiciones del producto</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 2: Proceso de diseño -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title">Proceso de diseño</h2>
+        <p class="case-hero-desc" style="margin-bottom: 28px; max-width: 54ch;">
+          El proceso cubrió desde la investigación de referentes hasta el acompañamiento en producción y la medición de la experiencia con datos reales.
+        </p>
+
+        <div class="case-journey-stages process-grid">
+          <div class="case-stage">
+            <div class="case-stage-num">01</div>
+            <div class="case-stage-title">Benchmark Colombia</div>
+            <div class="case-stage-desc">Fondos digitalizados en bancos, neobancos y apps de inversión: Tyba y Trii</div>
+          </div>
+          <div class="case-stage">
+            <div class="case-stage-num">02</div>
+            <div class="case-stage-title">Benchmark Global</div>
+            <div class="case-stage-desc">Referentes internacionales: BBVA México, GMA, Santander y JP Morgan</div>
+          </div>
+          <div class="case-stage">
+            <div class="case-stage-num">03</div>
+            <div class="case-stage-title">Insights y hallazgos</div>
+            <div class="case-stage-desc">Definición de patrones, fricciones comunes y oportunidades de diseño</div>
+          </div>
+          <div class="case-stage">
+            <div class="case-stage-num">04</div>
+            <div class="case-stage-title">Journey Map v1</div>
+            <div class="case-stage-desc">Propuesta del journey del usuario para el flujo de apertura digital</div>
+          </div>
+          <div class="case-stage">
+            <div class="case-stage-num">05</div>
+            <div class="case-stage-title">Taller MVP</div>
+            <div class="case-stage-desc">Alineamiento de stakeholders: funcionalidades iniciales, versiones futuras y visión compartida</div>
+          </div>
+          <div class="case-stage">
+            <div class="case-stage-num">06</div>
+            <div class="case-stage-title">Journey + Blueprint</div>
+            <div class="case-stage-desc">Journey del MVP y Service Blueprint con todos los sistemas y actores involucrados</div>
+          </div>
+          <div class="case-stage">
+            <div class="case-stage-num">07</div>
+            <div class="case-stage-title">Wireframes baja</div>
+            <div class="case-stage-desc">Diseño en baja fidelidad, presentación al negocio y pruebas moderadas con usuarios</div>
+          </div>
+          <div class="case-stage">
+            <div class="case-stage-num">08</div>
+            <div class="case-stage-title">Wireframes alta</div>
+            <div class="case-stage-desc">Refinamiento en alta fidelidad y segunda ronda de pruebas moderadas con usuarios reales</div>
+          </div>
+          <div class="case-stage">
+            <div class="case-stage-num">09</div>
+            <div class="case-stage-title">QA + Medición</div>
+            <div class="case-stage-desc">Desarrollo escalonado con QA visual, Hotjar, SUS y funnel de conversión</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="site-footer__inner">
+          <div class="footer-brand">
+            <span class="footer-name">Juan Fonseca<span>.</span></span>
+            <span class="footer-role">Product Designer · UX/UI Designer</span>
+          </div>
+          <div class="footer-actions">
+            <a href="mailto:juanfonseca46@gmail.com" class="btn btn--ghost btn--icon" aria-label="Enviar email">
+              <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+              Email
+            </a>
+            <a href="https://www.linkedin.com/in/juancarlosfonseca/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--icon" aria-label="LinkedIn">
+              <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /view-case-fidu -->
 
 
   <!-- ============================================================
