@@ -2123,6 +2123,19 @@
       margin: 0;
     }
 
+    /* ── Fidu — screenshots section ── */
+    .mockup-views--fidu .mockup-view {
+      display: block;
+      padding: clamp(16px, 2vw, 28px);
+    }
+
+    .fidu-screen {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--r-sm);
+    }
+
     /* ── Fidu — resultado y logros ── */
     .fidu-resultado {
       margin-top: 40px;
@@ -3806,6 +3819,49 @@
       </div>
     </div>
 
+    <!-- Sección 5: Pantallazos -->
+    <div class="case-section case-mockups">
+      <div class="container">
+        <p class="case-mockups-eyebrow">Producto real</p>
+        <h2 class="case-mockups-title">La solución en pantalla</h2>
+        <p class="case-mockups-desc">Pantallazos del flujo de apertura del FIC Cubrir Internacional.</p>
+
+        <div class="mockup-controls" id="fidu-mockup-controls">
+          <div class="mockup-tabs" id="fidu-mockup-tabs">
+            <div class="mockup-tab-indicator" id="fidu-mockup-tab-indicator"></div>
+            <button class="mockup-tab active" data-fidu-tab="landing">Landing</button>
+            <button class="mockup-tab"         data-fidu-tab="peps">Modal PEPS</button>
+            <button class="mockup-tab"         data-fidu-tab="encuesta">Encuesta</button>
+            <button class="mockup-tab"         data-fidu-tab="detalles">Detalles del fondo</button>
+            <button class="mockup-tab"         data-fidu-tab="habeas">Habeas data</button>
+            <button class="mockup-tab"         data-fidu-tab="fondo">Fondo creado</button>
+          </div>
+        </div>
+
+        <div class="mockup-views mockup-views--fidu">
+          <div class="mockup-view active">
+            <img src="./pantallazos%20Fidu/Landing%20de%20producto.png" class="fidu-screen" alt="Landing de producto" loading="lazy">
+          </div>
+          <div class="mockup-view">
+            <img src="./pantallazos%20Fidu/Modal%20PEPS.png" class="fidu-screen" alt="Modal PEPS" loading="lazy">
+          </div>
+          <div class="mockup-view">
+            <img src="./pantallazos%20Fidu/Encuesta.png" class="fidu-screen" alt="Encuesta de perfilamiento" loading="lazy">
+          </div>
+          <div class="mockup-view">
+            <img src="./pantallazos%20Fidu/Detalles%20del%20fondo.png" class="fidu-screen" alt="Detalles del fondo" loading="lazy">
+          </div>
+          <div class="mockup-view">
+            <img src="./pantallazos%20Fidu/Habeas%20data.png" class="fidu-screen" alt="Habeas data" loading="lazy">
+          </div>
+          <div class="mockup-view">
+            <img src="./pantallazos%20Fidu/Fondo%20creado.png" class="fidu-screen" alt="Fondo creado" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- Footer -->
     <footer class="site-footer" role="contentinfo">
       <div class="container">
@@ -3938,8 +3994,9 @@
 
     // ── Mockup tabs + auto-advance ───────────────────────────────
     (function () {
-      const tabs        = Array.from(document.querySelectorAll('.mockup-tab'));
-      const views       = Array.from(document.querySelectorAll('.mockup-view'));
+      const consumaView = document.getElementById('view-case-consuma');
+      const tabs        = Array.from(consumaView ? consumaView.querySelectorAll('.mockup-tab') : []);
+      const views       = Array.from(consumaView ? consumaView.querySelectorAll('.mockup-view') : []);
       const indicator   = document.getElementById('mockup-tab-indicator');
       const tabBar      = document.getElementById('mockup-tabs');
       const DURATION    = 10000;
@@ -4034,6 +4091,69 @@
 
       document.addEventListener('mouseenter', () => glow.classList.add('glow--visible'));
       document.addEventListener('mouseleave', () => glow.classList.remove('glow--visible'));
+    }());
+
+    // ── Fidu mockup tabs + auto-advance ──────────────────────────
+    (function () {
+      const fuduView  = document.getElementById('view-case-fidu');
+      if (!fuduView) return;
+      const tabBar    = document.getElementById('fidu-mockup-tabs');
+      const indicator = document.getElementById('fidu-mockup-tab-indicator');
+      const tabs      = tabBar ? Array.from(tabBar.querySelectorAll('.mockup-tab')) : [];
+      const views     = Array.from(fuduView.querySelectorAll('.mockup-views--fidu .mockup-view'));
+      const DURATION  = 10000;
+      let current     = 0;
+      let autoTimer   = null;
+      if (!tabs.length || !views.length) return;
+
+      function positionIndicator(tab, instant) {
+        if (!indicator || !tabBar) return;
+        const barRect = tabBar.getBoundingClientRect();
+        const tabRect = tab.getBoundingClientRect();
+        if (instant) indicator.style.transition = 'none';
+        indicator.style.left  = (tabRect.left - barRect.left) + 'px';
+        indicator.style.width = tabRect.width + 'px';
+        if (instant) requestAnimationFrame(() => { indicator.style.transition = ''; });
+      }
+
+      function tryInitIndicator() {
+        if (tabBar && tabBar.getBoundingClientRect().width > 0) {
+          positionIndicator(tabs[current], true);
+        } else {
+          const mo = new MutationObserver(() => {
+            if (tabBar.getBoundingClientRect().width > 0) {
+              mo.disconnect();
+              positionIndicator(tabs[current], true);
+            }
+          });
+          mo.observe(fuduView, { attributes: true, attributeFilter: ['hidden'] });
+        }
+      }
+      requestAnimationFrame(tryInitIndicator);
+
+      function goTo(idx) {
+        const prev = current;
+        current = ((idx % tabs.length) + tabs.length) % tabs.length;
+        if (prev === current) return;
+        const oldView = views[prev];
+        oldView.classList.remove('active');
+        oldView.classList.add('exit');
+        setTimeout(() => oldView.classList.remove('exit'), 420);
+        views[current].classList.add('active');
+        tabs.forEach((t, i) => t.classList.toggle('active', i === current));
+        positionIndicator(tabs[current]);
+      }
+
+      function startTimer() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goTo(current + 1), DURATION);
+      }
+
+      tabs.forEach((tab, idx) => {
+        tab.addEventListener('click', () => { goTo(idx); startTimer(); });
+      });
+
+      startTimer();
     }());
 
     // ── Lego tower animation (Fidu case study) ───────────────────
