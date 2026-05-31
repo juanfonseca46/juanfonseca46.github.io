@@ -2072,6 +2072,113 @@
     .case-live-link svg { flex-shrink: 0; }
 
     /* ============================================================
+       CASE STUDY FIDU — solución modular + torre Lego
+       ============================================================ */
+    .fidu-solution-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: center;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 720px) { .fidu-solution-grid { grid-template-columns: 1fr; } }
+
+    /* Flow list */
+    .fidu-flow { display: flex; flex-direction: column; }
+
+    .fidu-flow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .fidu-flow-step:last-child { border-bottom: none; }
+
+    .fidu-flow-num {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      flex-shrink: 0;
+      width: 22px;
+      padding-top: 2px;
+    }
+
+    .fidu-flow-step strong {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: block;
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    .fidu-flow-step p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Lego tower */
+    .lego-tower-wrap {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-width: 188px;
+      padding-top: 16px;
+    }
+
+    .lego-tower {
+      display: flex;
+      flex-direction: column-reverse; /* 01 en el fondo, 07 en la cima */
+      gap: 3px;
+    }
+
+    .lego-block {
+      width: 188px;
+      height: 42px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.93);
+      letter-spacing: 0.01em;
+      text-align: center;
+      position: relative;
+      background: var(--lego-color, #2563EB);
+      box-shadow: 0 3px 0 rgba(0, 0, 0, 0.20);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.32s var(--ease-out), transform 0.32s var(--ease-out);
+    }
+
+    .lego-block.is-visible { opacity: 1; transform: none; }
+
+    /* Stud on top — solo visible en el bloque más alto */
+    .lego-block::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 8px;
+      background: var(--lego-color, #2563EB);
+      filter: brightness(1.18);
+      border-radius: 3px 3px 0 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lego-block { transition: none; opacity: 1; transform: none; }
+    }
+
+    /* ============================================================
        CASE STUDY — línea de tiempo 4 meses
        ============================================================ */
     .case-timeline { position: relative; }
@@ -3373,6 +3480,88 @@
       </div>
     </div>
 
+    <!-- Sección: La solución -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title">La solución</h2>
+
+        <div class="case-insight">
+          <p>Diseñamos un <strong>sistema modular para digitalizar fondos simples</strong>, independiente del nivel de riesgo. Cada módulo tiene una función específica y puede combinarse para construir el flujo de cualquier fondo. Básicamente, <strong>un sistema tipo Lego</strong>.</p>
+        </div>
+
+        <div class="fidu-solution-grid">
+
+          <!-- Flujo de pasos -->
+          <div class="fidu-flow">
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">01</span>
+              <div>
+                <strong>Onboarding del producto</strong>
+                <p>Landing informativa donde el usuario conoce el fondo antes de iniciar</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">02</span>
+              <div>
+                <strong>Validación de persona especial</strong>
+                <p>Verificación de PEPs, operaciones en moneda extranjera y restricciones regulatorias</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">03</span>
+              <div>
+                <strong>Encuesta de perfilamiento</strong>
+                <p>5 preguntas para determinar el perfil de inversionista del usuario</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">04</span>
+              <div>
+                <strong>Recomendación del fondo</strong>
+                <p>El sistema recomienda un fondo según los resultados del perfilamiento</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">05</span>
+              <div>
+                <strong>Detalles y aceptación</strong>
+                <p>El usuario revisa las condiciones del fondo y lo acepta formalmente</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">06</span>
+              <div>
+                <strong>Habeas data y T&amp;C</strong>
+                <p>Consentimiento de tratamiento de datos y aceptación de términos</p>
+              </div>
+            </div>
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">07</span>
+              <div>
+                <strong>Fondo creado ✓</strong>
+                <p>El fondo queda activo en la cuenta del usuario de forma inmediata</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Torre Lego animada -->
+          <div class="lego-tower-wrap">
+            <div class="lego-tower" id="lego-tower">
+              <!-- DOM 01→07 + column-reverse = 01 abajo, 07 arriba -->
+              <div class="lego-block" style="--lego-color:#1D4ED8">Onboarding</div>
+              <div class="lego-block" style="--lego-color:#B45309">Validación PEPs</div>
+              <div class="lego-block" style="--lego-color:#6D28D9">Perfilamiento</div>
+              <div class="lego-block" style="--lego-color:#0E7490">Recomendación</div>
+              <div class="lego-block" style="--lego-color:#1E40AF">Detalles · Aceptación</div>
+              <div class="lego-block" style="--lego-color:#9D174D">Habeas data · T&amp;C</div>
+              <div class="lego-block" style="--lego-color:#15803D">✓ Fondo creado</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <!-- Sección 2: Proceso de diseño -->
     <div class="case-section">
       <div class="container">
@@ -3699,6 +3888,22 @@
 
       document.addEventListener('mouseenter', () => glow.classList.add('glow--visible'));
       document.addEventListener('mouseleave', () => glow.classList.remove('glow--visible'));
+    }());
+
+    // ── Lego tower animation (Fidu case study) ───────────────────
+    (function () {
+      const tower = document.getElementById('lego-tower');
+      if (!tower) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          Array.from(tower.querySelectorAll('.lego-block')).forEach((block, i) => {
+            setTimeout(() => block.classList.add('is-visible'), i * 170);
+          });
+          obs.unobserve(tower);
+        });
+      }, { threshold: 0.2 });
+      obs.observe(tower);
     }());
 
     // Browser back/forward support
