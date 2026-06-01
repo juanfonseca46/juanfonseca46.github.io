@@ -1196,9 +1196,9 @@
     }
 
     .project-logo {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
@@ -4081,11 +4081,60 @@
       </div>
     </div>
 
-    <!-- Sección 3: Proceso de diseño -->
+    <!-- Sección 3: La solución -->
     <div class="case-section">
       <div class="container">
-        <h2 class="case-section-title" data-i18n="occiauto-s3-title">Proceso de diseño</h2>
-        <p class="case-hero-desc" style="margin-bottom: 32px; max-width: 54ch;" data-i18n="occiauto-s3-desc">
+        <h2 class="case-section-title" data-i18n="occiauto-s3-title">La solución</h2>
+
+        <div class="case-insight">
+          <p data-i18n-html="occiauto-s3-insight">Ejecutamos un <strong>rediseño escalonado</strong> del flujo de Occiauto, separando la intención del usuario desde el primer punto de contacto y corrigiendo los datos de conversión desde la raíz.</p>
+        </div>
+
+        <div class="fidu-solution-grid">
+          <div class="fidu-flow">
+
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">01</span>
+              <div>
+                <strong data-i18n="occiauto-sol1-title">Landing específica del producto</strong>
+                <p data-i18n="occiauto-sol1-desc">Creamos una landing exclusiva para Occiauto donde el usuario recibe información real del crédito — beneficios, variables, requisitos — antes de interactuar con cualquier simulador o formulario.</p>
+              </div>
+            </div>
+
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">02</span>
+              <div>
+                <strong data-i18n="occiauto-sol2-title">Separación de acciones del usuario</strong>
+                <p data-i18n="occiauto-sol2-desc">Dos botones con intenciones claras: "Simular crédito" y "Solicitar crédito". El usuario que simula puede iniciar la solicitud desde la misma pantalla, manteniendo el flujo continuo sin confundir las métricas.</p>
+              </div>
+            </div>
+
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">03</span>
+              <div>
+                <strong data-i18n="occiauto-sol3-title">Ajuste del tageo y la analítica</strong>
+                <p data-i18n="occiauto-sol3-desc">Solicitamos el ajuste del tageo para que los eventos de simulación no contaran como intenciones de solicitud. Por primera vez, el canal pudo medir correctamente quién investigaba y quién realmente quería un crédito.</p>
+              </div>
+            </div>
+
+            <div class="fidu-flow-step">
+              <span class="fidu-flow-num">04</span>
+              <div>
+                <strong data-i18n="occiauto-sol4-title">Rediseño del simulador</strong>
+                <p data-i18n="occiauto-sol4-desc">Rediseñamos el simulador para incluir un plan de pago con cuota específica a 14 meses, mostrando el beneficio directo desde la simulación. El usuario ve exactamente cuánto paga — sin tener que solicitarlo primero.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 4: Proceso de diseño -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="occiauto-s4-title">Proceso de diseño</h2>
+        <p class="case-hero-desc" style="margin-bottom: 32px; max-width: 54ch;" data-i18n="occiauto-s4-desc">
           Un proceso escalonado desde la investigación hasta la medición en producción, priorizando los cambios de mayor valor con menor esfuerzo.
         </p>
 
@@ -4684,8 +4733,18 @@
         'occiauto-h1': 'Al tener el formulario de simulación como página de aterrizaje, el <strong>sistema contaba a todos los visitantes como oportunidades de colocación</strong>, inflando el denominador de la tasa de conversión.',
         'occiauto-h2': 'Sin una página donde el usuario pudiera obtener información real del crédito, la analítica <strong>no podía diferenciar entre usuarios exploradores y solicitantes reales</strong>.',
         'occiauto-h3': 'Al tener el simulador como única puerta de entrada, <strong>los datos se truncaban</strong> antes de poder medir la intención real — de ahí la baja conversión reportada.',
-        'occiauto-s3-title': 'Proceso de diseño',
-        'occiauto-s3-desc': 'Un proceso escalonado desde la investigación hasta la medición en producción, priorizando los cambios de mayor valor con menor esfuerzo.',
+        'occiauto-s3-title': 'La solución',
+        'occiauto-s3-insight': 'Ejecutamos un <strong>rediseño escalonado</strong> del flujo de Occiauto, separando la intención del usuario desde el primer punto de contacto y corrigiendo los datos de conversión desde la raíz.',
+        'occiauto-sol1-title': 'Landing específica del producto',
+        'occiauto-sol1-desc': 'Creamos una landing exclusiva para Occiauto donde el usuario recibe información real del crédito — beneficios, variables, requisitos — antes de interactuar con cualquier simulador o formulario.',
+        'occiauto-sol2-title': 'Separación de acciones del usuario',
+        'occiauto-sol2-desc': 'Dos botones con intenciones claras: "Simular crédito" y "Solicitar crédito". El usuario que simula puede iniciar la solicitud desde la misma pantalla, manteniendo el flujo continuo sin confundir las métricas.',
+        'occiauto-sol3-title': 'Ajuste del tageo y la analítica',
+        'occiauto-sol3-desc': 'Solicitamos el ajuste del tageo para que los eventos de simulación no contaran como intenciones de solicitud. Por primera vez, el canal pudo medir correctamente quién investigaba y quién realmente quería un crédito.',
+        'occiauto-sol4-title': 'Rediseño del simulador',
+        'occiauto-sol4-desc': 'Rediseñamos el simulador para incluir un plan de pago con cuota específica a 14 meses, mostrando el beneficio directo desde la simulación. El usuario ve exactamente cuánto paga — sin tener que solicitarlo primero.',
+        'occiauto-s4-title': 'Proceso de diseño',
+        'occiauto-s4-desc': 'Un proceso escalonado desde la investigación hasta la medición en producción, priorizando los cambios de mayor valor con menor esfuerzo.',
         'occ-phase-1': 'Fase 1', 'occ-phase-1-theme': 'Research',
         'occ-t1-title': 'Benchmark Colombia', 'occ-t1-desc': 'Principales bancos colombianos con crédito vehicular digital',
         'occ-t2-title': 'Benchmark Global', 'occ-t2-desc': 'Bancos de Latam, Europa y EUA con créditos de movilidad digitales',
@@ -4914,8 +4973,18 @@
         'occiauto-h1': 'With the simulation form as the landing page, the <strong>system counted all visitors as placement opportunities</strong>, inflating the conversion rate denominator.',
         'occiauto-h2': 'Without a page where users could get real loan information, analytics <strong>could not differentiate exploratory users from real applicants</strong>.',
         'occiauto-h3': 'With the simulator as the sole entry point, <strong>data was truncated</strong> before real intent could be measured — hence the low reported conversion.',
-        'occiauto-s3-title': 'Design process',
-        'occiauto-s3-desc': 'A staged process from research to measurement in production, prioritizing changes with the highest value and lowest effort.',
+        'occiauto-s3-title': 'The solution',
+        'occiauto-s3-insight': 'We executed a <strong>staged redesign</strong> of the Occiauto flow, separating user intent from the first touchpoint and fixing conversion data at the root.',
+        'occiauto-sol1-title': 'Product-specific landing page',
+        'occiauto-sol1-desc': 'We created a dedicated Occiauto landing page where users receive real loan information — benefits, variables, requirements — before interacting with any simulator or form.',
+        'occiauto-sol2-title': 'Separation of user actions',
+        'occiauto-sol2-desc': 'Two buttons with clear intent: "Simulate loan" and "Apply for loan". Users who simulate can start the application from the same screen, keeping the flow continuous without mixing up metrics.',
+        'occiauto-sol3-title': 'Tagging and analytics adjustment',
+        'occiauto-sol3-desc': 'We requested a tagging adjustment so that simulation events would not count as application intent. For the first time, the channel could correctly measure who was researching and who actually wanted a loan.',
+        'occiauto-sol4-title': 'Simulator redesign',
+        'occiauto-sol4-desc': 'We redesigned the simulator to include a payment plan with a specific 14-installment schedule, showing the direct benefit from the simulation. Users see exactly what they pay — without having to apply first.',
+        'occiauto-s4-title': 'Design process',
+        'occiauto-s4-desc': 'A staged process from research to measurement in production, prioritizing changes with the highest value and lowest effort.',
         'occ-phase-1': 'Phase 1', 'occ-phase-1-theme': 'Research',
         'occ-t1-title': 'Colombia Benchmark', 'occ-t1-desc': 'Major Colombian banks offering digital vehicle loans',
         'occ-t2-title': 'Global Benchmark', 'occ-t2-desc': 'Banks in Latam, Europe and the US with digital mobility loans',
