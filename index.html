@@ -2828,6 +2828,19 @@
                 </p>
               </div>
 
+              <div class="project-card__action">
+                <button
+                  class="btn btn--ghost btn--icon"
+                  onclick="openCaseStudy('occiauto')"
+                  aria-label="Ver caso de estudio Occiauto"
+                >
+                  <span data-i18n="view-case-study">Ver caso de estudio</span>
+                  <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9 18 6-6-6-6"/>
+                  </svg>
+                </button>
+              </div>
+
             </div>
           </article>
 
@@ -3973,6 +3986,221 @@
 
 
   <!-- ============================================================
+       CASE STUDY VIEW — Occiauto / Banco de Occidente
+       ============================================================ -->
+  <div id="view-case-occiauto" class="case-view" hidden>
+
+    <!-- Back bar -->
+    <div class="case-back-bar">
+      <div class="container">
+        <button class="case-back-btn" onclick="closeCaseStudy()">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          <span data-i18n="back-projects">Proyectos</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="case-hero">
+      <div class="container">
+        <div class="case-logo-row">
+          <div class="case-logo-box">
+            <img src="./Banco de occidente.jpg" alt="Logo Banco de Occidente" width="36" height="36">
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Fintech</span>
+            <span class="project-tag" data-i18n="tag-personal-banking">Banca personal</span>
+            <span class="project-tag project-tag--done" data-i18n="tag-implemented">Implementado</span>
+          </div>
+        </div>
+        <h1 class="case-hero-title" data-i18n-html="occiauto-hero-title">Rediseño de la solicitud<br>de crédito vehicular</h1>
+        <p class="case-hero-desc" data-i18n="occiauto-hero-desc">
+          Ante la baja conversión en la landing de Occiauto, analizamos el flujo, planteamos hipótesis y ejecutamos un rediseño escalonado que aumentó la conversión en la etapa inicial de la solicitud de crédito vehicular.
+        </p>
+        <div class="case-meta-row">
+          <span class="case-meta-text" data-i18n="occiauto-meta">Banco de Occidente · Colombia · 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 1: El reto -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="occiauto-s1-title">El reto</h2>
+
+        <div class="case-insight">
+          <p data-i18n-html="occiauto-s1-insight">Occiauto digital concentraba <strong>más de 200K visitas mensuales</strong> y colocaba cerca del <strong>70% de los créditos vehiculares</strong> del banco — pero la tasa de conversión entre la simulación inicial y la solicitud era de apenas el <strong>4% mensual</strong>.</p>
+        </div>
+
+        <div class="case-problem-grid">
+          <div class="case-problem-card">
+            <h4 data-i18n="occiauto-p1-title">Simulador como puerta de entrada</h4>
+            <p data-i18n="occiauto-p1-body">El usuario aterrizaba directamente en el formulario de simulación, sin recibir información del producto. El sistema registraba a todos los visitantes como oportunidades de colocación, distorsionando los datos.</p>
+            <ul class="case-problem-list">
+              <li data-i18n="occiauto-p1-li1">Sin landing previa que presentara el producto</li>
+              <li data-i18n="occiauto-p1-li2">El simulador mezclaba usuarios exploradores con solicitantes reales</li>
+              <li data-i18n="occiauto-p1-li3">~150K usuarios/mes interactuaban con el simulador sin intención real</li>
+            </ul>
+          </div>
+          <div class="case-problem-card">
+            <h4 data-i18n="occiauto-p2-title">Datos truncados, conversión ficticia</h4>
+            <p data-i18n="occiauto-p2-body">La analítica no podía diferenciar entre usuarios que investigaban y usuarios con intención de solicitud. La conversión del 4% no reflejaba el rendimiento real del canal — reflejaba un error de mapeo.</p>
+            <ul class="case-problem-list">
+              <li data-i18n="occiauto-p2-li1">Clickbait e intención de usuario no mapeados correctamente</li>
+              <li data-i18n="occiauto-p2-li2">Sin página de información previa al simulador</li>
+              <li data-i18n="occiauto-p2-li3">Imposible medir el porcentaje real de usuarios con intención de solicitud</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 2: Hipótesis -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="occiauto-s2-title">Hipótesis planteadas</h2>
+        <p class="case-hero-desc" style="margin-bottom: 32px; max-width: 54ch;" data-i18n="occiauto-s2-desc">
+          Con base en los datos de analítica, el comportamiento de visita al sitio y reuniones con el equipo, identificamos tres hipótesis centrales.
+        </p>
+        <div class="fidu-logros">
+          <div class="fidu-logro">
+            <span class="fidu-logro-num">01</span>
+            <p data-i18n-html="occiauto-h1">Al tener el formulario de simulación como página de aterrizaje, el <strong>sistema contaba a todos los visitantes como oportunidades de colocación</strong>, inflando el denominador de la tasa de conversión.</p>
+          </div>
+          <div class="fidu-logro">
+            <span class="fidu-logro-num">02</span>
+            <p data-i18n-html="occiauto-h2">Sin una página donde el usuario pudiera obtener información real del crédito, la analítica <strong>no podía diferenciar entre usuarios exploradores y solicitantes reales</strong>.</p>
+          </div>
+          <div class="fidu-logro">
+            <span class="fidu-logro-num">03</span>
+            <p data-i18n-html="occiauto-h3">Al tener el simulador como única puerta de entrada, <strong>los datos se truncaban</strong> antes de poder medir la intención real — de ahí la baja conversión reportada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 3: Proceso de diseño -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="occiauto-s3-title">Proceso de diseño</h2>
+        <p class="case-hero-desc" style="margin-bottom: 32px; max-width: 54ch;" data-i18n="occiauto-s3-desc">
+          Un proceso escalonado desde la investigación hasta la medición en producción, priorizando los cambios de mayor valor con menor esfuerzo.
+        </p>
+
+        <div class="case-timeline">
+          <div class="case-timeline-rail"></div>
+          <div class="case-timeline-cols">
+
+            <div class="case-timeline-col">
+              <div class="case-timeline-dot"></div>
+              <p class="case-timeline-period" data-i18n="occ-phase-1">Fase 1</p>
+              <h3 class="case-timeline-theme" data-i18n="occ-phase-1-theme">Research</h3>
+              <ul class="case-timeline-items">
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">01</span>
+                  <span class="case-timeline-item-title" data-i18n="occ-t1-title">Benchmark Colombia</span>
+                  <span class="case-timeline-item-desc" data-i18n="occ-t1-desc">Principales bancos colombianos con crédito vehicular digital</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">02</span>
+                  <span class="case-timeline-item-title" data-i18n="occ-t2-title">Benchmark Global</span>
+                  <span class="case-timeline-item-desc" data-i18n="occ-t2-desc">Bancos de Latam, Europa y EUA con créditos de movilidad digitales</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">03</span>
+                  <span class="case-timeline-item-title" data-i18n="occ-t3-title">Patrones e insights</span>
+                  <span class="case-timeline-item-desc" data-i18n="occ-t3-desc">Landings, simuladores aislados, variables de búsqueda y presentación de ofertas</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="case-timeline-col">
+              <div class="case-timeline-dot"></div>
+              <p class="case-timeline-period" data-i18n="occ-phase-2">Fase 2</p>
+              <h3 class="case-timeline-theme" data-i18n="occ-phase-2-theme">Definición</h3>
+              <ul class="case-timeline-items">
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">04</span>
+                  <span class="case-timeline-item-title" data-i18n="occ-t4-title">Hipótesis y mejoras</span>
+                  <span class="case-timeline-item-desc" data-i18n="occ-t4-desc">Comparativas con el flujo actual y matriz de competitividad valor/esfuerzo</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">05</span>
+                  <span class="case-timeline-item-title" data-i18n="occ-t5-title">Ejecución escalonada</span>
+                  <span class="case-timeline-item-desc" data-i18n="occ-t5-desc">i. Landing informativa · ii. Simulador separado del flujo · iii. Presentación de tipos de crédito y beneficios</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="case-timeline-col">
+              <div class="case-timeline-dot"></div>
+              <p class="case-timeline-period" data-i18n="occ-phase-3">Fase 3</p>
+              <h3 class="case-timeline-theme" data-i18n="occ-phase-3-theme">Validación</h3>
+              <ul class="case-timeline-items">
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">06</span>
+                  <span class="case-timeline-item-title" data-i18n="occ-t6-title">A/B Testing</span>
+                  <span class="case-timeline-item-desc" data-i18n="occ-t6-desc">2 meses en producción para validar la conversión con la nueva landing</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">07</span>
+                  <span class="case-timeline-item-title" data-i18n="occ-t7-title">Pruebas con usuarios</span>
+                  <span class="case-timeline-item-desc" data-i18n="occ-t7-desc">Pruebas moderadas (usabilidad del simulador) y de navegación (entendimiento de las nuevas ofertas)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="case-timeline-col">
+              <div class="case-timeline-dot"></div>
+              <p class="case-timeline-period" data-i18n="occ-phase-4">Fase 4</p>
+              <h3 class="case-timeline-theme" data-i18n="occ-phase-4-theme">Entrega</h3>
+              <ul class="case-timeline-items">
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">08</span>
+                  <span class="case-timeline-item-title" data-i18n="occ-t8-title">QA + Producción</span>
+                  <span class="case-timeline-item-desc" data-i18n="occ-t8-desc">Validación QA previa al lanzamiento y escalada a producción</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">09</span>
+                  <span class="case-timeline-item-title" data-i18n="occ-t9-title">Medición</span>
+                  <span class="case-timeline-item-desc" data-i18n="occ-t9-desc">Seguimiento de la solución en producción y validación de resultados</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="site-footer__inner">
+          <div class="footer-brand">
+            <span class="footer-name">Juan Fonseca<span>.</span></span>
+            <span class="footer-role">Product Designer · UX/UI Designer</span>
+          </div>
+          <div class="footer-actions">
+            <a href="mailto:juanfonseca46@gmail.com" class="btn btn--ghost btn--icon" aria-label="Enviar email">
+              <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+              Email
+            </a>
+            <a href="https://www.linkedin.com/in/juancarlosfonseca/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--icon" aria-label="LinkedIn">
+              <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /view-case-occiauto -->
+
+
+  <!-- ============================================================
        JAVASCRIPT — Phase 1
        ============================================================ -->
   <script>
@@ -4435,6 +4663,42 @@
         'consuma-after-g-li2': 'Contador de "Quiero asistir" en tiempo real antes del evento',
         'consuma-after-g-li3': 'QR y código alfanumérico auto-generados para validar asistencia',
         'consuma-after-g-li4': 'Perfil de entidad público con sistema de seguidores que crece',
+        // Occiauto case study
+        'occiauto-hero-title': 'Rediseño de la solicitud<br>de crédito vehicular',
+        'occiauto-hero-desc': 'Ante la baja conversión en la landing de Occiauto, analizamos el flujo, planteamos hipótesis y ejecutamos un rediseño escalonado que aumentó la conversión en la etapa inicial de la solicitud de crédito vehicular.',
+        'occiauto-meta': 'Banco de Occidente · Colombia · 2024',
+        'occiauto-s1-title': 'El reto',
+        'occiauto-s1-insight': 'Occiauto digital concentraba <strong>más de 200K visitas mensuales</strong> y colocaba cerca del <strong>70% de los créditos vehiculares</strong> del banco — pero la tasa de conversión entre la simulación inicial y la solicitud era de apenas el <strong>4% mensual</strong>.',
+        'occiauto-p1-title': 'Simulador como puerta de entrada',
+        'occiauto-p1-body': 'El usuario aterrizaba directamente en el formulario de simulación, sin recibir información del producto. El sistema registraba a todos los visitantes como oportunidades de colocación, distorsionando los datos.',
+        'occiauto-p1-li1': 'Sin landing previa que presentara el producto',
+        'occiauto-p1-li2': 'El simulador mezclaba usuarios exploradores con solicitantes reales',
+        'occiauto-p1-li3': '~150K usuarios/mes interactuaban con el simulador sin intención real',
+        'occiauto-p2-title': 'Datos truncados, conversión ficticia',
+        'occiauto-p2-body': 'La analítica no podía diferenciar entre usuarios que investigaban y usuarios con intención de solicitud. La conversión del 4% no reflejaba el rendimiento real del canal — reflejaba un error de mapeo.',
+        'occiauto-p2-li1': 'Clickbait e intención de usuario no mapeados correctamente',
+        'occiauto-p2-li2': 'Sin página de información previa al simulador',
+        'occiauto-p2-li3': 'Imposible medir el porcentaje real de usuarios con intención de solicitud',
+        'occiauto-s2-title': 'Hipótesis planteadas',
+        'occiauto-s2-desc': 'Con base en los datos de analítica, el comportamiento de visita al sitio y reuniones con el equipo, identificamos tres hipótesis centrales.',
+        'occiauto-h1': 'Al tener el formulario de simulación como página de aterrizaje, el <strong>sistema contaba a todos los visitantes como oportunidades de colocación</strong>, inflando el denominador de la tasa de conversión.',
+        'occiauto-h2': 'Sin una página donde el usuario pudiera obtener información real del crédito, la analítica <strong>no podía diferenciar entre usuarios exploradores y solicitantes reales</strong>.',
+        'occiauto-h3': 'Al tener el simulador como única puerta de entrada, <strong>los datos se truncaban</strong> antes de poder medir la intención real — de ahí la baja conversión reportada.',
+        'occiauto-s3-title': 'Proceso de diseño',
+        'occiauto-s3-desc': 'Un proceso escalonado desde la investigación hasta la medición en producción, priorizando los cambios de mayor valor con menor esfuerzo.',
+        'occ-phase-1': 'Fase 1', 'occ-phase-1-theme': 'Research',
+        'occ-t1-title': 'Benchmark Colombia', 'occ-t1-desc': 'Principales bancos colombianos con crédito vehicular digital',
+        'occ-t2-title': 'Benchmark Global', 'occ-t2-desc': 'Bancos de Latam, Europa y EUA con créditos de movilidad digitales',
+        'occ-t3-title': 'Patrones e insights', 'occ-t3-desc': 'Landings, simuladores aislados, variables de búsqueda y presentación de ofertas',
+        'occ-phase-2': 'Fase 2', 'occ-phase-2-theme': 'Definición',
+        'occ-t4-title': 'Hipótesis y mejoras', 'occ-t4-desc': 'Comparativas con el flujo actual y matriz de competitividad valor/esfuerzo',
+        'occ-t5-title': 'Ejecución escalonada', 'occ-t5-desc': 'i. Landing informativa · ii. Simulador separado del flujo · iii. Presentación de tipos de crédito y beneficios',
+        'occ-phase-3': 'Fase 3', 'occ-phase-3-theme': 'Validación',
+        'occ-t6-title': 'A/B Testing', 'occ-t6-desc': '2 meses en producción para validar la conversión con la nueva landing',
+        'occ-t7-title': 'Pruebas con usuarios', 'occ-t7-desc': 'Pruebas moderadas (usabilidad del simulador) y de navegación (entendimiento de las nuevas ofertas)',
+        'occ-phase-4': 'Fase 4', 'occ-phase-4-theme': 'Entrega',
+        'occ-t8-title': 'QA + Producción', 'occ-t8-desc': 'Validación QA previa al lanzamiento y escalada a producción',
+        'occ-t9-title': 'Medición', 'occ-t9-desc': 'Seguimiento de la solución en producción y validación de resultados',
         // Consuma live
         'consuma-live-status': 'En lanzamiento',
         'consuma-live-text': 'La plataforma está disponible al público en Bucaramanga.',
@@ -4629,6 +4893,42 @@
         'consuma-after-g-li2': 'Real-time "I want to attend" counter before the event',
         'consuma-after-g-li3': 'Auto-generated QR and alphanumeric code to validate attendance',
         'consuma-after-g-li4': 'Public entity profile with a growing follower system',
+        // Occiauto case study
+        'occiauto-hero-title': 'Vehicle Loan Application<br>Redesign',
+        'occiauto-hero-desc': 'Facing low conversion on the Occiauto landing, we analyzed the flow, formed hypotheses and executed a staged redesign that increased conversion at the initial stage of the vehicle loan application.',
+        'occiauto-meta': 'Banco de Occidente · Colombia · 2024',
+        'occiauto-s1-title': 'The challenge',
+        'occiauto-s1-insight': 'Occiauto digital attracted <strong>over 200K monthly visits</strong> and placed around <strong>70% of the bank\'s vehicle loans</strong> — yet the conversion rate between the initial simulation and the loan application was just <strong>4% per month</strong>.',
+        'occiauto-p1-title': 'Simulator as the entry point',
+        'occiauto-p1-body': 'Users landed directly on the simulation form, without receiving any product information. The system recorded all visitors as placement opportunities, distorting the data.',
+        'occiauto-p1-li1': 'No prior landing page to present the product',
+        'occiauto-p1-li2': 'The simulator mixed exploratory users with real applicants',
+        'occiauto-p1-li3': '~150K users/month interacted with the simulator without real intent',
+        'occiauto-p2-title': 'Truncated data, fictitious conversion',
+        'occiauto-p2-body': 'Analytics could not differentiate between users who were researching and those with real application intent. The 4% conversion did not reflect the channel\'s actual performance — it reflected a mapping error.',
+        'occiauto-p2-li1': 'Clickbait and user intent not mapped correctly',
+        'occiauto-p2-li2': 'No information page prior to the simulator',
+        'occiauto-p2-li3': 'Impossible to measure the real percentage of users with application intent',
+        'occiauto-s2-title': 'Hypotheses',
+        'occiauto-s2-desc': 'Based on analytics data, site visit behavior and team meetings, we identified three central hypotheses.',
+        'occiauto-h1': 'With the simulation form as the landing page, the <strong>system counted all visitors as placement opportunities</strong>, inflating the conversion rate denominator.',
+        'occiauto-h2': 'Without a page where users could get real loan information, analytics <strong>could not differentiate exploratory users from real applicants</strong>.',
+        'occiauto-h3': 'With the simulator as the sole entry point, <strong>data was truncated</strong> before real intent could be measured — hence the low reported conversion.',
+        'occiauto-s3-title': 'Design process',
+        'occiauto-s3-desc': 'A staged process from research to measurement in production, prioritizing changes with the highest value and lowest effort.',
+        'occ-phase-1': 'Phase 1', 'occ-phase-1-theme': 'Research',
+        'occ-t1-title': 'Colombia Benchmark', 'occ-t1-desc': 'Major Colombian banks offering digital vehicle loans',
+        'occ-t2-title': 'Global Benchmark', 'occ-t2-desc': 'Banks in Latam, Europe and the US with digital mobility loans',
+        'occ-t3-title': 'Patterns & insights', 'occ-t3-desc': 'Landings, isolated simulators, search variables and offer presentation',
+        'occ-phase-2': 'Phase 2', 'occ-phase-2-theme': 'Definition',
+        'occ-t4-title': 'Hypotheses & improvements', 'occ-t4-desc': 'Comparisons with the current flow and value/effort competitiveness matrix',
+        'occ-t5-title': 'Staged execution', 'occ-t5-desc': 'i. Informational landing · ii. Simulator decoupled from the flow · iii. Presentation of loan types and benefits',
+        'occ-phase-3': 'Phase 3', 'occ-phase-3-theme': 'Validation',
+        'occ-t6-title': 'A/B Testing', 'occ-t6-desc': '2 months in production to validate conversion with the new landing',
+        'occ-t7-title': 'User testing', 'occ-t7-desc': 'Moderated tests (simulator usability) and navigation tests (understanding of new offers)',
+        'occ-phase-4': 'Phase 4', 'occ-phase-4-theme': 'Delivery',
+        'occ-t8-title': 'QA + Production', 'occ-t8-desc': 'Pre-launch QA validation and production rollout',
+        'occ-t9-title': 'Measurement', 'occ-t9-desc': 'Monitoring the solution in production and validating results',
         // Consuma live
         'consuma-live-status': 'Launching',
         'consuma-live-text': 'The platform is available to the public in Bucaramanga.',
