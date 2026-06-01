@@ -381,6 +381,44 @@
     .nav__mobile a:last-child { border-bottom: none; }
     .nav__mobile a:hover { color: var(--text-primary); }
 
+    /* ── Language toggle ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 4px 9px;
+      font-family: var(--font);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--r-xs);
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .lang-toggle:hover {
+      border-color: var(--text-muted);
+      background: var(--bg-elevated);
+    }
+
+    .lang-toggle__sep {
+      color: var(--border);
+      font-weight: 300;
+      margin: 0 2px;
+    }
+
+    .lang-toggle__opt {
+      color: var(--text-muted);
+      transition: color 0.15s ease;
+    }
+
+    .lang-toggle__opt.active {
+      color: var(--text-primary);
+    }
+
     /* ============================================================
        HERO
        ============================================================ */
@@ -2483,16 +2521,22 @@
       <a href="#hero" class="nav__logo">Juan Fonseca<span>.</span></a>
 
       <ul class="nav__links" role="list">
-        <li><a href="#hero">Inicio</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#" onclick="openAboutPage(); return false;">Sobre mí</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#hero" data-i18n="nav-home">Inicio</a></li>
+        <li><a href="#proyectos" data-i18n="nav-projects">Proyectos</a></li>
+        <li><a href="#" onclick="openAboutPage(); return false;" data-i18n="nav-about">Sobre mí</a></li>
+        <li><a href="#contacto" data-i18n="nav-contact">Contacto</a></li>
       </ul>
 
       <div class="nav__badge" aria-label="Disponible para nuevas oportunidades">
         <span class="nav__badge-dot" aria-hidden="true"></span>
         Open to work
       </div>
+
+      <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()" aria-label="Switch language">
+        <span class="lang-toggle__opt active" id="lang-opt-es">ES</span>
+        <span class="lang-toggle__sep">|</span>
+        <span class="lang-toggle__opt" id="lang-opt-en">EN</span>
+      </button>
 
       <button
         class="nav__hamburger"
@@ -2511,10 +2555,10 @@
 
   <!-- Mobile menu -->
   <div class="nav__mobile" id="mobile-menu" role="menu">
-    <a href="#hero"      role="menuitem">Inicio</a>
-    <a href="#proyectos" role="menuitem">Proyectos</a>
-    <a href="#" onclick="openAboutPage(); return false;" role="menuitem">Sobre mí</a>
-    <a href="#contacto"  role="menuitem">Contacto</a>
+    <a href="#hero"      role="menuitem" data-i18n="nav-home">Inicio</a>
+    <a href="#proyectos" role="menuitem" data-i18n="nav-projects">Proyectos</a>
+    <a href="#" onclick="openAboutPage(); return false;" role="menuitem" data-i18n="nav-about">Sobre mí</a>
+    <a href="#contacto"  role="menuitem" data-i18n="nav-contact">Contacto</a>
   </div>
 
 
@@ -2543,12 +2587,12 @@
 
           <!-- Headline: premise (muted) + main claim (large) + accent word -->
           <h1 class="hero__headline" aria-label="No diseño interfaces. Diseño productos y sistemas que funcionan.">
-            <span class="hl-line hl-line--premise">No diseño interfaces.</span>
-            <span class="hl-line hl-line--main">Diseño productos y sistemas</span>
-            <span class="hl-line hl-line--main">que <span class="hl-accent">funcionan.</span></span>
+            <span class="hl-line hl-line--premise" data-i18n="hero-premise">No diseño interfaces.</span>
+            <span class="hl-line hl-line--main" data-i18n="hero-main-1">Diseño productos y sistemas</span>
+            <span class="hl-line hl-line--main" data-i18n-html="hero-main-2">que <span class="hl-accent">funcionan.</span></span>
           </h1>
 
-          <p class="hero__sub">
+          <p class="hero__sub" data-i18n="hero-sub">
             5 años de experiencia diseñando productos end-to-end, especialista en
             fintech y banca, user research y optimización de la conversión.
             Diseño productos en base a datos, siempre buscando la mejor experiencia
@@ -2556,8 +2600,8 @@
           </p>
 
           <div class="hero__ctas">
-            <a href="#proyectos" class="btn btn--primary">Ver proyectos</a>
-            <a href="#contacto"  class="btn btn--ghost">Hablemos</a>
+            <a href="#proyectos" class="btn btn--primary" data-i18n="hero-cta-primary">Ver proyectos</a>
+            <a href="#contacto"  class="btn btn--ghost" data-i18n="hero-cta-ghost">Hablemos</a>
           </div>
 
         </div>
@@ -2576,16 +2620,16 @@
 
         <!-- Left: narrative -->
         <div class="reveal">
-          <h2 class="section-title about__title">Quién soy</h2>
+          <h2 class="section-title about__title" data-i18n="about-section-title">Quién soy</h2>
 
-          <p class="about__body">
+          <p class="about__body" data-i18n-html="about-body-1">
             Trabajo con una metodología end-to-end que abarca todo el ciclo del producto:
             desde el research inicial hasta el lanzamiento y la <strong>optimización
             continua</strong>. No solo diseño pantallas, construyo sistemas que sostienen
             el crecimiento del producto.
           </p>
 
-          <p class="about__body" style="margin-top: 14px;">
+          <p class="about__body" style="margin-top: 14px;" data-i18n-html="about-body-2">
             Lidero equipos multidisciplinarios y sirvo de puente entre
             <strong>stakeholders técnicos y de negocio</strong>, traduciendo restricciones
             complejas en decisiones de diseño claras y defendibles. Mi enfoque analítico
@@ -2595,7 +2639,7 @@
 
           <div style="margin-top: 24px;">
             <button class="btn btn--ghost btn--icon" onclick="openAboutPage()">
-              Conóceme
+              <span data-i18n="about-cta">Conóceme</span>
               <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
             </button>
           </div>
@@ -2617,7 +2661,7 @@
               </div>
               <div>
                 <div class="strength-name">Design Systems Governance</div>
-                <div class="strength-desc">Tokens, variantes, adopción y documentación</div>
+                <div class="strength-desc" data-i18n="strength-ds-desc">Tokens, variantes, adopción y documentación</div>
               </div>
             </li>
 
@@ -2631,7 +2675,7 @@
               </div>
               <div>
                 <div class="strength-name">Product Thinking end-to-end</div>
-                <div class="strength-desc">Discovery, definición, diseño y entrega</div>
+                <div class="strength-desc" data-i18n="strength-product-desc">Discovery, definición, diseño y entrega</div>
               </div>
             </li>
 
@@ -2646,7 +2690,7 @@
               </div>
               <div>
                 <div class="strength-name">Fintech / Banking Domain</div>
-                <div class="strength-desc">Pagos, inversiones, compliance, onboarding</div>
+                <div class="strength-desc" data-i18n="strength-fintech-desc">Pagos, inversiones, compliance, onboarding</div>
               </div>
             </li>
 
@@ -2660,7 +2704,7 @@
               </div>
               <div>
                 <div class="strength-name">User Research</div>
-                <div class="strength-desc">Entrevistas, usability testing, journey maps</div>
+                <div class="strength-desc" data-i18n="strength-research-desc">Entrevistas, usability testing, journey maps</div>
               </div>
             </li>
 
@@ -2675,7 +2719,7 @@
               </div>
               <div>
                 <div class="strength-name">Accessibility WCAG AA/AAA</div>
-                <div class="strength-desc">Contraste, navegación, screen readers</div>
+                <div class="strength-desc" data-i18n="strength-a11y-desc">Contraste, navegación, screen readers</div>
               </div>
             </li>
 
@@ -2693,11 +2737,11 @@
   <section class="projects projects--dark section" id="proyectos" aria-label="Proyectos">
     <div class="container">
 
-      <h2 class="section-title reveal">Proyectos</h2>
+      <h2 class="section-title reveal" data-i18n="projects-title">Proyectos</h2>
 
       <!-- Proyectos propios -->
       <div class="projects__category">
-        <p class="projects__category-label">Proyectos propios</p>
+        <p class="projects__category-label" data-i18n="projects-own">Proyectos propios</p>
         <div class="projects__grid">
 
         <!-- ── Consuma Cultura ─────────────────────────────── -->
@@ -2721,10 +2765,10 @@
             <div class="project-card__content">
               <div class="project-tags">
                 <span class="project-tag">Cultura Tech</span>
-                <span class="project-tag project-tag--wip">En lanzamiento</span>
+                <span class="project-tag project-tag--wip" data-i18n="tag-launching">En lanzamiento</span>
               </div>
               <h3 class="project-name">Consuma Cultura</h3>
-              <p class="project-desc">
+              <p class="project-desc" data-i18n="consuma-desc">
                 Plataforma para eventos culturales en Bucaramanga. Journey map
                 de dos perfiles, benchmark y definición del problema.
               </p>
@@ -2737,7 +2781,7 @@
                 onclick="openCaseStudy('consuma')"
                 aria-label="Ver caso de estudio Consuma Cultura"
               >
-                Ver caso de estudio
+                <span data-i18n="view-case-study">Ver caso de estudio</span>
                 <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9 18 6-6-6-6"/>
                 </svg>
@@ -2753,7 +2797,7 @@
 
       <!-- Proyectos laborales -->
       <div class="projects__category">
-        <p class="projects__category-label">Proyectos laborales</p>
+        <p class="projects__category-label" data-i18n="projects-work">Proyectos laborales</p>
         <div class="projects__grid">
 
           <!-- ── Fidubogotá ─────────────────────────────── -->
@@ -2774,10 +2818,10 @@
                 <div class="project-tags">
                   <span class="project-tag">Fintech</span>
                   <span class="project-tag">Service Design</span>
-                  <span class="project-tag project-tag--done">Implementado</span>
+                  <span class="project-tag project-tag--done" data-i18n="tag-implemented">Implementado</span>
                 </div>
-                <h3 class="project-name">Digitalización de producto de inversión</h3>
-                <p class="project-desc">
+                <h3 class="project-name" data-i18n="fidu-project-name">Digitalización de producto de inversión</h3>
+                <p class="project-desc" data-i18n="fidu-project-desc">
                   Fiduciaria de Bogotá · Apertura del FIC Cubrir Internacional transformada de un proceso presencial de +1 semana a un flujo 100% digital en app.
                 </p>
               </div>
@@ -2788,7 +2832,7 @@
                   onclick="openCaseStudy('fidu')"
                   aria-label="Ver caso de estudio Fidubogotá"
                 >
-                  Ver caso de estudio
+                  <span data-i18n="view-case-study">Ver caso de estudio</span>
                   <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m9 18 6-6-6-6"/>
                   </svg>
@@ -2811,8 +2855,8 @@
   <section class="contact-section section" id="contacto" aria-label="Contacto">
     <div class="container">
       <div class="reveal">
-        <h2 class="contact-headline">¿Quieres que trabajemos?</h2>
-        <p class="contact-sub">Empecemos tomándonos un café.</p>
+        <h2 class="contact-headline" data-i18n="contact-headline">¿Quieres que trabajemos?</h2>
+        <p class="contact-sub" data-i18n="contact-sub">Empecemos tomándonos un café.</p>
         <div class="contact-btns">
 
 
@@ -2908,7 +2952,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
             <path d="m15 18-6-6 6-6"/>
           </svg>
-          Inicio
+          <span data-i18n="back-home">Inicio</span>
         </button>
       </div>
     </div>
@@ -2920,10 +2964,10 @@
 
           <!-- Columna izquierda — sticky -->
           <div class="sobre-page-left">
-            <span class="label">Product Designer · UX/UI</span>
-            <h1 class="sobre-title-display">Diseñando soluciones<br>que facilitan vidas</h1>
+            <span class="label" data-i18n="sobre-label">Product Designer · UX/UI</span>
+            <h1 class="sobre-title-display" data-i18n-html="sobre-display-title">Diseñando soluciones<br>que facilitan vidas</h1>
             <div class="sobre-page-ctas">
-              <a href="mailto:juanfonseca46@gmail.com" class="btn btn--primary">Contáctame</a>
+              <a href="mailto:juanfonseca46@gmail.com" class="btn btn--primary" data-i18n="sobre-cta-contact">Contáctame</a>
               <a href="https://www.linkedin.com/in/juancarlosfonseca/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">LinkedIn</a>
             </div>
           </div>
@@ -2938,15 +2982,15 @@
 
             <!-- Cuerpo de texto -->
             <div class="sobre-body-copy">
-              <p>Diseñador UX/UI con 5 años transformando ideas en productos digitales que impactan vidas reales. Trabajo todo el ciclo — research, propuesta, prototipo, lanzamiento — y uso datos para tomar decisiones, no suposiciones.</p>
-              <p>Me especializo en conectar equipos técnicos y de negocio para construir productos que funcionan de verdad: útiles para quien los usa, valiosos para quien los construye.</p>
+              <p data-i18n="sobre-body-1">Diseñador UX/UI con 5 años transformando ideas en productos digitales que impactan vidas reales. Trabajo todo el ciclo — research, propuesta, prototipo, lanzamiento — y uso datos para tomar decisiones, no suposiciones.</p>
+              <p data-i18n="sobre-body-2">Me especializo en conectar equipos técnicos y de negocio para construir productos que funcionan de verdad: útiles para quien los usa, valiosos para quien los construye.</p>
             </div>
 
             <!-- Especialidades -->
             <div class="sobre-skills-block">
-              <span class="label">Especialidades</span>
-              <h2 class="section-title">Lo que hago bien</h2>
-              <p class="about__body">
+              <span class="label" data-i18n="sobre-skills-label">Especialidades</span>
+              <h2 class="section-title" data-i18n="sobre-skills-title">Lo que hago bien</h2>
+              <p class="about__body" data-i18n-html="sobre-skills-body">
                 Mi trabajo vive en la intersección entre <strong>negocio, tecnología y personas</strong>. No diseño pantallas — diseño sistemas que crecen con el producto y equipos que los mantienen.
               </p>
               <ul class="strength-list">
@@ -2956,7 +3000,7 @@
                   </div>
                   <div>
                     <div class="strength-name">Design Systems Governance</div>
-                    <div class="strength-desc">Tokens, variantes, adopción y documentación</div>
+                    <div class="strength-desc" data-i18n="strength-ds-desc">Tokens, variantes, adopción y documentación</div>
                   </div>
                 </li>
                 <li class="strength-item">
@@ -2965,7 +3009,7 @@
                   </div>
                   <div>
                     <div class="strength-name">Product Thinking end-to-end</div>
-                    <div class="strength-desc">Discovery, definición, diseño y entrega</div>
+                    <div class="strength-desc" data-i18n="strength-product-desc">Discovery, definición, diseño y entrega</div>
                   </div>
                 </li>
                 <li class="strength-item">
@@ -2974,7 +3018,7 @@
                   </div>
                   <div>
                     <div class="strength-name">Fintech / Banking Domain</div>
-                    <div class="strength-desc">Pagos, inversiones, compliance, onboarding</div>
+                    <div class="strength-desc" data-i18n="strength-fintech-desc">Pagos, inversiones, compliance, onboarding</div>
                   </div>
                 </li>
                 <li class="strength-item">
@@ -2983,7 +3027,7 @@
                   </div>
                   <div>
                     <div class="strength-name">User Research</div>
-                    <div class="strength-desc">Entrevistas, usability testing, journey maps</div>
+                    <div class="strength-desc" data-i18n="strength-research-desc">Entrevistas, usability testing, journey maps</div>
                   </div>
                 </li>
                 <li class="strength-item">
@@ -2992,7 +3036,7 @@
                   </div>
                   <div>
                     <div class="strength-name">Accessibility WCAG AA/AAA</div>
-                    <div class="strength-desc">Contraste, navegación, screen readers</div>
+                    <div class="strength-desc" data-i18n="strength-a11y-desc">Contraste, navegación, screen readers</div>
                   </div>
                 </li>
               </ul>
@@ -3007,8 +3051,8 @@
     <!-- CTA contacto -->
     <section class="contact-section section" aria-label="Contacto">
       <div class="container">
-        <h2 class="contact-headline">¿Trabajamos juntos?</h2>
-        <p class="contact-sub">Estoy disponible para nuevas oportunidades.</p>
+        <h2 class="contact-headline" data-i18n="sobre-contact-headline">¿Trabajamos juntos?</h2>
+        <p class="contact-sub" data-i18n="sobre-contact-sub">Estoy disponible para nuevas oportunidades.</p>
         <div class="contact-btns">
           <a href="mailto:juanfonseca46@gmail.com" class="btn btn--primary btn--icon">
             <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
@@ -3060,7 +3104,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
             <path d="m15 18-6-6 6-6"/>
           </svg>
-          Proyectos
+          <span data-i18n="back-projects">Proyectos</span>
         </button>
       </div>
     </div>
@@ -3074,18 +3118,18 @@
           </div>
           <div class="project-tags">
             <span class="project-tag">Cultura Tech</span>
-            <span class="project-tag project-tag--wip">En lanzamiento</span>
+            <span class="project-tag project-tag--wip" data-i18n="tag-launching">En lanzamiento</span>
           </div>
         </div>
         <h1 class="case-hero-title">Consuma Cultura</h1>
-        <p class="case-hero-desc">
+        <p class="case-hero-desc" data-i18n="consuma-hero-desc">
           Plataforma digital para la difusión y seguimiento de eventos culturales
           en Bucaramanga, Colombia. Dos perfiles de usuario, un ecosistema conectado.
         </p>
         <div class="case-meta-row">
           <span class="case-meta-text">Bucaramanga · 2026</span>
           <a href="https://consumacultura.com.co/" target="_blank" rel="noopener noreferrer" class="case-hero-cta">
-            Visita la página aquí
+            <span data-i18n="consuma-visit-link">Visita la página aquí</span>
             <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
               <path d="M6 3h7v7M13 3 6.5 9.5"/>
             </svg>
@@ -3097,30 +3141,30 @@
     <!-- Sección 1: El problema -->
     <div class="case-section">
       <div class="container">
-        <h2 class="case-section-title">El problema</h2>
+        <h2 class="case-section-title" data-i18n="consuma-s1-title">El problema</h2>
 
         <div class="case-insight">
-          <p>El problema central no es la falta de cultura: es la <strong>ausencia de infraestructura digital</strong> que conecte a quienes producen eventos con quienes quieren asistir, y que genere datos reales sobre el ecosistema cultural de la ciudad.</p>
+          <p data-i18n-html="consuma-s1-insight">El problema central no es la falta de cultura: es la <strong>ausencia de infraestructura digital</strong> que conecte a quienes producen eventos con quienes quieren asistir, y que genere datos reales sobre el ecosistema cultural de la ciudad.</p>
         </div>
 
         <div class="case-problem-grid">
           <div class="case-problem-card">
-            <h4>Difusión fragmentada e ineficiente</h4>
-            <p>La agenda cultural depende de canales desconectados con vida útil muy corta. No existe un punto de encuentro digital donde el público pueda descubrir, con certeza, qué está pasando esta semana en la ciudad.</p>
+            <h4 data-i18n="consuma-p1-title">Difusión fragmentada e ineficiente</h4>
+            <p data-i18n="consuma-p1-body">La agenda cultural depende de canales desconectados con vida útil muy corta. No existe un punto de encuentro digital donde el público pueda descubrir, con certeza, qué está pasando esta semana en la ciudad.</p>
             <ul class="case-problem-list">
-              <li>La información llega tarde, incompleta o directamente no llega</li>
-              <li>Cada gestor publica en sus propios canales sin coordinación</li>
-              <li>Eventos gratuitos o de bajo perfil quedan casi invisibles</li>
+              <li data-i18n="consuma-p1-li1">La información llega tarde, incompleta o directamente no llega</li>
+              <li data-i18n="consuma-p1-li2">Cada gestor publica en sus propios canales sin coordinación</li>
+              <li data-i18n="consuma-p1-li3">Eventos gratuitos o de bajo perfil quedan casi invisibles</li>
             </ul>
           </div>
           <div class="case-problem-card">
-            <h4>Asistencia no mapeada, datos inexistentes</h4>
-            <p>Organizar un evento cultural en Bucaramanga es un acto de fe. El gestor invierte tiempo y recursos sin tener forma de medir el resultado real.</p>
+            <h4 data-i18n="consuma-p2-title">Asistencia no mapeada, datos inexistentes</h4>
+            <p data-i18n="consuma-p2-body">Organizar un evento cultural en Bucaramanga es un acto de fe. El gestor invierte tiempo y recursos sin tener forma de medir el resultado real.</p>
             <ul class="case-problem-list">
-              <li>Asistencia medida con conteo manual o sin medición</li>
-              <li>Sin datos históricos para comparar eventos</li>
-              <li>Sin canal formal de retroalimentación verificada</li>
-              <li>Decisiones de programación basadas en intuición</li>
+              <li data-i18n="consuma-p2-li1">Asistencia medida con conteo manual o sin medición</li>
+              <li data-i18n="consuma-p2-li2">Sin datos históricos para comparar eventos</li>
+              <li data-i18n="consuma-p2-li3">Sin canal formal de retroalimentación verificada</li>
+              <li data-i18n="consuma-p2-li4">Decisiones de programación basadas en intuición</li>
             </ul>
           </div>
         </div>
@@ -3130,26 +3174,26 @@
     <!-- Sección 2: Datos clave -->
     <div class="case-section">
       <div class="container">
-        <h2 class="case-section-title">Contexto y cifras clave</h2>
+        <h2 class="case-section-title" data-i18n="consuma-s2-title">Contexto y cifras clave</h2>
         <div class="case-metrics">
           <div class="case-metric-card">
             <div class="case-metric-value">+60</div>
-            <div class="case-metric-label">actividades culturales en EMAFEST 2024 (nov 9-30)</div>
+            <div class="case-metric-label" data-i18n="consuma-m1-label">actividades culturales en EMAFEST 2024 (nov 9-30)</div>
             <span class="case-metric-source">Alcaldía de Bucaramanga, 2024</span>
           </div>
           <div class="case-metric-card">
             <div class="case-metric-value">+250</div>
-            <div class="case-metric-label">eventos proyectados por el IMCT para 2026</div>
+            <div class="case-metric-label" data-i18n="consuma-m2-label">eventos proyectados por el IMCT para 2026</div>
             <span class="case-metric-source">IMCT Bucaramanga, 2025</span>
           </div>
           <div class="case-metric-card">
             <div class="case-metric-value">12.1%</div>
-            <div class="case-metric-label">crecimiento de la industria cultural en Colombia 2023</div>
+            <div class="case-metric-label" data-i18n="consuma-m3-label">crecimiento de la industria cultural en Colombia 2023</div>
             <span class="case-metric-source">DANE, 2024</span>
           </div>
           <div class="case-metric-card">
             <div class="case-metric-value">1.000</div>
-            <div class="case-metric-label">personas de capacidad, Teatro Santander</div>
+            <div class="case-metric-label" data-i18n="consuma-m4-label">personas de capacidad, Teatro Santander</div>
             <span class="case-metric-source">Teatro Santander</span>
           </div>
         </div>
@@ -3159,42 +3203,42 @@
     <!-- Sección 3: Actores -->
     <div class="case-section">
       <div class="container">
-        <h2 class="case-section-title">Actores del ecosistema</h2>
+        <h2 class="case-section-title" data-i18n="consuma-s3-title">Actores del ecosistema</h2>
         <div class="case-actors">
           <div class="case-actor-card">
             <div class="case-actor-header">
-              <div class="case-actor-title">Gestores Institucionales</div>
-              <div class="case-actor-sub">Entidades públicas y privadas de cultura</div>
+              <div class="case-actor-title" data-i18n="actor1-title">Gestores Institucionales</div>
+              <div class="case-actor-sub" data-i18n="actor1-sub">Entidades públicas y privadas de cultura</div>
             </div>
             <div class="case-actor-list">
-              <div class="case-actor-item"><strong>IMCT</strong> - Instituto Municipal de Cultura y Turismo</div>
-              <div class="case-actor-item"><strong>Teatro Santander</strong> - Principal escenario del oriente colombiano</div>
-              <div class="case-actor-item"><strong>Centro Cultural del Oriente</strong> - Sede de festivales como EMAFEST</div>
-              <div class="case-actor-item"><strong>Comfenalco Santander</strong> - Amplia agenda cultural y educativa</div>
+              <div class="case-actor-item" data-i18n-html="actor1-i1"><strong>IMCT</strong> - Instituto Municipal de Cultura y Turismo</div>
+              <div class="case-actor-item" data-i18n-html="actor1-i2"><strong>Teatro Santander</strong> - Principal escenario del oriente colombiano</div>
+              <div class="case-actor-item" data-i18n-html="actor1-i3"><strong>Centro Cultural del Oriente</strong> - Sede de festivales como EMAFEST</div>
+              <div class="case-actor-item" data-i18n-html="actor1-i4"><strong>Comfenalco Santander</strong> - Amplia agenda cultural y educativa</div>
             </div>
           </div>
           <div class="case-actor-card">
             <div class="case-actor-header">
-              <div class="case-actor-title">Gestores Independientes</div>
-              <div class="case-actor-sub">Artistas, colectivos y productores</div>
+              <div class="case-actor-title" data-i18n="actor2-title">Gestores Independientes</div>
+              <div class="case-actor-sub" data-i18n="actor2-sub">Artistas, colectivos y productores</div>
             </div>
             <div class="case-actor-list">
-              <div class="case-actor-item"><strong>Artistas individuales</strong> - Músicos, actores, pintores con agenda propia</div>
-              <div class="case-actor-item"><strong>Grupos y bandas</strong> - Agrupaciones que producen sus propios eventos</div>
-              <div class="case-actor-item"><strong>Colectivos culturales</strong> - Organizaciones informales de creadores</div>
-              <div class="case-actor-item"><strong>Espacios privados</strong> - Bares, galerías, cafés culturales</div>
+              <div class="case-actor-item" data-i18n-html="actor2-i1"><strong>Artistas individuales</strong> - Músicos, actores, pintores con agenda propia</div>
+              <div class="case-actor-item" data-i18n-html="actor2-i2"><strong>Grupos y bandas</strong> - Agrupaciones que producen sus propios eventos</div>
+              <div class="case-actor-item" data-i18n-html="actor2-i3"><strong>Colectivos culturales</strong> - Organizaciones informales de creadores</div>
+              <div class="case-actor-item" data-i18n-html="actor2-i4"><strong>Espacios privados</strong> - Bares, galerías, cafés culturales</div>
             </div>
           </div>
           <div class="case-actor-card">
             <div class="case-actor-header">
-              <div class="case-actor-title">Público Asistente</div>
-              <div class="case-actor-sub">Consumidores culturales de Bucaramanga</div>
+              <div class="case-actor-title" data-i18n="actor3-title">Público Asistente</div>
+              <div class="case-actor-sub" data-i18n="actor3-sub">Consumidores culturales de Bucaramanga</div>
             </div>
             <div class="case-actor-list">
-              <div class="case-actor-item"><strong>Público adulto general</strong> - 25-50 años, sin acceso centralizado</div>
-              <div class="case-actor-item"><strong>Jóvenes universitarios</strong> - 18-28 años, alta conectividad digital</div>
-              <div class="case-actor-item"><strong>Público familiar</strong> - Familias buscando actividades de bajo costo</div>
-              <div class="case-actor-item"><strong>Comunidades de interés</strong> - Seguidores recurrentes de un gestor</div>
+              <div class="case-actor-item" data-i18n-html="actor3-i1"><strong>Público adulto general</strong> - 25-50 años, sin acceso centralizado</div>
+              <div class="case-actor-item" data-i18n-html="actor3-i2"><strong>Jóvenes universitarios</strong> - 18-28 años, alta conectividad digital</div>
+              <div class="case-actor-item" data-i18n-html="actor3-i3"><strong>Público familiar</strong> - Familias buscando actividades de bajo costo</div>
+              <div class="case-actor-item" data-i18n-html="actor3-i4"><strong>Comunidades de interés</strong> - Seguidores recurrentes de un gestor</div>
             </div>
           </div>
         </div>
@@ -3205,50 +3249,50 @@
     <div class="case-section">
       <div class="container">
         <div class="case-profile-header">
-          <h2 class="case-section-title" style="margin-bottom:0">Journey Map: Público General</h2>
-          <span class="case-profile-badge publico">Consumidor Cultural</span>
+          <h2 class="case-section-title" style="margin-bottom:0" data-i18n="consuma-s4-title">Journey Map: Público General</h2>
+          <span class="case-profile-badge publico" data-i18n="consuma-s4-badge">Consumidor Cultural</span>
         </div>
 
         <div class="case-insight">
-          <p><strong>Perfil:</strong> Habitante de Bucaramanga, 18-45 años, con interés en actividades culturales pero sin canales para mantenerse informado. Asiste de forma esporádica, más por recomendación directa que por búsqueda activa.</p>
+          <p data-i18n-html="consuma-s4-insight"><strong>Perfil:</strong> Habitante de Bucaramanga, 18-45 años, con interés en actividades culturales pero sin canales para mantenerse informado. Asiste de forma esporádica, más por recomendación directa que por búsqueda activa.</p>
         </div>
 
         <div class="case-journey-stages">
           <div class="case-stage">
             <div class="case-stage-num">01</div>
-            <div class="case-stage-title">Descubrimiento</div>
-            <div class="case-stage-desc">Busca eventos en redes sin encontrar una agenda centralizada</div>
+            <div class="case-stage-title" data-i18n="stage-p1-title">Descubrimiento</div>
+            <div class="case-stage-desc" data-i18n="stage-p1-desc">Busca eventos en redes sin encontrar una agenda centralizada</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">02</div>
-            <div class="case-stage-title">Exploración</div>
-            <div class="case-stage-desc">Lee el detalle del evento: fecha, lugar, precio, organizador</div>
+            <div class="case-stage-title" data-i18n="stage-p2-title">Exploración</div>
+            <div class="case-stage-desc" data-i18n="stage-p2-desc">Lee el detalle del evento: fecha, lugar, precio, organizador</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">03</div>
-            <div class="case-stage-title">Intención</div>
-            <div class="case-stage-desc">Marca "Quiero asistir" y guarda en su Pasaporte Cultural</div>
+            <div class="case-stage-title" data-i18n="stage-p3-title">Intención</div>
+            <div class="case-stage-desc" data-i18n="stage-p3-desc">Marca "Quiero asistir" y guarda en su Pasaporte Cultural</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">04</div>
-            <div class="case-stage-title">Asistencia</div>
-            <div class="case-stage-desc">Escanea el QR del organizador para validar su asistencia</div>
+            <div class="case-stage-title" data-i18n="stage-p4-title">Asistencia</div>
+            <div class="case-stage-desc" data-i18n="stage-p4-desc">Escanea el QR del organizador para validar su asistencia</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">05</div>
-            <div class="case-stage-title">Valoración</div>
-            <div class="case-stage-desc">Califica con 1-5 estrellas y deja comentario verificado</div>
+            <div class="case-stage-title" data-i18n="stage-p5-title">Valoración</div>
+            <div class="case-stage-desc" data-i18n="stage-p5-desc">Califica con 1-5 estrellas y deja comentario verificado</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">06</div>
-            <div class="case-stage-title">Fidelización</div>
-            <div class="case-stage-desc">Acumula insignias, mantiene rachas y gana beneficios</div>
+            <div class="case-stage-title" data-i18n="stage-p6-title">Fidelización</div>
+            <div class="case-stage-desc" data-i18n="stage-p6-desc">Acumula insignias, mantiene rachas y gana beneficios</div>
           </div>
         </div>
 
         <!-- Emotion curve chart -->
         <div class="journey-chart-wrap">
-          <p class="journey-chart-label">Nivel emocional por etapa</p>
+          <p class="journey-chart-label" data-i18n="journey-chart-label">Nivel emocional por etapa</p>
           <svg class="journey-chart-svg" viewBox="0 0 720 130" aria-label="Curva emocional: Público General">
             <defs>
               <linearGradient id="grad-publico" x1="0" y1="0" x2="0" y2="1">
@@ -3257,9 +3301,9 @@
               </linearGradient>
             </defs>
             <!-- Y axis labels -->
-            <text x="4" y="26"  font-size="9" fill="#8892b0" font-family="system-ui">Alto</text>
-            <text x="4" y="68"  font-size="9" fill="#8892b0" font-family="system-ui">Medio</text>
-            <text x="4" y="110" font-size="9" fill="#8892b0" font-family="system-ui">Bajo</text>
+            <text x="4" y="26"  font-size="9" fill="#8892b0" font-family="system-ui" data-i18n="chart-high">Alto</text>
+            <text x="4" y="68"  font-size="9" fill="#8892b0" font-family="system-ui" data-i18n="chart-mid">Medio</text>
+            <text x="4" y="110" font-size="9" fill="#8892b0" font-family="system-ui" data-i18n="chart-low">Bajo</text>
             <!-- Grid lines -->
             <line x1="40" y1="22"  x2="710" y2="22"  stroke="#CDD4EB" stroke-width="1" stroke-dasharray="4 4"/>
             <line x1="40" y1="64"  x2="710" y2="64"  stroke="#CDD4EB" stroke-width="1" stroke-dasharray="4 4"/>
@@ -3278,12 +3322,12 @@
             <circle cx="600" cy="34"  r="4" fill="#2B5CE6" stroke="white" stroke-width="2"/>
             <circle cx="700" cy="15"  r="4" fill="#2B5CE6" stroke="white" stroke-width="2"/>
             <!-- Stage labels -->
-            <text x="100" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Descubrimiento</text>
-            <text x="225" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Exploración</text>
-            <text x="350" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Intención</text>
-            <text x="475" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Asistencia</text>
-            <text x="600" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Valoración</text>
-            <text x="700" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Fidelización</text>
+            <text x="100" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-p1-title">Descubrimiento</text>
+            <text x="225" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-p2-title">Exploración</text>
+            <text x="350" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-p3-title">Intención</text>
+            <text x="475" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-p4-title">Asistencia</text>
+            <text x="600" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-p5-title">Valoración</text>
+            <text x="700" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-p6-title">Fidelización</text>
           </svg>
         </div>
       </div>
@@ -3293,50 +3337,50 @@
     <div class="case-section">
       <div class="container">
         <div class="case-profile-header">
-          <h2 class="case-section-title" style="margin-bottom:0">Journey Map: Gestor Cultural</h2>
-          <span class="case-profile-badge gestor">Organizador de Eventos</span>
+          <h2 class="case-section-title" style="margin-bottom:0" data-i18n="consuma-s5-title">Journey Map: Gestor Cultural</h2>
+          <span class="case-profile-badge gestor" data-i18n="consuma-s5-badge">Organizador de Eventos</span>
         </div>
 
         <div class="case-insight">
-          <p><strong>Perfil:</strong> Organizador o productor de eventos en Bucaramanga. Invierte tiempo y recursos en producir eventos pero no tiene herramientas para medir su impacto real ni construir una audiencia fiel.</p>
+          <p data-i18n-html="consuma-s5-insight"><strong>Perfil:</strong> Organizador o productor de eventos en Bucaramanga. Invierte tiempo y recursos en producir eventos pero no tiene herramientas para medir su impacto real ni construir una audiencia fiel.</p>
         </div>
 
         <div class="case-journey-stages">
           <div class="case-stage">
             <div class="case-stage-num">01</div>
-            <div class="case-stage-title">Creación</div>
-            <div class="case-stage-desc">Publica el evento en minutos. Un QR se genera automáticamente</div>
+            <div class="case-stage-title" data-i18n="stage-g1-title">Creación</div>
+            <div class="case-stage-desc" data-i18n="stage-g1-desc">Publica el evento en minutos. Un QR se genera automáticamente</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">02</div>
-            <div class="case-stage-title">Publicación</div>
-            <div class="case-stage-desc">El evento aparece en el calendario. Ve contador de interesados en tiempo real</div>
+            <div class="case-stage-title" data-i18n="stage-g2-title">Publicación</div>
+            <div class="case-stage-desc" data-i18n="stage-g2-desc">El evento aparece en el calendario. Ve contador de interesados en tiempo real</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">03</div>
-            <div class="case-stage-title">Preparación</div>
-            <div class="case-stage-desc">Descarga el QR que se activa 2h antes del evento</div>
+            <div class="case-stage-title" data-i18n="stage-g3-title">Preparación</div>
+            <div class="case-stage-desc" data-i18n="stage-g3-desc">Descarga el QR que se activa 2h antes del evento</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">04</div>
-            <div class="case-stage-title">Día del evento</div>
-            <div class="case-stage-desc">Asistentes escanean el QR. Registro digital automático, sin papel</div>
+            <div class="case-stage-title" data-i18n="stage-g4-title">Día del evento</div>
+            <div class="case-stage-desc" data-i18n="stage-g4-desc">Asistentes escanean el QR. Registro digital automático, sin papel</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">05</div>
-            <div class="case-stage-title">Análisis</div>
-            <div class="case-stage-desc">Dashboard post-evento: asistentes reales, rating promedio, comentarios</div>
+            <div class="case-stage-title" data-i18n="stage-g5-title">Análisis</div>
+            <div class="case-stage-desc" data-i18n="stage-g5-desc">Dashboard post-evento: asistentes reales, rating promedio, comentarios</div>
           </div>
           <div class="case-stage">
             <div class="case-stage-num">06</div>
-            <div class="case-stage-title">Audiencia</div>
-            <div class="case-stage-desc">El público fiel sigue su perfil. Audiencia acumulada evento a evento</div>
+            <div class="case-stage-title" data-i18n="stage-g6-title">Audiencia</div>
+            <div class="case-stage-desc" data-i18n="stage-g6-desc">El público fiel sigue su perfil. Audiencia acumulada evento a evento</div>
           </div>
         </div>
 
         <!-- Emotion curve chart -->
         <div class="journey-chart-wrap">
-          <p class="journey-chart-label">Nivel emocional por etapa</p>
+          <p class="journey-chart-label" data-i18n="journey-chart-label">Nivel emocional por etapa</p>
           <svg class="journey-chart-svg" viewBox="0 0 720 130" aria-label="Curva emocional: Gestor Cultural">
             <defs>
               <linearGradient id="grad-gestor" x1="0" y1="0" x2="0" y2="1">
@@ -3365,12 +3409,12 @@
             <circle cx="600" cy="26" r="4" fill="#6D28D9" stroke="white" stroke-width="2"/>
             <circle cx="700" cy="16" r="4" fill="#6D28D9" stroke="white" stroke-width="2"/>
             <!-- Stage labels -->
-            <text x="100" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Creación</text>
-            <text x="225" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Publicación</text>
-            <text x="350" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Preparación</text>
-            <text x="475" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Día del evento</text>
-            <text x="600" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Análisis</text>
-            <text x="700" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui">Audiencia</text>
+            <text x="100" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-g1-title">Creación</text>
+            <text x="225" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-g2-title">Publicación</text>
+            <text x="350" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-g3-title">Preparación</text>
+            <text x="475" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-g4-title">Día del evento</text>
+            <text x="600" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-g5-title">Análisis</text>
+            <text x="700" y="122" text-anchor="middle" font-size="8.5" fill="#5C6B96" font-family="system-ui" data-i18n="stage-g6-title">Audiencia</text>
           </svg>
         </div>
       </div>
@@ -3379,9 +3423,9 @@
     <!-- Sección 6: Mockups del producto -->
     <div class="case-section case-mockups" data-mockup-section>
       <div class="container">
-        <p class="case-mockups-eyebrow">Producto real</p>
-        <h2 class="case-mockups-title">Así se ve el producto en pantalla</h2>
-        <p class="case-mockups-desc">Cinco vistas del producto real — desde el home hasta el pasaporte cultural.</p>
+        <p class="case-mockups-eyebrow" data-i18n="consuma-s6-eyebrow">Producto real</p>
+        <h2 class="case-mockups-title" data-i18n="consuma-s6-title">Así se ve el producto en pantalla</h2>
+        <p class="case-mockups-desc" data-i18n="consuma-s6-desc">Cinco vistas del producto real — desde el home hasta el pasaporte cultural.</p>
 
         <!-- Tabs + progress -->
         <div class="mockup-controls">
@@ -3430,48 +3474,48 @@
     <!-- Sección 7: Antes vs. Después -->
     <div class="case-section">
       <div class="container">
-        <h2 class="case-section-title">Antes vs. con Consuma Cultura</h2>
+        <h2 class="case-section-title" data-i18n="consuma-s7-title">Antes vs. con Consuma Cultura</h2>
 
-        <p class="case-compare-label">Público General</p>
+        <p class="case-compare-label" data-i18n="compare-publico-label">Público General</p>
         <div class="case-compare" style="margin-bottom:20px;">
           <div class="case-compare-col before">
-            <div class="case-compare-title">Sin la plataforma</div>
+            <div class="case-compare-title" data-i18n="before-title-publico">Sin la plataforma</div>
             <ul class="case-compare-list">
-              <li>Información de eventos dispersa en WhatsApp, Instagram y flyers</li>
-              <li>No hay un lugar único para descubrir la agenda cultural</li>
-              <li>Asistir no deja ningún rastro ni historial personal</li>
-              <li>No existe canal formal para calificar o recomendar eventos</li>
+              <li data-i18n="consuma-before-p-li1">Información de eventos dispersa en WhatsApp, Instagram y flyers</li>
+              <li data-i18n="consuma-before-p-li2">No hay un lugar único para descubrir la agenda cultural</li>
+              <li data-i18n="consuma-before-p-li3">Asistir no deja ningún rastro ni historial personal</li>
+              <li data-i18n="consuma-before-p-li4">No existe canal formal para calificar o recomendar eventos</li>
             </ul>
           </div>
           <div class="case-compare-col after">
-            <div class="case-compare-title">Con Consuma Cultura</div>
+            <div class="case-compare-title" data-i18n="after-title-publico">Con Consuma Cultura</div>
             <ul class="case-compare-list">
-              <li>Calendario centralizado con todos los eventos culturales de la ciudad</li>
-              <li>Pasaporte Cultural: historial de eventos asistidos y planeados</li>
-              <li>Sistema de rating verificado post-asistencia</li>
-              <li>Gamificación: insignias, rachas y beneficios por participación</li>
+              <li data-i18n="consuma-after-p-li1">Calendario centralizado con todos los eventos culturales de la ciudad</li>
+              <li data-i18n="consuma-after-p-li2">Pasaporte Cultural: historial de eventos asistidos y planeados</li>
+              <li data-i18n="consuma-after-p-li3">Sistema de rating verificado post-asistencia</li>
+              <li data-i18n="consuma-after-p-li4">Gamificación: insignias, rachas y beneficios por participación</li>
             </ul>
           </div>
         </div>
 
-        <p class="case-compare-label">Gestor Cultural</p>
+        <p class="case-compare-label" data-i18n="compare-gestor-label">Gestor Cultural</p>
         <div class="case-compare">
           <div class="case-compare-col before">
-            <div class="case-compare-title">Sin la plataforma</div>
+            <div class="case-compare-title" data-i18n="before-title-gestor">Sin la plataforma</div>
             <ul class="case-compare-list">
-              <li>Publicar un evento requiere múltiples canales y gestión manual</li>
-              <li>Sin forma de saber cuántas personas están interesadas</li>
-              <li>Validación de asistencia con planillas en papel o nada</li>
-              <li>La audiencia fiel no tiene forma de seguirlo entre eventos</li>
+              <li data-i18n="consuma-before-g-li1">Publicar un evento requiere múltiples canales y gestión manual</li>
+              <li data-i18n="consuma-before-g-li2">Sin forma de saber cuántas personas están interesadas</li>
+              <li data-i18n="consuma-before-g-li3">Validación de asistencia con planillas en papel o nada</li>
+              <li data-i18n="consuma-before-g-li4">La audiencia fiel no tiene forma de seguirlo entre eventos</li>
             </ul>
           </div>
           <div class="case-compare-col after">
-            <div class="case-compare-title">Con Consuma Cultura</div>
+            <div class="case-compare-title" data-i18n="after-title-gestor">Con Consuma Cultura</div>
             <ul class="case-compare-list">
-              <li>Dashboard centralizado: publicar un evento en minutos</li>
-              <li>Contador de "Quiero asistir" en tiempo real antes del evento</li>
-              <li>QR y código alfanumérico auto-generados para validar asistencia</li>
-              <li>Perfil de entidad público con sistema de seguidores que crece</li>
+              <li data-i18n="consuma-after-g-li1">Dashboard centralizado: publicar un evento en minutos</li>
+              <li data-i18n="consuma-after-g-li2">Contador de "Quiero asistir" en tiempo real antes del evento</li>
+              <li data-i18n="consuma-after-g-li3">QR y código alfanumérico auto-generados para validar asistencia</li>
+              <li data-i18n="consuma-after-g-li4">Perfil de entidad público con sistema de seguidores que crece</li>
             </ul>
           </div>
         </div>
@@ -3484,11 +3528,11 @@
         <div class="case-live-box">
           <div class="case-live-indicator">
             <span class="case-live-dot"></span>
-            <span class="case-live-status">En lanzamiento</span>
+            <span class="case-live-status" data-i18n="consuma-live-status">En lanzamiento</span>
           </div>
-          <p class="case-live-text">La plataforma está disponible al público en Bucaramanga.</p>
+          <p class="case-live-text" data-i18n="consuma-live-text">La plataforma está disponible al público en Bucaramanga.</p>
           <a href="https://consumacultura.com.co/" target="_blank" rel="noopener noreferrer" class="case-live-link">
-            Visita la página aquí
+            <span data-i18n="consuma-live-link">Visita la página aquí</span>
             <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
               <path d="M6 3h7v7M13 3 6.5 9.5"/>
             </svg>
@@ -3534,7 +3578,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
             <path d="m15 18-6-6 6-6"/>
           </svg>
-          Proyectos
+          <span data-i18n="back-projects">Proyectos</span>
         </button>
       </div>
     </div>
@@ -3549,15 +3593,15 @@
           <div class="project-tags">
             <span class="project-tag">Fintech</span>
             <span class="project-tag">Service Design</span>
-            <span class="project-tag project-tag--done">Implementado</span>
+            <span class="project-tag project-tag--done" data-i18n="tag-implemented">Implementado</span>
           </div>
         </div>
-        <h1 class="case-hero-title">Digitalización de producto<br>de inversión</h1>
-        <p class="case-hero-desc">
+        <h1 class="case-hero-title" data-i18n-html="fidu-hero-title">Digitalización de producto<br>de inversión</h1>
+        <p class="case-hero-desc" data-i18n="fidu-hero-desc">
           Transformamos la apertura del FIC Cubrir Internacional de Fiduciaria de Bogotá: de un proceso 100% presencial con más de una semana de duración, a un flujo completamente digital.
         </p>
         <div class="case-meta-row">
-          <span class="case-meta-text">Fiduciaria de Bogotá · Colombia · 2025</span>
+          <span class="case-meta-text" data-i18n="fidu-meta">Fiduciaria de Bogotá · Colombia · 2025</span>
         </div>
       </div>
     </div>
@@ -3565,33 +3609,33 @@
     <!-- Sección 1: El reto -->
     <div class="case-section">
       <div class="container">
-        <h2 class="case-section-title">El reto</h2>
+        <h2 class="case-section-title" data-i18n="fidu-s1-title">El reto</h2>
 
         <div class="case-insight">
-          <p>El FIC Cubrir Internacional es un fondo de inversión colectivo simple de <strong>alto riesgo</strong>. Antes de su digitalización, el proceso de apertura era <strong>100% presencial</strong>: el usuario debía desplazarse a una oficina, completar una encuesta de perfil de inversionista, conocer el producto y decidir su apertura — con toda la carga legal y financiera por detrás.</p>
+          <p data-i18n-html="fidu-s1-insight">El FIC Cubrir Internacional es un fondo de inversión colectivo simple de <strong>alto riesgo</strong>. Antes de su digitalización, el proceso de apertura era <strong>100% presencial</strong>: el usuario debía desplazarse a una oficina, completar una encuesta de perfil de inversionista, conocer el producto y decidir su apertura — con toda la carga legal y financiera por detrás.</p>
         </div>
 
         <div class="case-problem-grid">
           <div class="case-problem-card">
-            <h4>Proceso presencial en cascada</h4>
-            <p>El flujo requería múltiples pasos secuenciales que dependían entre sí — validaciones, firmas y aceptaciones. El tiempo total superaba una semana.</p>
+            <h4 data-i18n="fidu-p1-title">Proceso presencial en cascada</h4>
+            <p data-i18n="fidu-p1-body">El flujo requería múltiples pasos secuenciales que dependían entre sí — validaciones, firmas y aceptaciones. El tiempo total superaba una semana.</p>
             <ul class="case-problem-list">
-              <li>Desplazamiento obligatorio a oficina Fidubogotá</li>
-              <li>Cada paso desbloqueaba el siguiente en cascada</li>
-              <li>Validaciones manuales y firmas físicas</li>
-              <li>Tiempo total: <strong>+1 semana</strong></li>
+              <li data-i18n="fidu-p1-li1">Desplazamiento obligatorio a oficina Fidubogotá</li>
+              <li data-i18n="fidu-p1-li2">Cada paso desbloqueaba el siguiente en cascada</li>
+              <li data-i18n="fidu-p1-li3">Validaciones manuales y firmas físicas</li>
+              <li data-i18n-html="fidu-p1-li4">Tiempo total: <strong>+1 semana</strong></li>
             </ul>
           </div>
           <div class="case-problem-card">
-            <h4>Alta carga cognitiva</h4>
-            <p>El usuario gestionaba varios formatos físicos independientes antes de poder abrir el fondo, generando fricción y abandono en el proceso.</p>
+            <h4 data-i18n="fidu-p2-title">Alta carga cognitiva</h4>
+            <p data-i18n="fidu-p2-body">El usuario gestionaba varios formatos físicos independientes antes de poder abrir el fondo, generando fricción y abandono en el proceso.</p>
             <ul class="case-problem-list">
-              <li>Encuesta de perfilamiento de inversionista (5 preguntas)</li>
-              <li>Presentación del fondo Cubrir Internacional</li>
-              <li>Formulario de aceptación del fondo</li>
-              <li>Recomendación profesional firmada</li>
-              <li>Gestión de habeas data</li>
-              <li>Términos y condiciones del producto</li>
+              <li data-i18n="fidu-p2-li1">Encuesta de perfilamiento de inversionista (5 preguntas)</li>
+              <li data-i18n="fidu-p2-li2">Presentación del fondo Cubrir Internacional</li>
+              <li data-i18n="fidu-p2-li3">Formulario de aceptación del fondo</li>
+              <li data-i18n="fidu-p2-li4">Recomendación profesional firmada</li>
+              <li data-i18n="fidu-p2-li5">Gestión de habeas data</li>
+              <li data-i18n="fidu-p2-li6">Términos y condiciones del producto</li>
             </ul>
           </div>
         </div>
@@ -3601,8 +3645,8 @@
     <!-- Sección 2: Proceso de diseño -->
     <div class="case-section">
       <div class="container">
-        <h2 class="case-section-title">Proceso de diseño</h2>
-        <p class="case-hero-desc" style="margin-bottom: 32px; max-width: 54ch;">
+        <h2 class="case-section-title" data-i18n="fidu-s2-title">Proceso de diseño</h2>
+        <p class="case-hero-desc" style="margin-bottom: 32px; max-width: 54ch;" data-i18n="fidu-s2-desc">
           El proceso cubrió desde la investigación de referentes hasta el acompañamiento en producción y la medición de la experiencia con datos reales.
         </p>
 
@@ -3613,28 +3657,28 @@
             <!-- Mes 1 -->
             <div class="case-timeline-col">
               <div class="case-timeline-dot"></div>
-              <p class="case-timeline-period">Mes 1</p>
-              <h3 class="case-timeline-theme">Research</h3>
+              <p class="case-timeline-period" data-i18n="timeline-m1">Mes 1</p>
+              <h3 class="case-timeline-theme" data-i18n="timeline-m1-theme">Research</h3>
               <ul class="case-timeline-items">
                 <li class="case-timeline-item">
                   <span class="case-timeline-item-num">01</span>
-                  <span class="case-timeline-item-title">Benchmark Colombia</span>
-                  <span class="case-timeline-item-desc">Fondos en bancos, neobancos y apps: Tyba y Trii</span>
+                  <span class="case-timeline-item-title" data-i18n="timeline-i1-title">Benchmark Colombia</span>
+                  <span class="case-timeline-item-desc" data-i18n="timeline-i1-desc">Fondos en bancos, neobancos y apps: Tyba y Trii</span>
                 </li>
                 <li class="case-timeline-item">
                   <span class="case-timeline-item-num">02</span>
-                  <span class="case-timeline-item-title">Benchmark Global</span>
-                  <span class="case-timeline-item-desc">BBVA México, GMA, Santander y JP Morgan</span>
+                  <span class="case-timeline-item-title" data-i18n="timeline-i2-title">Benchmark Global</span>
+                  <span class="case-timeline-item-desc" data-i18n="timeline-i2-desc">BBVA México, GMA, Santander y JP Morgan</span>
                 </li>
                 <li class="case-timeline-item">
                   <span class="case-timeline-item-num">03</span>
-                  <span class="case-timeline-item-title">Insights y hallazgos</span>
-                  <span class="case-timeline-item-desc">Patrones, fricciones y oportunidades de diseño</span>
+                  <span class="case-timeline-item-title" data-i18n="timeline-i3-title">Insights y hallazgos</span>
+                  <span class="case-timeline-item-desc" data-i18n="timeline-i3-desc">Patrones, fricciones y oportunidades de diseño</span>
                 </li>
                 <li class="case-timeline-item">
                   <span class="case-timeline-item-num">04</span>
-                  <span class="case-timeline-item-title">Journey Map v1</span>
-                  <span class="case-timeline-item-desc">Propuesta del journey de apertura digital</span>
+                  <span class="case-timeline-item-title" data-i18n="timeline-i4-title">Journey Map v1</span>
+                  <span class="case-timeline-item-desc" data-i18n="timeline-i4-desc">Propuesta del journey de apertura digital</span>
                 </li>
               </ul>
             </div>
@@ -3642,18 +3686,18 @@
             <!-- Mes 2 -->
             <div class="case-timeline-col">
               <div class="case-timeline-dot"></div>
-              <p class="case-timeline-period">Mes 2</p>
-              <h3 class="case-timeline-theme">Definición</h3>
+              <p class="case-timeline-period" data-i18n="timeline-m2">Mes 2</p>
+              <h3 class="case-timeline-theme" data-i18n="timeline-m2-theme">Definición</h3>
               <ul class="case-timeline-items">
                 <li class="case-timeline-item">
                   <span class="case-timeline-item-num">05</span>
-                  <span class="case-timeline-item-title">Taller MVP</span>
-                  <span class="case-timeline-item-desc">Alineamiento de stakeholders: funcionalidades, versiones y visión compartida</span>
+                  <span class="case-timeline-item-title" data-i18n="timeline-i5-title">Taller MVP</span>
+                  <span class="case-timeline-item-desc" data-i18n="timeline-i5-desc">Alineamiento de stakeholders: funcionalidades, versiones y visión compartida</span>
                 </li>
                 <li class="case-timeline-item">
                   <span class="case-timeline-item-num">06</span>
-                  <span class="case-timeline-item-title">Journey + Blueprint</span>
-                  <span class="case-timeline-item-desc">Journey del MVP y Service Blueprint con todos los sistemas y actores</span>
+                  <span class="case-timeline-item-title" data-i18n="timeline-i6-title">Journey + Blueprint</span>
+                  <span class="case-timeline-item-desc" data-i18n="timeline-i6-desc">Journey del MVP y Service Blueprint con todos los sistemas y actores</span>
                 </li>
               </ul>
             </div>
@@ -3661,18 +3705,18 @@
             <!-- Mes 3 -->
             <div class="case-timeline-col">
               <div class="case-timeline-dot"></div>
-              <p class="case-timeline-period">Mes 3</p>
-              <h3 class="case-timeline-theme">Diseño</h3>
+              <p class="case-timeline-period" data-i18n="timeline-m3">Mes 3</p>
+              <h3 class="case-timeline-theme" data-i18n="timeline-m3-theme">Diseño</h3>
               <ul class="case-timeline-items">
                 <li class="case-timeline-item">
                   <span class="case-timeline-item-num">07</span>
-                  <span class="case-timeline-item-title">Wireframes baja</span>
-                  <span class="case-timeline-item-desc">Baja fidelidad, presentación al negocio y pruebas moderadas</span>
+                  <span class="case-timeline-item-title" data-i18n="timeline-i7-title">Wireframes baja</span>
+                  <span class="case-timeline-item-desc" data-i18n="timeline-i7-desc">Baja fidelidad, presentación al negocio y pruebas moderadas</span>
                 </li>
                 <li class="case-timeline-item">
                   <span class="case-timeline-item-num">08</span>
-                  <span class="case-timeline-item-title">Wireframes alta</span>
-                  <span class="case-timeline-item-desc">Alta fidelidad y segunda ronda de pruebas con usuarios reales</span>
+                  <span class="case-timeline-item-title" data-i18n="timeline-i8-title">Wireframes alta</span>
+                  <span class="case-timeline-item-desc" data-i18n="timeline-i8-desc">Alta fidelidad y segunda ronda de pruebas con usuarios reales</span>
                 </li>
               </ul>
             </div>
@@ -3680,13 +3724,13 @@
             <!-- Mes 4 -->
             <div class="case-timeline-col">
               <div class="case-timeline-dot"></div>
-              <p class="case-timeline-period">Mes 4</p>
-              <h3 class="case-timeline-theme">Entrega</h3>
+              <p class="case-timeline-period" data-i18n="timeline-m4">Mes 4</p>
+              <h3 class="case-timeline-theme" data-i18n="timeline-m4-theme">Entrega</h3>
               <ul class="case-timeline-items">
                 <li class="case-timeline-item">
                   <span class="case-timeline-item-num">09</span>
-                  <span class="case-timeline-item-title">QA + Medición</span>
-                  <span class="case-timeline-item-desc">Desarrollo escalonado con QA visual, Hotjar, SUS y funnel de conversión</span>
+                  <span class="case-timeline-item-title" data-i18n="timeline-i9-title">QA + Medición</span>
+                  <span class="case-timeline-item-desc" data-i18n="timeline-i9-desc">Desarrollo escalonado con QA visual, Hotjar, SUS y funnel de conversión</span>
                 </li>
               </ul>
             </div>
@@ -3699,10 +3743,10 @@
     <!-- Sección 3: La solución -->
     <div class="case-section">
       <div class="container">
-        <h2 class="case-section-title">La solución</h2>
+        <h2 class="case-section-title" data-i18n="fidu-s3-title">La solución</h2>
 
         <div class="case-insight">
-          <p>Diseñamos un <strong>sistema modular para digitalizar fondos simples</strong>, independiente del nivel de riesgo. Cada módulo tiene una función específica y puede combinarse para construir el flujo de cualquier fondo. Básicamente, <strong>un sistema tipo Lego</strong>.</p>
+          <p data-i18n-html="fidu-s3-insight">Diseñamos un <strong>sistema modular para digitalizar fondos simples</strong>, independiente del nivel de riesgo. Cada módulo tiene una función específica y puede combinarse para construir el flujo de cualquier fondo. Básicamente, <strong>un sistema tipo Lego</strong>.</p>
         </div>
 
         <div class="fidu-solution-grid">
@@ -3712,50 +3756,50 @@
             <div class="fidu-flow-step">
               <span class="fidu-flow-num">01</span>
               <div>
-                <strong>Onboarding del producto</strong>
-                <p>Landing informativa donde el usuario conoce el fondo antes de iniciar</p>
+                <strong data-i18n="fidu-step1-title">Onboarding del producto</strong>
+                <p data-i18n="fidu-step1-desc">Landing informativa donde el usuario conoce el fondo antes de iniciar</p>
               </div>
             </div>
             <div class="fidu-flow-step">
               <span class="fidu-flow-num">02</span>
               <div>
-                <strong>Validación de persona especial</strong>
-                <p>Verificación de PEPs, operaciones en moneda extranjera y restricciones regulatorias</p>
+                <strong data-i18n="fidu-step2-title">Validación de persona especial</strong>
+                <p data-i18n="fidu-step2-desc">Verificación de PEPs, operaciones en moneda extranjera y restricciones regulatorias</p>
               </div>
             </div>
             <div class="fidu-flow-step">
               <span class="fidu-flow-num">03</span>
               <div>
-                <strong>Encuesta de perfilamiento</strong>
-                <p>5 preguntas para determinar el perfil de inversionista del usuario</p>
+                <strong data-i18n="fidu-step3-title">Encuesta de perfilamiento</strong>
+                <p data-i18n="fidu-step3-desc">5 preguntas para determinar el perfil de inversionista del usuario</p>
               </div>
             </div>
             <div class="fidu-flow-step">
               <span class="fidu-flow-num">04</span>
               <div>
-                <strong>Recomendación del fondo</strong>
-                <p>El sistema recomienda un fondo según los resultados del perfilamiento</p>
+                <strong data-i18n="fidu-step4-title">Recomendación del fondo</strong>
+                <p data-i18n="fidu-step4-desc">El sistema recomienda un fondo según los resultados del perfilamiento</p>
               </div>
             </div>
             <div class="fidu-flow-step">
               <span class="fidu-flow-num">05</span>
               <div>
-                <strong>Detalles y aceptación</strong>
-                <p>El usuario revisa las condiciones del fondo y lo acepta formalmente</p>
+                <strong data-i18n="fidu-step5-title">Detalles y aceptación</strong>
+                <p data-i18n="fidu-step5-desc">El usuario revisa las condiciones del fondo y lo acepta formalmente</p>
               </div>
             </div>
             <div class="fidu-flow-step">
               <span class="fidu-flow-num">06</span>
               <div>
-                <strong>Habeas data y T&amp;C</strong>
-                <p>Consentimiento de tratamiento de datos y aceptación de términos</p>
+                <strong data-i18n="fidu-step6-title">Habeas data y T&amp;C</strong>
+                <p data-i18n="fidu-step6-desc">Consentimiento de tratamiento de datos y aceptación de términos</p>
               </div>
             </div>
             <div class="fidu-flow-step">
               <span class="fidu-flow-num">07</span>
               <div>
-                <strong>Fondo creado ✓</strong>
-                <p>El fondo queda activo en la cuenta del usuario de forma inmediata</p>
+                <strong data-i18n="fidu-step7-title">Fondo creado ✓</strong>
+                <p data-i18n="fidu-step7-desc">El fondo queda activo en la cuenta del usuario de forma inmediata</p>
               </div>
             </div>
           </div>
@@ -3774,22 +3818,22 @@
 
         <!-- Más allá del fondo -->
         <div class="fidu-resultado">
-          <h3 class="case-section-title">Más allá de digitalizar un fondo</h3>
-          <p class="about__body">
+          <h3 class="case-section-title" data-i18n="fidu-beyond-title">Más allá de digitalizar un fondo</h3>
+          <p class="about__body" data-i18n="fidu-beyond-body">
             Al construir el sistema modular junto al equipo de desarrollo y negocio, logramos mucho más que la digitalización de un fondo: creamos la infraestructura para digitalizar todo el portafolio de fondos de inversión de Fiduciaria de Bogotá.
           </p>
           <div class="fidu-logros">
             <div class="fidu-logro">
               <span class="fidu-logro-num">01</span>
-              <p><strong>7 pasos independientes</strong> que se pueden organizar según la necesidad de cada fondo, sin reescribir código ni rediseñar desde cero.</p>
+              <p data-i18n-html="fidu-logro1"><strong>7 pasos independientes</strong> que se pueden organizar según la necesidad de cada fondo, sin reescribir código ni rediseñar desde cero.</p>
             </div>
             <div class="fidu-logro">
               <span class="fidu-logro-num">02</span>
-              <p><strong>Ruta única de creación</strong> y sistema de recomendaciones basado en datos para mejorar continuamente la experiencia del cliente.</p>
+              <p data-i18n-html="fidu-logro2"><strong>Ruta única de creación</strong> y sistema de recomendaciones basado en datos para mejorar continuamente la experiencia del cliente.</p>
             </div>
             <div class="fidu-logro">
               <span class="fidu-logro-num">03</span>
-              <p><strong>Sistema agnóstico al riesgo</strong> que agiliza la digitalización de cualquier fondo simple sin importar sus condiciones particulares.</p>
+              <p data-i18n-html="fidu-logro3"><strong>Sistema agnóstico al riesgo</strong> que agiliza la digitalización de cualquier fondo simple sin importar sus condiciones particulares.</p>
             </div>
           </div>
         </div>
@@ -3800,28 +3844,28 @@
     <!-- Sección 4: Resultados -->
     <div class="case-section">
       <div class="container">
-        <h2 class="case-section-title">Resultados</h2>
+        <h2 class="case-section-title" data-i18n="fidu-s4-title">Resultados</h2>
         <div class="case-metrics">
 
           <div class="case-metric-card">
-            <div class="case-metric-value" style="font-size:1.375rem">Sistema modular</div>
-            <div class="case-metric-label">7 pasos independientes y reconfigurables para digitalizar cualquier fondo del portafolio</div>
+            <div class="case-metric-value" style="font-size:1.375rem" data-i18n="fidu-r1-value">Sistema modular</div>
+            <div class="case-metric-label" data-i18n="fidu-r1-label">7 pasos independientes y reconfigurables para digitalizar cualquier fondo del portafolio</div>
           </div>
 
           <div class="case-metric-card">
-            <div class="case-metric-value" style="font-size:1rem; line-height:1.35">Base estable y optimización de componentes</div>
-            <div class="case-metric-label">Código y componentes de diseño reutilizables que aceleran la digitalización de nuevos fondos</div>
+            <div class="case-metric-value" style="font-size:1rem; line-height:1.35" data-i18n="fidu-r2-value">Base estable y optimización de componentes</div>
+            <div class="case-metric-label" data-i18n="fidu-r2-label">Código y componentes de diseño reutilizables que aceleran la digitalización de nuevos fondos</div>
           </div>
 
           <div class="case-metric-card">
             <div class="case-metric-value">-99.2%</div>
-            <div class="case-metric-label">Reducción del tiempo en un 99.2% — de +1 semana a 20 min promedio, completamente digital</div>
+            <div class="case-metric-label" data-i18n="fidu-r3-label">Reducción del tiempo en un 99.2% — de +1 semana a 20 min promedio, completamente digital</div>
             <span class="case-metric-source">2,400 min (semana laboral) → 20 min</span>
           </div>
 
           <div class="case-metric-card">
-            <div class="case-metric-value" style="font-size:1.25rem">Inversión inmediata</div>
-            <div class="case-metric-label">El usuario realiza su primera inversión al completar la apertura del fondo</div>
+            <div class="case-metric-value" style="font-size:1.25rem" data-i18n="fidu-r4-value">Inversión inmediata</div>
+            <div class="case-metric-label" data-i18n="fidu-r4-label">El usuario realiza su primera inversión al completar la apertura del fondo</div>
           </div>
 
         </div>
@@ -3831,9 +3875,9 @@
     <!-- Sección 5: Pantallazos -->
     <div class="case-section case-mockups">
       <div class="container">
-        <p class="case-mockups-eyebrow">Producto real</p>
-        <h2 class="case-mockups-title">La solución en pantalla</h2>
-        <p class="case-mockups-desc">Pantallazos del flujo de apertura del FIC Cubrir Internacional.</p>
+        <p class="case-mockups-eyebrow" data-i18n="fidu-s5-eyebrow">Producto real</p>
+        <h2 class="case-mockups-title" data-i18n="fidu-s5-title">La solución en pantalla</h2>
+        <p class="case-mockups-desc" data-i18n="fidu-s5-desc">Pantallazos del flujo de apertura del FIC Cubrir Internacional.</p>
 
         <div class="mockup-controls" id="fidu-mockup-controls">
           <div class="mockup-tabs" id="fidu-mockup-tabs">
@@ -3866,7 +3910,7 @@
           <div class="mockup-view">
             <img src="./pantallazos-fidu/fondo-creado.png" class="fidu-screen" alt="Fondo creado" loading="lazy">
           </div>
-          <p class="fidu-disclaimer">⚠ Nota: Fiduciaria de Bogotá fue adquirida posteriormente por Aval Fiduciaria.</p>
+          <p class="fidu-disclaimer" data-i18n="fidu-disclaimer">⚠ Nota: Fiduciaria de Bogotá fue adquirida posteriormente por Aval Fiduciaria.</p>
         </div>
 
       </div>
@@ -4231,6 +4275,423 @@
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       }
     });
+
+
+    // ── Language toggle ───────────────────────────────────────────
+    const TRANSLATIONS = {
+      es: {
+        // Nav
+        'nav-home': 'Inicio', 'nav-projects': 'Proyectos', 'nav-about': 'Sobre mí', 'nav-contact': 'Contacto',
+        // Hero
+        'hero-premise': 'No diseño interfaces.',
+        'hero-main-1': 'Diseño productos y sistemas',
+        'hero-main-2': 'que <span class="hl-accent">funcionan.</span>',
+        'hero-sub': '5 años de experiencia diseñando productos end-to-end, especialista en fintech y banca, user research y optimización de la conversión. Diseño productos en base a datos, siempre buscando la mejor experiencia para el usuario.',
+        'hero-cta-primary': 'Ver proyectos', 'hero-cta-ghost': 'Hablemos',
+        // About section (home)
+        'about-section-title': 'Quién soy',
+        'about-body-1': 'Trabajo con una metodología end-to-end que abarca todo el ciclo del producto: desde el research inicial hasta el lanzamiento y la <strong>optimización continua</strong>. No solo diseño pantallas, construyo sistemas que sostienen el crecimiento del producto.',
+        'about-body-2': 'Lidero equipos multidisciplinarios y sirvo de puente entre <strong>stakeholders técnicos y de negocio</strong>, traduciendo restricciones complejas en decisiones de diseño claras y defendibles. Mi enfoque analítico me permite estructurar soluciones que generan valor real para usuarios y para la organización.',
+        'about-cta': 'Conóceme',
+        // Strengths
+        'strength-ds-desc': 'Tokens, variantes, adopción y documentación',
+        'strength-product-desc': 'Discovery, definición, diseño y entrega',
+        'strength-fintech-desc': 'Pagos, inversiones, compliance, onboarding',
+        'strength-research-desc': 'Entrevistas, usability testing, journey maps',
+        'strength-a11y-desc': 'Contraste, navegación, screen readers',
+        // Projects
+        'projects-title': 'Proyectos', 'projects-own': 'Proyectos propios', 'projects-work': 'Proyectos laborales',
+        'tag-launching': 'En lanzamiento', 'tag-implemented': 'Implementado',
+        'consuma-desc': 'Plataforma para eventos culturales en Bucaramanga. Journey map de dos perfiles, benchmark y definición del problema.',
+        'fidu-project-name': 'Digitalización de producto de inversión',
+        'fidu-project-desc': 'Fiduciaria de Bogotá · Apertura del FIC Cubrir Internacional transformada de un proceso presencial de +1 semana a un flujo 100% digital en app.',
+        'view-case-study': 'Ver caso de estudio',
+        // Contact
+        'contact-headline': '¿Quieres que trabajemos?', 'contact-sub': 'Empecemos tomándonos un café.',
+        // About page
+        'back-home': 'Inicio', 'back-projects': 'Proyectos',
+        'sobre-label': 'Product Designer · UX/UI',
+        'sobre-display-title': 'Diseñando soluciones<br>que facilitan vidas',
+        'sobre-cta-contact': 'Contáctame',
+        'sobre-body-1': 'Diseñador UX/UI con 5 años transformando ideas en productos digitales que impactan vidas reales. Trabajo todo el ciclo — research, propuesta, prototipo, lanzamiento — y uso datos para tomar decisiones, no suposiciones.',
+        'sobre-body-2': 'Me especializo en conectar equipos técnicos y de negocio para construir productos que funcionan de verdad: útiles para quien los usa, valiosos para quien los construye.',
+        'sobre-skills-label': 'Especialidades', 'sobre-skills-title': 'Lo que hago bien',
+        'sobre-skills-body': 'Mi trabajo vive en la intersección entre <strong>negocio, tecnología y personas</strong>. No diseño pantallas — diseño sistemas que crecen con el producto y equipos que los mantienen.',
+        'sobre-contact-headline': '¿Trabajamos juntos?', 'sobre-contact-sub': 'Estoy disponible para nuevas oportunidades.',
+        // Consuma hero
+        'consuma-hero-desc': 'Plataforma digital para la difusión y seguimiento de eventos culturales en Bucaramanga, Colombia. Dos perfiles de usuario, un ecosistema conectado.',
+        'consuma-visit-link': 'Visita la página aquí',
+        // Consuma s1
+        'consuma-s1-title': 'El problema',
+        'consuma-s1-insight': 'El problema central no es la falta de cultura: es la <strong>ausencia de infraestructura digital</strong> que conecte a quienes producen eventos con quienes quieren asistir, y que genere datos reales sobre el ecosistema cultural de la ciudad.',
+        'consuma-p1-title': 'Difusión fragmentada e ineficiente',
+        'consuma-p1-body': 'La agenda cultural depende de canales desconectados con vida útil muy corta. No existe un punto de encuentro digital donde el público pueda descubrir, con certeza, qué está pasando esta semana en la ciudad.',
+        'consuma-p1-li1': 'La información llega tarde, incompleta o directamente no llega',
+        'consuma-p1-li2': 'Cada gestor publica en sus propios canales sin coordinación',
+        'consuma-p1-li3': 'Eventos gratuitos o de bajo perfil quedan casi invisibles',
+        'consuma-p2-title': 'Asistencia no mapeada, datos inexistentes',
+        'consuma-p2-body': 'Organizar un evento cultural en Bucaramanga es un acto de fe. El gestor invierte tiempo y recursos sin tener forma de medir el resultado real.',
+        'consuma-p2-li1': 'Asistencia medida con conteo manual o sin medición',
+        'consuma-p2-li2': 'Sin datos históricos para comparar eventos',
+        'consuma-p2-li3': 'Sin canal formal de retroalimentación verificada',
+        'consuma-p2-li4': 'Decisiones de programación basadas en intuición',
+        // Consuma s2
+        'consuma-s2-title': 'Contexto y cifras clave',
+        'consuma-m1-label': 'actividades culturales en EMAFEST 2024 (nov 9-30)',
+        'consuma-m2-label': 'eventos proyectados por el IMCT para 2026',
+        'consuma-m3-label': 'crecimiento de la industria cultural en Colombia 2023',
+        'consuma-m4-label': 'personas de capacidad, Teatro Santander',
+        // Consuma s3 actors
+        'consuma-s3-title': 'Actores del ecosistema',
+        'actor1-title': 'Gestores Institucionales', 'actor1-sub': 'Entidades públicas y privadas de cultura',
+        'actor1-i1': '<strong>IMCT</strong> - Instituto Municipal de Cultura y Turismo',
+        'actor1-i2': '<strong>Teatro Santander</strong> - Principal escenario del oriente colombiano',
+        'actor1-i3': '<strong>Centro Cultural del Oriente</strong> - Sede de festivales como EMAFEST',
+        'actor1-i4': '<strong>Comfenalco Santander</strong> - Amplia agenda cultural y educativa',
+        'actor2-title': 'Gestores Independientes', 'actor2-sub': 'Artistas, colectivos y productores',
+        'actor2-i1': '<strong>Artistas individuales</strong> - Músicos, actores, pintores con agenda propia',
+        'actor2-i2': '<strong>Grupos y bandas</strong> - Agrupaciones que producen sus propios eventos',
+        'actor2-i3': '<strong>Colectivos culturales</strong> - Organizaciones informales de creadores',
+        'actor2-i4': '<strong>Espacios privados</strong> - Bares, galerías, cafés culturales',
+        'actor3-title': 'Público Asistente', 'actor3-sub': 'Consumidores culturales de Bucaramanga',
+        'actor3-i1': '<strong>Público adulto general</strong> - 25-50 años, sin acceso centralizado',
+        'actor3-i2': '<strong>Jóvenes universitarios</strong> - 18-28 años, alta conectividad digital',
+        'actor3-i3': '<strong>Público familiar</strong> - Familias buscando actividades de bajo costo',
+        'actor3-i4': '<strong>Comunidades de interés</strong> - Seguidores recurrentes de un gestor',
+        // Consuma s4 journey público
+        'consuma-s4-title': 'Journey Map: Público General', 'consuma-s4-badge': 'Consumidor Cultural',
+        'consuma-s4-insight': '<strong>Perfil:</strong> Habitante de Bucaramanga, 18-45 años, con interés en actividades culturales pero sin canales para mantenerse informado. Asiste de forma esporádica, más por recomendación directa que por búsqueda activa.',
+        'stage-p1-title': 'Descubrimiento', 'stage-p1-desc': 'Busca eventos en redes sin encontrar una agenda centralizada',
+        'stage-p2-title': 'Exploración', 'stage-p2-desc': 'Lee el detalle del evento: fecha, lugar, precio, organizador',
+        'stage-p3-title': 'Intención', 'stage-p3-desc': 'Marca "Quiero asistir" y guarda en su Pasaporte Cultural',
+        'stage-p4-title': 'Asistencia', 'stage-p4-desc': 'Escanea el QR del organizador para validar su asistencia',
+        'stage-p5-title': 'Valoración', 'stage-p5-desc': 'Califica con 1-5 estrellas y deja comentario verificado',
+        'stage-p6-title': 'Fidelización', 'stage-p6-desc': 'Acumula insignias, mantiene rachas y gana beneficios',
+        'journey-chart-label': 'Nivel emocional por etapa',
+        // Consuma s5 journey gestor
+        'consuma-s5-title': 'Journey Map: Gestor Cultural', 'consuma-s5-badge': 'Organizador de Eventos',
+        'consuma-s5-insight': '<strong>Perfil:</strong> Organizador o productor de eventos en Bucaramanga. Invierte tiempo y recursos en producir eventos pero no tiene herramientas para medir su impacto real ni construir una audiencia fiel.',
+        'stage-g1-title': 'Creación', 'stage-g1-desc': 'Publica el evento en minutos. Un QR se genera automáticamente',
+        'stage-g2-title': 'Publicación', 'stage-g2-desc': 'El evento aparece en el calendario. Ve contador de interesados en tiempo real',
+        'stage-g3-title': 'Preparación', 'stage-g3-desc': 'Descarga el QR que se activa 2h antes del evento',
+        'stage-g4-title': 'Día del evento', 'stage-g4-desc': 'Asistentes escanean el QR. Registro digital automático, sin papel',
+        'stage-g5-title': 'Análisis', 'stage-g5-desc': 'Dashboard post-evento: asistentes reales, rating promedio, comentarios',
+        'stage-g6-title': 'Audiencia', 'stage-g6-desc': 'El público fiel sigue su perfil. Audiencia acumulada evento a evento',
+        // Consuma s6
+        'consuma-s6-eyebrow': 'Producto real', 'consuma-s6-title': 'Así se ve el producto en pantalla',
+        'consuma-s6-desc': 'Cinco vistas del producto real — desde el home hasta el pasaporte cultural.',
+        // Consuma s7 compare
+        'consuma-s7-title': 'Antes vs. con Consuma Cultura',
+        'compare-publico-label': 'Público General',
+        'before-title-publico': 'Sin la plataforma', 'after-title-publico': 'Con Consuma Cultura',
+        'consuma-before-p-li1': 'Información de eventos dispersa en WhatsApp, Instagram y flyers',
+        'consuma-before-p-li2': 'No hay un lugar único para descubrir la agenda cultural',
+        'consuma-before-p-li3': 'Asistir no deja ningún rastro ni historial personal',
+        'consuma-before-p-li4': 'No existe canal formal para calificar o recomendar eventos',
+        'consuma-after-p-li1': 'Calendario centralizado con todos los eventos culturales de la ciudad',
+        'consuma-after-p-li2': 'Pasaporte Cultural: historial de eventos asistidos y planeados',
+        'consuma-after-p-li3': 'Sistema de rating verificado post-asistencia',
+        'consuma-after-p-li4': 'Gamificación: insignias, rachas y beneficios por participación',
+        'compare-gestor-label': 'Gestor Cultural',
+        'before-title-gestor': 'Sin la plataforma', 'after-title-gestor': 'Con Consuma Cultura',
+        'consuma-before-g-li1': 'Publicar un evento requiere múltiples canales y gestión manual',
+        'consuma-before-g-li2': 'Sin forma de saber cuántas personas están interesadas',
+        'consuma-before-g-li3': 'Validación de asistencia con planillas en papel o nada',
+        'consuma-before-g-li4': 'La audiencia fiel no tiene forma de seguirlo entre eventos',
+        'consuma-after-g-li1': 'Dashboard centralizado: publicar un evento en minutos',
+        'consuma-after-g-li2': 'Contador de "Quiero asistir" en tiempo real antes del evento',
+        'consuma-after-g-li3': 'QR y código alfanumérico auto-generados para validar asistencia',
+        'consuma-after-g-li4': 'Perfil de entidad público con sistema de seguidores que crece',
+        // Consuma live
+        'consuma-live-status': 'En lanzamiento',
+        'consuma-live-text': 'La plataforma está disponible al público en Bucaramanga.',
+        'consuma-live-link': 'Visita la página aquí',
+        // Fidu hero
+        'fidu-hero-title': 'Digitalización de producto<br>de inversión',
+        'fidu-hero-desc': 'Transformamos la apertura del FIC Cubrir Internacional de Fiduciaria de Bogotá: de un proceso 100% presencial con más de una semana de duración, a un flujo completamente digital.',
+        'fidu-meta': 'Fiduciaria de Bogotá · Colombia · 2025',
+        // Fidu s1
+        'fidu-s1-title': 'El reto',
+        'fidu-s1-insight': 'El FIC Cubrir Internacional es un fondo de inversión colectivo simple de <strong>alto riesgo</strong>. Antes de su digitalización, el proceso de apertura era <strong>100% presencial</strong>: el usuario debía desplazarse a una oficina, completar una encuesta de perfil de inversionista, conocer el producto y decidir su apertura — con toda la carga legal y financiera por detrás.',
+        'fidu-p1-title': 'Proceso presencial en cascada',
+        'fidu-p1-body': 'El flujo requería múltiples pasos secuenciales que dependían entre sí — validaciones, firmas y aceptaciones. El tiempo total superaba una semana.',
+        'fidu-p1-li1': 'Desplazamiento obligatorio a oficina Fidubogotá',
+        'fidu-p1-li2': 'Cada paso desbloqueaba el siguiente en cascada',
+        'fidu-p1-li3': 'Validaciones manuales y firmas físicas',
+        'fidu-p1-li4': 'Tiempo total: <strong>+1 semana</strong>',
+        'fidu-p2-title': 'Alta carga cognitiva',
+        'fidu-p2-body': 'El usuario gestionaba varios formatos físicos independientes antes de poder abrir el fondo, generando fricción y abandono en el proceso.',
+        'fidu-p2-li1': 'Encuesta de perfilamiento de inversionista (5 preguntas)',
+        'fidu-p2-li2': 'Presentación del fondo Cubrir Internacional',
+        'fidu-p2-li3': 'Formulario de aceptación del fondo',
+        'fidu-p2-li4': 'Recomendación profesional firmada',
+        'fidu-p2-li5': 'Gestión de habeas data',
+        'fidu-p2-li6': 'Términos y condiciones del producto',
+        // Fidu s2 timeline
+        'fidu-s2-title': 'Proceso de diseño',
+        'fidu-s2-desc': 'El proceso cubrió desde la investigación de referentes hasta el acompañamiento en producción y la medición de la experiencia con datos reales.',
+        'timeline-m1': 'Mes 1', 'timeline-m1-theme': 'Research',
+        'timeline-i1-title': 'Benchmark Colombia', 'timeline-i1-desc': 'Fondos en bancos, neobancos y apps: Tyba y Trii',
+        'timeline-i2-title': 'Benchmark Global', 'timeline-i2-desc': 'BBVA México, GMA, Santander y JP Morgan',
+        'timeline-i3-title': 'Insights y hallazgos', 'timeline-i3-desc': 'Patrones, fricciones y oportunidades de diseño',
+        'timeline-i4-title': 'Journey Map v1', 'timeline-i4-desc': 'Propuesta del journey de apertura digital',
+        'timeline-m2': 'Mes 2', 'timeline-m2-theme': 'Definición',
+        'timeline-i5-title': 'Taller MVP', 'timeline-i5-desc': 'Alineamiento de stakeholders: funcionalidades, versiones y visión compartida',
+        'timeline-i6-title': 'Journey + Blueprint', 'timeline-i6-desc': 'Journey del MVP y Service Blueprint con todos los sistemas y actores',
+        'timeline-m3': 'Mes 3', 'timeline-m3-theme': 'Diseño',
+        'timeline-i7-title': 'Wireframes baja', 'timeline-i7-desc': 'Baja fidelidad, presentación al negocio y pruebas moderadas',
+        'timeline-i8-title': 'Wireframes alta', 'timeline-i8-desc': 'Alta fidelidad y segunda ronda de pruebas con usuarios reales',
+        'timeline-m4': 'Mes 4', 'timeline-m4-theme': 'Entrega',
+        'timeline-i9-title': 'QA + Medición', 'timeline-i9-desc': 'Desarrollo escalonado con QA visual, Hotjar, SUS y funnel de conversión',
+        // Fidu s3 solution
+        'fidu-s3-title': 'La solución',
+        'fidu-s3-insight': 'Diseñamos un <strong>sistema modular para digitalizar fondos simples</strong>, independiente del nivel de riesgo. Cada módulo tiene una función específica y puede combinarse para construir el flujo de cualquier fondo. Básicamente, <strong>un sistema tipo Lego</strong>.',
+        'fidu-step1-title': 'Onboarding del producto', 'fidu-step1-desc': 'Landing informativa donde el usuario conoce el fondo antes de iniciar',
+        'fidu-step2-title': 'Validación de persona especial', 'fidu-step2-desc': 'Verificación de PEPs, operaciones en moneda extranjera y restricciones regulatorias',
+        'fidu-step3-title': 'Encuesta de perfilamiento', 'fidu-step3-desc': '5 preguntas para determinar el perfil de inversionista del usuario',
+        'fidu-step4-title': 'Recomendación del fondo', 'fidu-step4-desc': 'El sistema recomienda un fondo según los resultados del perfilamiento',
+        'fidu-step5-title': 'Detalles y aceptación', 'fidu-step5-desc': 'El usuario revisa las condiciones del fondo y lo acepta formalmente',
+        'fidu-step6-title': 'Habeas data y T&C', 'fidu-step6-desc': 'Consentimiento de tratamiento de datos y aceptación de términos',
+        'fidu-step7-title': 'Fondo creado ✓', 'fidu-step7-desc': 'El fondo queda activo en la cuenta del usuario de forma inmediata',
+        'fidu-beyond-title': 'Más allá de digitalizar un fondo',
+        'fidu-beyond-body': 'Al construir el sistema modular junto al equipo de desarrollo y negocio, logramos mucho más que la digitalización de un fondo: creamos la infraestructura para digitalizar todo el portafolio de fondos de inversión de Fiduciaria de Bogotá.',
+        'fidu-logro1': '<strong>7 pasos independientes</strong> que se pueden organizar según la necesidad de cada fondo, sin reescribir código ni rediseñar desde cero.',
+        'fidu-logro2': '<strong>Ruta única de creación</strong> y sistema de recomendaciones basado en datos para mejorar continuamente la experiencia del cliente.',
+        'fidu-logro3': '<strong>Sistema agnóstico al riesgo</strong> que agiliza la digitalización de cualquier fondo simple sin importar sus condiciones particulares.',
+        // Fidu s4 results
+        'fidu-s4-title': 'Resultados',
+        'fidu-r1-value': 'Sistema modular', 'fidu-r1-label': '7 pasos independientes y reconfigurables para digitalizar cualquier fondo del portafolio',
+        'fidu-r2-value': 'Base estable y optimización de componentes', 'fidu-r2-label': 'Código y componentes de diseño reutilizables que aceleran la digitalización de nuevos fondos',
+        'fidu-r3-label': 'Reducción del tiempo en un 99.2% — de +1 semana a 20 min promedio, completamente digital',
+        'fidu-r4-value': 'Inversión inmediata', 'fidu-r4-label': 'El usuario realiza su primera inversión al completar la apertura del fondo',
+        // Fidu s5 screens
+        'fidu-s5-eyebrow': 'Producto real', 'fidu-s5-title': 'La solución en pantalla',
+        'fidu-s5-desc': 'Pantallazos del flujo de apertura del FIC Cubrir Internacional.',
+        'fidu-disclaimer': '⚠ Nota: Fiduciaria de Bogotá fue adquirida posteriormente por Aval Fiduciaria.',
+        // SVG chart axis
+        'chart-high': 'Alto', 'chart-mid': 'Medio', 'chart-low': 'Bajo',
+      },
+      en: {
+        // Nav
+        'nav-home': 'Home', 'nav-projects': 'Projects', 'nav-about': 'About', 'nav-contact': 'Contact',
+        // Hero
+        'hero-premise': "I don't design interfaces.",
+        'hero-main-1': 'I design products and systems',
+        'hero-main-2': 'that <span class="hl-accent">work.</span>',
+        'hero-sub': '5 years of experience designing end-to-end products, specialist in fintech and banking, user research and conversion optimization. I design products based on data, always seeking the best user experience.',
+        'hero-cta-primary': 'See projects', 'hero-cta-ghost': "Let's talk",
+        // About section (home)
+        'about-section-title': 'About me',
+        'about-body-1': 'I work with an end-to-end methodology that covers the entire product cycle: from initial research to launch and <strong>continuous optimization</strong>. I don\'t just design screens — I build systems that sustain product growth.',
+        'about-body-2': 'I lead multidisciplinary teams and bridge the gap between <strong>technical and business stakeholders</strong>, translating complex constraints into clear, defensible design decisions. My analytical approach lets me structure solutions that generate real value for users and the organization.',
+        'about-cta': 'Get to know me',
+        // Strengths
+        'strength-ds-desc': 'Tokens, variants, adoption and documentation',
+        'strength-product-desc': 'Discovery, definition, design and delivery',
+        'strength-fintech-desc': 'Payments, investments, compliance, onboarding',
+        'strength-research-desc': 'Interviews, usability testing, journey maps',
+        'strength-a11y-desc': 'Contrast, navigation, screen readers',
+        // Projects
+        'projects-title': 'Projects', 'projects-own': 'Personal projects', 'projects-work': 'Work projects',
+        'tag-launching': 'Launching', 'tag-implemented': 'Implemented',
+        'consuma-desc': 'Platform for cultural events in Bucaramanga. Journey map of two user profiles, benchmark and problem definition.',
+        'fidu-project-name': 'Investment Product Digitization',
+        'fidu-project-desc': 'Fiduciaria de Bogotá · Opening of the FIC Cubrir Internacional transformed from an in-person process of over a week to a 100% digital flow in the app.',
+        'view-case-study': 'View case study',
+        // Contact
+        'contact-headline': 'Want to work together?', 'contact-sub': "Let's start with a coffee.",
+        // About page
+        'back-home': 'Home', 'back-projects': 'Projects',
+        'sobre-label': 'Product Designer · UX/UI',
+        'sobre-display-title': 'Designing solutions<br>that simplify lives',
+        'sobre-cta-contact': 'Contact me',
+        'sobre-body-1': 'UX/UI Designer with 5 years transforming ideas into digital products that impact real lives. I work the full cycle — research, proposal, prototype, launch — and use data to make decisions, not assumptions.',
+        'sobre-body-2': 'I specialize in connecting technical and business teams to build products that truly work: useful for those who use them, valuable for those who build them.',
+        'sobre-skills-label': 'Specialties', 'sobre-skills-title': 'What I do well',
+        'sobre-skills-body': 'My work lives at the intersection of <strong>business, technology and people</strong>. I don\'t design screens — I design systems that grow with the product and teams that maintain them.',
+        'sobre-contact-headline': "Let's work together?", 'sobre-contact-sub': "I'm available for new opportunities.",
+        // Consuma hero
+        'consuma-hero-desc': 'Digital platform for the promotion and tracking of cultural events in Bucaramanga, Colombia. Two user profiles, one connected ecosystem.',
+        'consuma-visit-link': 'Visit the page here',
+        // Consuma s1
+        'consuma-s1-title': 'The problem',
+        'consuma-s1-insight': "The central problem isn't the lack of culture: it's the <strong>absence of digital infrastructure</strong> connecting event producers with potential attendees, and generating real data about the city's cultural ecosystem.",
+        'consuma-p1-title': 'Fragmented and inefficient outreach',
+        'consuma-p1-body': "The cultural agenda depends on disconnected channels with very short lifespans. There's no digital hub where the public can reliably discover what's happening in the city this week.",
+        'consuma-p1-li1': 'Information arrives late, incomplete, or not at all',
+        'consuma-p1-li2': 'Each organizer posts on their own channels without coordination',
+        'consuma-p1-li3': 'Free or low-profile events are nearly invisible',
+        'consuma-p2-title': 'Unmapped attendance, nonexistent data',
+        'consuma-p2-body': "Organizing a cultural event in Bucaramanga is an act of faith. The organizer invests time and resources with no way to measure the real outcome.",
+        'consuma-p2-li1': 'Attendance tracked with manual counts or not at all',
+        'consuma-p2-li2': 'No historical data to compare events',
+        'consuma-p2-li3': 'No formal channel for verified feedback',
+        'consuma-p2-li4': 'Programming decisions based on intuition',
+        // Consuma s2
+        'consuma-s2-title': 'Context and key figures',
+        'consuma-m1-label': 'cultural activities at EMAFEST 2024 (Nov 9-30)',
+        'consuma-m2-label': 'events projected by IMCT for 2026',
+        'consuma-m3-label': 'growth of the cultural industry in Colombia 2023',
+        'consuma-m4-label': 'person capacity, Teatro Santander',
+        // Consuma s3 actors
+        'consuma-s3-title': 'Ecosystem actors',
+        'actor1-title': 'Institutional Organizers', 'actor1-sub': 'Public and private cultural entities',
+        'actor1-i1': '<strong>IMCT</strong> - Municipal Institute of Culture and Tourism',
+        'actor1-i2': '<strong>Teatro Santander</strong> - Main venue of eastern Colombia',
+        'actor1-i3': '<strong>Centro Cultural del Oriente</strong> - Host of festivals like EMAFEST',
+        'actor1-i4': '<strong>Comfenalco Santander</strong> - Broad cultural and educational agenda',
+        'actor2-title': 'Independent Organizers', 'actor2-sub': 'Artists, collectives and producers',
+        'actor2-i1': '<strong>Individual artists</strong> - Musicians, actors, painters with their own agendas',
+        'actor2-i2': '<strong>Groups and bands</strong> - Groups producing their own events',
+        'actor2-i3': '<strong>Cultural collectives</strong> - Informal organizations of creators',
+        'actor2-i4': '<strong>Private venues</strong> - Bars, galleries, cultural cafés',
+        'actor3-title': 'Attending Public', 'actor3-sub': 'Cultural consumers of Bucaramanga',
+        'actor3-i1': '<strong>General adult public</strong> - 25-50 years, no centralized access',
+        'actor3-i2': '<strong>University students</strong> - 18-28 years, high digital connectivity',
+        'actor3-i3': '<strong>Family audiences</strong> - Families looking for low-cost activities',
+        'actor3-i4': '<strong>Interest communities</strong> - Recurring followers of an organizer',
+        // Consuma s4 journey público
+        'consuma-s4-title': 'Journey Map: General Public', 'consuma-s4-badge': 'Cultural Consumer',
+        'consuma-s4-insight': '<strong>Profile:</strong> Resident of Bucaramanga, 18-45 years old, interested in cultural activities but without channels to stay informed. Attends sporadically, more by direct recommendation than active search.',
+        'stage-p1-title': 'Discovery', 'stage-p1-desc': 'Searches for events on social media without finding a centralized agenda',
+        'stage-p2-title': 'Exploration', 'stage-p2-desc': 'Reads event details: date, venue, price, organizer',
+        'stage-p3-title': 'Intent', 'stage-p3-desc': 'Marks "I want to attend" and saves to their Cultural Passport',
+        'stage-p4-title': 'Attendance', 'stage-p4-desc': "Scans the organizer's QR to validate attendance",
+        'stage-p5-title': 'Rating', 'stage-p5-desc': 'Rates 1-5 stars and leaves a verified comment',
+        'stage-p6-title': 'Loyalty', 'stage-p6-desc': 'Earns badges, maintains streaks and gains benefits',
+        'journey-chart-label': 'Emotional level by stage',
+        // Consuma s5 journey gestor
+        'consuma-s5-title': 'Journey Map: Cultural Organizer', 'consuma-s5-badge': 'Event Organizer',
+        'consuma-s5-insight': '<strong>Profile:</strong> Event organizer or producer in Bucaramanga. Invests time and resources producing events but has no tools to measure their real impact or build a loyal audience.',
+        'stage-g1-title': 'Creation', 'stage-g1-desc': 'Posts the event in minutes. A QR code is generated automatically',
+        'stage-g2-title': 'Publication', 'stage-g2-desc': 'Event appears in the calendar. Sees real-time interest counter',
+        'stage-g3-title': 'Preparation', 'stage-g3-desc': 'Downloads the QR that activates 2h before the event',
+        'stage-g4-title': 'Event day', 'stage-g4-desc': 'Attendees scan the QR. Automatic digital registration, no paper',
+        'stage-g5-title': 'Analytics', 'stage-g5-desc': 'Post-event dashboard: real attendees, average rating, comments',
+        'stage-g6-title': 'Audience', 'stage-g6-desc': 'Loyal audience follows their profile. Audience accumulated event by event',
+        // Consuma s6
+        'consuma-s6-eyebrow': 'Real product', 'consuma-s6-title': 'The product on screen',
+        'consuma-s6-desc': 'Five views of the real product — from home to the cultural passport.',
+        // Consuma s7 compare
+        'consuma-s7-title': 'Before vs. with Consuma Cultura',
+        'compare-publico-label': 'General Public',
+        'before-title-publico': 'Without the platform', 'after-title-publico': 'With Consuma Cultura',
+        'consuma-before-p-li1': 'Event information scattered across WhatsApp, Instagram and flyers',
+        'consuma-before-p-li2': 'No single place to discover the cultural agenda',
+        'consuma-before-p-li3': 'Attending leaves no trace or personal history',
+        'consuma-before-p-li4': 'No formal channel to rate or recommend events',
+        'consuma-after-p-li1': 'Centralized calendar with all cultural events in the city',
+        'consuma-after-p-li2': 'Cultural Passport: history of attended and planned events',
+        'consuma-after-p-li3': 'Verified post-attendance rating system',
+        'consuma-after-p-li4': 'Gamification: badges, streaks and benefits for participation',
+        'compare-gestor-label': 'Cultural Organizer',
+        'before-title-gestor': 'Without the platform', 'after-title-gestor': 'With Consuma Cultura',
+        'consuma-before-g-li1': 'Publishing an event requires multiple channels and manual management',
+        'consuma-before-g-li2': 'No way to know how many people are interested',
+        'consuma-before-g-li3': 'Attendance validation with paper sign-up sheets or nothing',
+        'consuma-before-g-li4': 'Loyal audience has no way to follow them between events',
+        'consuma-after-g-li1': 'Centralized dashboard: publish an event in minutes',
+        'consuma-after-g-li2': 'Real-time "I want to attend" counter before the event',
+        'consuma-after-g-li3': 'Auto-generated QR and alphanumeric code to validate attendance',
+        'consuma-after-g-li4': 'Public entity profile with a growing follower system',
+        // Consuma live
+        'consuma-live-status': 'Launching',
+        'consuma-live-text': 'The platform is available to the public in Bucaramanga.',
+        'consuma-live-link': 'Visit the page here',
+        // Fidu hero
+        'fidu-hero-title': 'Investment Product<br>Digitization',
+        'fidu-hero-desc': 'We transformed the opening of the FIC Cubrir Internacional at Fiduciaria de Bogotá: from a 100% in-person process taking over a week, to a fully digital flow.',
+        'fidu-meta': 'Fiduciaria de Bogotá · Colombia · 2025',
+        // Fidu s1
+        'fidu-s1-title': 'The challenge',
+        'fidu-s1-insight': 'The FIC Cubrir Internacional is a simple collective investment fund with <strong>high risk</strong>. Before digitization, the opening process was <strong>100% in-person</strong>: the user had to visit a branch, complete an investor profile survey, learn about the product and decide whether to open it — with all the legal and financial burden behind it.',
+        'fidu-p1-title': 'In-person cascade process',
+        'fidu-p1-body': 'The flow required multiple sequential steps that depended on each other — validations, signatures and acceptances. The total time exceeded one week.',
+        'fidu-p1-li1': 'Mandatory visit to Fidubogotá branch',
+        'fidu-p1-li2': 'Each step unlocked the next in a cascade',
+        'fidu-p1-li3': 'Manual validations and physical signatures',
+        'fidu-p1-li4': 'Total time: <strong>+1 week</strong>',
+        'fidu-p2-title': 'High cognitive load',
+        'fidu-p2-body': 'The user had to manage several independent physical forms before opening the fund, generating friction and dropout.',
+        'fidu-p2-li1': 'Investor profiling survey (5 questions)',
+        'fidu-p2-li2': 'Cubrir Internacional fund presentation',
+        'fidu-p2-li3': 'Fund acceptance form',
+        'fidu-p2-li4': 'Signed professional recommendation',
+        'fidu-p2-li5': 'Data protection consent management',
+        'fidu-p2-li6': 'Product terms and conditions',
+        // Fidu s2 timeline
+        'fidu-s2-title': 'Design process',
+        'fidu-s2-desc': 'The process covered everything from reference research to production support and real-data experience measurement.',
+        'timeline-m1': 'Month 1', 'timeline-m1-theme': 'Research',
+        'timeline-i1-title': 'Colombia Benchmark', 'timeline-i1-desc': 'Funds in banks, neobanks and apps: Tyba and Trii',
+        'timeline-i2-title': 'Global Benchmark', 'timeline-i2-desc': 'BBVA Mexico, GMA, Santander and JP Morgan',
+        'timeline-i3-title': 'Insights & findings', 'timeline-i3-desc': 'Patterns, friction points and design opportunities',
+        'timeline-i4-title': 'Journey Map v1', 'timeline-i4-desc': 'Proposed digital opening journey',
+        'timeline-m2': 'Month 2', 'timeline-m2-theme': 'Definition',
+        'timeline-i5-title': 'MVP Workshop', 'timeline-i5-desc': 'Stakeholder alignment: features, versions and shared vision',
+        'timeline-i6-title': 'Journey + Blueprint', 'timeline-i6-desc': 'MVP journey and Service Blueprint with all systems and actors',
+        'timeline-m3': 'Month 3', 'timeline-m3-theme': 'Design',
+        'timeline-i7-title': 'Lo-fi wireframes', 'timeline-i7-desc': 'Low fidelity, business presentation and moderated testing',
+        'timeline-i8-title': 'Hi-fi wireframes', 'timeline-i8-desc': 'High fidelity and second round of testing with real users',
+        'timeline-m4': 'Month 4', 'timeline-m4-theme': 'Delivery',
+        'timeline-i9-title': 'QA + Measurement', 'timeline-i9-desc': 'Staged development with visual QA, Hotjar, SUS and conversion funnel',
+        // Fidu s3 solution
+        'fidu-s3-title': 'The solution',
+        'fidu-s3-insight': 'We designed a <strong>modular system to digitize simple funds</strong>, independent of risk level. Each module has a specific function and can be combined to build the flow for any fund. Essentially, <strong>a Lego-like system</strong>.',
+        'fidu-step1-title': 'Product onboarding', 'fidu-step1-desc': 'Informational landing where the user learns about the fund before starting',
+        'fidu-step2-title': 'Special person validation', 'fidu-step2-desc': 'Verification of PEPs, foreign currency operations and regulatory restrictions',
+        'fidu-step3-title': 'Profiling survey', 'fidu-step3-desc': "5 questions to determine the user's investor profile",
+        'fidu-step4-title': 'Fund recommendation', 'fidu-step4-desc': 'The system recommends a fund based on the profiling results',
+        'fidu-step5-title': 'Details and acceptance', 'fidu-step5-desc': 'The user reviews the fund conditions and formally accepts them',
+        'fidu-step6-title': 'Data consent & T&C', 'fidu-step6-desc': 'Data processing consent and terms acceptance',
+        'fidu-step7-title': 'Fund created ✓', 'fidu-step7-desc': "The fund is immediately active in the user's account",
+        'fidu-beyond-title': 'Beyond digitizing one fund',
+        'fidu-beyond-body': "By building the modular system together with the development and business team, we achieved much more than digitizing a fund: we created the infrastructure to digitize Fiduciaria de Bogotá's entire investment fund portfolio.",
+        'fidu-logro1': '<strong>7 independent steps</strong> that can be arranged to meet the needs of any fund, without rewriting code or redesigning from scratch.',
+        'fidu-logro2': '<strong>Single creation path</strong> and data-driven recommendation system to continuously improve the client experience.',
+        'fidu-logro3': '<strong>Risk-agnostic system</strong> that accelerates the digitization of any simple fund regardless of its specific conditions.',
+        // Fidu s4 results
+        'fidu-s4-title': 'Results',
+        'fidu-r1-value': 'Modular system', 'fidu-r1-label': '7 independent, reconfigurable steps to digitize any fund in the portfolio',
+        'fidu-r2-value': 'Stable base and component optimization', 'fidu-r2-label': 'Reusable code and design components that accelerate the digitization of new funds',
+        'fidu-r3-label': '99.2% time reduction — from +1 week to 20 min average, fully digital',
+        'fidu-r4-value': 'Immediate investment', 'fidu-r4-label': 'The user makes their first investment upon completing the fund opening',
+        // Fidu s5 screens
+        'fidu-s5-eyebrow': 'Real product', 'fidu-s5-title': 'The solution on screen',
+        'fidu-s5-desc': 'Screenshots of the FIC Cubrir Internacional opening flow.',
+        'fidu-disclaimer': '⚠ Note: Fiduciaria de Bogotá was subsequently acquired by Aval Fiduciaria.',
+        // SVG chart axis
+        'chart-high': 'High', 'chart-mid': 'Mid', 'chart-low': 'Low',
+      }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'es';
+
+    function applyTranslations(lang) {
+      const t = TRANSLATIONS[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      // Update toggle active state
+      document.getElementById('lang-opt-es').classList.toggle('active', lang === 'es');
+      document.getElementById('lang-opt-en').classList.toggle('active', lang === 'en');
+      // Update html lang attribute
+      document.documentElement.lang = lang;
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', currentLang);
+      applyTranslations(currentLang);
+    }
+
+    // Init on load
+    applyTranslations(currentLang);
 
   </script>
 </body>
