@@ -1095,18 +1095,74 @@
     }
 
     /* Category labels inside dark projects section */
-    .projects__category { margin-top: 40px; }
-    .projects__category:first-child { margin-top: 0; }
+    /* Accordion per category */
+    .projects__accordion { margin-top: 32px; }
+    .projects__accordion:first-child { margin-top: 0; }
 
-    .projects__category-label {
+    .projects__accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      background: none;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 14px 0;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .projects__accordion-label {
       font-size: 0.6875rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: rgba(237, 240, 255, 0.38);
-      margin-bottom: 18px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      transition: color 200ms;
+    }
+
+    .projects__accordion-header:hover .projects__accordion-label {
+      color: rgba(237, 240, 255, 0.62);
+    }
+
+    .projects__accordion-chevron {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      stroke: rgba(237, 240, 255, 0.38);
+      fill: none;
+      stroke-width: 2.25;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 280ms var(--ease-out), stroke 200ms;
+    }
+
+    .projects__accordion-header:hover .projects__accordion-chevron {
+      stroke: rgba(237, 240, 255, 0.62);
+    }
+
+    .projects__accordion-chevron.is-open {
+      transform: rotate(180deg);
+    }
+
+    .projects__accordion-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 380ms var(--ease-out);
+    }
+
+    .projects__accordion-body.is-open {
+      grid-template-rows: 1fr;
+    }
+
+    .projects__accordion-overflow {
+      overflow: hidden;
+    }
+
+    .projects__accordion-overflow .projects__grid {
+      padding-top: 20px;
+      padding-bottom: 4px;
     }
 
     .projects__coming-soon {
@@ -2741,151 +2797,159 @@
 
       <h2 class="section-title reveal" data-i18n="projects-title">Proyectos</h2>
 
-      <!-- Proyectos propios -->
-      <div class="projects__category">
-        <p class="projects__category-label" data-i18n="projects-own">Proyectos propios</p>
-        <div class="projects__grid">
+      <!-- ── Accordion 1: Proyectos personales ────────────────── -->
+      <div class="projects__accordion">
+        <button class="projects__accordion-header" onclick="toggleProjectsAccordion(this)" aria-expanded="true">
+          <span class="projects__accordion-label" data-i18n="projects-personal">Proyectos personales</span>
+          <svg class="projects__accordion-chevron is-open" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="projects__accordion-body is-open">
+          <div class="projects__accordion-overflow">
+            <div class="projects__grid">
 
-        <!-- ── Consuma Cultura ─────────────────────────────── -->
-        <article class="project-card project-card--horizontal reveal">
+              <!-- ── Consuma Cultura ── -->
+              <article class="project-card project-card--horizontal reveal">
+                <div class="card-horizontal-inner">
+                  <div class="project-logo-wrap" aria-hidden="true">
+                    <img src="./logo.png" alt="Logo Consuma Cultura" class="project-logo" width="48" height="48">
+                  </div>
+                  <div class="project-card__content">
+                    <div class="project-tags">
+                      <span class="project-tag">Cultura Tech</span>
+                      <span class="project-tag project-tag--wip" data-i18n="tag-launching">En lanzamiento</span>
+                    </div>
+                    <h3 class="project-name">Consuma Cultura</h3>
+                    <p class="project-desc" data-i18n="consuma-desc">
+                      Plataforma para eventos culturales en Bucaramanga. Journey map de dos perfiles, benchmark y definición del problema.
+                    </p>
+                  </div>
+                  <div class="project-card__action">
+                    <button class="btn btn--ghost btn--icon" onclick="openCaseStudy('consuma')" aria-label="Ver caso de estudio Consuma Cultura">
+                      <span data-i18n="view-case-study">Ver caso de estudio</span>
+                      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </article>
 
-          <!-- Three-column row: logo | text | CTA -->
-          <div class="card-horizontal-inner">
-
-            <!-- Logo -->
-            <div class="project-logo-wrap" aria-hidden="true">
-              <img
-                src="./logo.png"
-                alt="Logo Consuma Cultura"
-                class="project-logo"
-                width="48"
-                height="48"
-              >
             </div>
-
-            <!-- Content -->
-            <div class="project-card__content">
-              <div class="project-tags">
-                <span class="project-tag">Cultura Tech</span>
-                <span class="project-tag project-tag--wip" data-i18n="tag-launching">En lanzamiento</span>
-              </div>
-              <h3 class="project-name">Consuma Cultura</h3>
-              <p class="project-desc" data-i18n="consuma-desc">
-                Plataforma para eventos culturales en Bucaramanga. Journey map
-                de dos perfiles, benchmark y definición del problema.
-              </p>
-            </div>
-
-            <!-- CTA — navegación interna -->
-            <div class="project-card__action">
-              <button
-                class="btn btn--ghost btn--icon"
-                onclick="openCaseStudy('consuma')"
-                aria-label="Ver caso de estudio Consuma Cultura"
-              >
-                <span data-i18n="view-case-study">Ver caso de estudio</span>
-                <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="m9 18 6-6-6-6"/>
-                </svg>
-              </button>
-            </div>
-
           </div>
+        </div>
+      </div>
 
-        </article>
+      <!-- ── Accordion 2: Proyectos profesionales ──────────────── -->
+      <div class="projects__accordion">
+        <button class="projects__accordion-header" onclick="toggleProjectsAccordion(this)" aria-expanded="true">
+          <span class="projects__accordion-label" data-i18n="projects-professional">Proyectos profesionales</span>
+          <svg class="projects__accordion-chevron is-open" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="projects__accordion-body is-open">
+          <div class="projects__accordion-overflow">
+            <div class="projects__grid">
 
-        </div><!-- /projects__grid propios -->
-      </div><!-- /projects__category propios -->
-
-      <!-- Proyectos laborales -->
-      <div class="projects__category">
-        <p class="projects__category-label" data-i18n="projects-work">Proyectos laborales</p>
-        <div class="projects__grid">
-
-          <!-- ── Occiauto ──────────────────────────────── -->
-          <article class="project-card project-card--horizontal reveal">
-            <div class="card-horizontal-inner">
-
-              <div class="project-logo-wrap" aria-hidden="true">
-                <img
-                  src="./Banco de occidente.jpg"
-                  alt="Logo Occiauto - Banco de Occidente"
-                  class="project-logo"
-                  width="48"
-                  height="48"
-                >
-              </div>
-
-              <div class="project-card__content">
-                <div class="project-tags">
-                  <span class="project-tag">Fintech</span>
-                  <span class="project-tag" data-i18n="tag-personal-banking">Banca personal</span>
-                  <span class="project-tag project-tag--done" data-i18n="tag-implemented">Implementado</span>
+              <!-- ── Occiauto ── -->
+              <article class="project-card project-card--horizontal reveal">
+                <div class="card-horizontal-inner">
+                  <div class="project-logo-wrap" aria-hidden="true">
+                    <img src="./Banco de occidente.jpg" alt="Logo Occiauto - Banco de Occidente" class="project-logo" width="48" height="48">
+                  </div>
+                  <div class="project-card__content">
+                    <div class="project-tags">
+                      <span class="project-tag">Fintech</span>
+                      <span class="project-tag" data-i18n="tag-personal-banking">Banca personal</span>
+                      <span class="project-tag project-tag--done" data-i18n="tag-implemented">Implementado</span>
+                    </div>
+                    <h3 class="project-name" data-i18n="occiauto-project-name">Rediseño solicitud de crédito vehicular</h3>
+                    <p class="project-desc" data-i18n="occiauto-project-desc">
+                      Banco de Occidente · Análisis y rediseño de la landing de Occiauto para aumentar la conversión inicial del flujo. Canal digital con +200K visitas/mes y 70% de colocación vehicular del banco.
+                    </p>
+                  </div>
+                  <div class="project-card__action">
+                    <button class="btn btn--ghost btn--icon" onclick="openCaseStudy('occiauto')" aria-label="Ver caso de estudio Occiauto">
+                      <span data-i18n="view-case-study">Ver caso de estudio</span>
+                      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                  </div>
                 </div>
-                <h3 class="project-name" data-i18n="occiauto-project-name">Rediseño solicitud de crédito vehicular</h3>
-                <p class="project-desc" data-i18n="occiauto-project-desc">
-                  Banco de Occidente · Análisis y rediseño de la landing de Occiauto para aumentar la conversión inicial del flujo. Canal digital con +200K visitas/mes y 70% de colocación vehicular del banco.
-                </p>
-              </div>
+              </article>
 
-              <div class="project-card__action">
-                <button
-                  class="btn btn--ghost btn--icon"
-                  onclick="openCaseStudy('occiauto')"
-                  aria-label="Ver caso de estudio Occiauto"
-                >
-                  <span data-i18n="view-case-study">Ver caso de estudio</span>
-                  <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m9 18 6-6-6-6"/>
-                  </svg>
-                </button>
-              </div>
+              <!-- ── Fidubogotá ── -->
+              <article class="project-card project-card--horizontal reveal">
+                <div class="card-horizontal-inner">
+                  <div class="project-logo-wrap" aria-hidden="true">
+                    <img src="./Fidu.png" alt="Logo Fiduciaria de Bogotá" class="project-logo" width="48" height="48">
+                  </div>
+                  <div class="project-card__content">
+                    <div class="project-tags">
+                      <span class="project-tag">Fintech</span>
+                      <span class="project-tag">Service Design</span>
+                      <span class="project-tag project-tag--done" data-i18n="tag-implemented">Implementado</span>
+                    </div>
+                    <h3 class="project-name" data-i18n="fidu-project-name">Digitalización de producto de inversión</h3>
+                    <p class="project-desc" data-i18n="fidu-project-desc">
+                      Fiduciaria de Bogotá · Apertura del FIC Cubrir Internacional transformada de un proceso presencial de +1 semana a un flujo 100% digital en app.
+                    </p>
+                  </div>
+                  <div class="project-card__action">
+                    <button class="btn btn--ghost btn--icon" onclick="openCaseStudy('fidu')" aria-label="Ver caso de estudio Fidubogotá">
+                      <span data-i18n="view-case-study">Ver caso de estudio</span>
+                      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </article>
 
             </div>
-          </article>
+          </div>
+        </div>
+      </div>
 
-          <!-- ── Fidubogotá ─────────────────────────────── -->
-          <article class="project-card project-card--horizontal reveal">
-            <div class="card-horizontal-inner">
+      <!-- ── Accordion 3: Casos de diseño ──────────────────────── -->
+      <div class="projects__accordion">
+        <button class="projects__accordion-header" onclick="toggleProjectsAccordion(this)" aria-expanded="true">
+          <span class="projects__accordion-label" data-i18n="projects-design-cases">Casos de diseño</span>
+          <svg class="projects__accordion-chevron is-open" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="projects__accordion-body is-open">
+          <div class="projects__accordion-overflow">
+            <div class="projects__grid">
 
-              <div class="project-logo-wrap" aria-hidden="true">
-                <img
-                  src="./Fidu.png"
-                  alt="Logo Fiduciaria de Bogotá"
-                  class="project-logo"
-                  width="48"
-                  height="48"
-                >
-              </div>
-
-              <div class="project-card__content">
-                <div class="project-tags">
-                  <span class="project-tag">Fintech</span>
-                  <span class="project-tag">Service Design</span>
-                  <span class="project-tag project-tag--done" data-i18n="tag-implemented">Implementado</span>
+              <!-- ── Sofka — Manejo de inventario en pyme ── -->
+              <article class="project-card project-card--horizontal reveal">
+                <div class="card-horizontal-inner">
+                  <div class="project-logo-wrap" aria-hidden="true">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                      <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
+                        font-family="'Geist', sans-serif" font-size="18" font-weight="700"
+                        fill="rgba(237,240,255,0.72)">S</text>
+                    </svg>
+                  </div>
+                  <div class="project-card__content">
+                    <div class="project-tags">
+                      <span class="project-tag">UX/UI</span>
+                      <span class="project-tag">Mobile</span>
+                      <span class="project-tag">Design System</span>
+                      <span class="project-tag project-tag--wip" data-i18n="tag-technical-test">Prueba técnica</span>
+                    </div>
+                    <h3 class="project-name" data-i18n="sofka-project-name">Manejo de inventario en pyme</h3>
+                    <p class="project-desc" data-i18n="sofka-project-desc">
+                      Sofka · Rediseño de app de gestión de inventario: priorización de flujos, Design System escalable con Atomic Design y prototipos con criterios de accesibilidad WCAG AA.
+                    </p>
+                  </div>
+                  <div class="project-card__action">
+                    <span class="project-tag project-tag--wip" data-i18n="tag-coming-soon">Próximamente</span>
+                  </div>
                 </div>
-                <h3 class="project-name" data-i18n="fidu-project-name">Digitalización de producto de inversión</h3>
-                <p class="project-desc" data-i18n="fidu-project-desc">
-                  Fiduciaria de Bogotá · Apertura del FIC Cubrir Internacional transformada de un proceso presencial de +1 semana a un flujo 100% digital en app.
-                </p>
-              </div>
-
-              <div class="project-card__action">
-                <button
-                  class="btn btn--ghost btn--icon"
-                  onclick="openCaseStudy('fidu')"
-                  aria-label="Ver caso de estudio Fidubogotá"
-                >
-                  <span data-i18n="view-case-study">Ver caso de estudio</span>
-                  <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m9 18 6-6-6-6"/>
-                  </svg>
-                </button>
-              </div>
+              </article>
 
             </div>
-          </article>
-
+          </div>
         </div>
       </div>
 
@@ -4313,6 +4377,14 @@
     const viewHome      = document.getElementById('view-home');
     const viewAboutPage = document.getElementById('view-sobre-mi');
 
+    function toggleProjectsAccordion(btn) {
+      const body = btn.nextElementSibling;
+      const chevron = btn.querySelector('.projects__accordion-chevron');
+      const isOpen = body.classList.toggle('is-open');
+      chevron.classList.toggle('is-open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen);
+    }
+
     function openCaseStudy(id) {
       // Hide home
       if (viewHome) viewHome.hidden = true;
@@ -4608,13 +4680,19 @@
         'strength-research-desc': 'Entrevistas, usability testing, journey maps',
         'strength-a11y-desc': 'Contraste, navegación, screen readers',
         // Projects
-        'projects-title': 'Proyectos', 'projects-own': 'Proyectos propios', 'projects-work': 'Proyectos laborales',
+        'projects-title': 'Proyectos',
+        'projects-personal': 'Proyectos personales',
+        'projects-professional': 'Proyectos profesionales',
+        'projects-design-cases': 'Casos de diseño',
         'tag-launching': 'En lanzamiento', 'tag-implemented': 'Implementado', 'tag-personal-banking': 'Banca personal',
+        'tag-technical-test': 'Prueba técnica', 'tag-coming-soon': 'Próximamente',
         'consuma-desc': 'Plataforma para eventos culturales en Bucaramanga. Journey map de dos perfiles, benchmark y definición del problema.',
         'occiauto-project-name': 'Rediseño solicitud de crédito vehicular',
         'occiauto-project-desc': 'Banco de Occidente · Análisis y rediseño de la landing de Occiauto para aumentar la conversión inicial del flujo. Canal digital con +200K visitas/mes y 70% de colocación vehicular del banco.',
         'fidu-project-name': 'Digitalización de producto de inversión',
         'fidu-project-desc': 'Fiduciaria de Bogotá · Apertura del FIC Cubrir Internacional transformada de un proceso presencial de +1 semana a un flujo 100% digital en app.',
+        'sofka-project-name': 'Manejo de inventario en pyme',
+        'sofka-project-desc': 'Sofka · Rediseño de app de gestión de inventario: priorización de flujos, Design System escalable con Atomic Design y prototipos con criterios de accesibilidad WCAG AA.',
         'view-case-study': 'Ver caso de estudio',
         // Contact
         'contact-headline': '¿Quieres que trabajemos?', 'contact-sub': 'Empecemos tomándonos un café.',
@@ -4848,13 +4926,19 @@
         'strength-research-desc': 'Interviews, usability testing, journey maps',
         'strength-a11y-desc': 'Contrast, navigation, screen readers',
         // Projects
-        'projects-title': 'Projects', 'projects-own': 'Personal projects', 'projects-work': 'Work projects',
+        'projects-title': 'Projects',
+        'projects-personal': 'Personal projects',
+        'projects-professional': 'Professional projects',
+        'projects-design-cases': 'Design cases',
         'tag-launching': 'Launching', 'tag-implemented': 'Implemented', 'tag-personal-banking': 'Personal banking',
+        'tag-technical-test': 'Technical test', 'tag-coming-soon': 'Coming soon',
         'consuma-desc': 'Platform for cultural events in Bucaramanga. Journey map of two user profiles, benchmark and problem definition.',
         'occiauto-project-name': 'Vehicle Loan Application Redesign',
         'occiauto-project-desc': 'Banco de Occidente · Analysis and redesign of the Occiauto landing page to increase conversion at the initial stage of the application flow. Digital channel with +200K monthly visits and 70% vehicle loan placement.',
         'fidu-project-name': 'Investment Product Digitization',
         'fidu-project-desc': 'Fiduciaria de Bogotá · Opening of the FIC Cubrir Internacional transformed from an in-person process of over a week to a 100% digital flow in the app.',
+        'sofka-project-name': 'Inventory management for SMEs',
+        'sofka-project-desc': 'Sofka · Inventory management app redesign: flow prioritization, scalable Design System with Atomic Design, and prototypes meeting WCAG AA accessibility criteria.',
         'view-case-study': 'View case study',
         // Contact
         'contact-headline': 'Want to work together?', 'contact-sub': "Let's start with a coffee.",
