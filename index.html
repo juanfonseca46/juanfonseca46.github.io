@@ -2490,6 +2490,216 @@
     }
 
     /* ============================================================
+       SOFKA CASE STUDY — specific components
+       ============================================================ */
+
+    /* Alternate section background */
+    .case-section--alt {
+      background: var(--bg-surface);
+    }
+
+    /* Problem statement blockquote */
+    .case-statement {
+      font-size: clamp(1rem, 1.5vw, 1.1875rem);
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.7;
+      border-left: 3px solid var(--accent);
+      padding: 18px 24px;
+      margin: 0 0 32px;
+      background: var(--accent-dim);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+    }
+
+    /* Stats row */
+    .case-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 600px) {
+      .case-stat-row { grid-template-columns: 1fr; }
+    }
+
+    .case-stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .case-stat-num {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .case-stat-label {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* 4-column problem grid (heuristic analysis) */
+    .case-problem-grid--4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 540px) {
+      .case-problem-grid--4 { grid-template-columns: 1fr; }
+    }
+
+    /* User Persona card */
+    .sofka-persona {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+
+    .sofka-persona-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+    }
+
+    .sofka-persona-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 2px solid var(--accent-border);
+      color: var(--accent);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .sofka-persona-name {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+      margin-bottom: 3px;
+    }
+
+    .sofka-persona-role {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .sofka-persona-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    @media (max-width: 768px) {
+      .sofka-persona-grid { grid-template-columns: 1fr; }
+    }
+
+    .sofka-persona-col {
+      padding: 22px 28px;
+      border-right: 1px solid var(--border);
+    }
+
+    .sofka-persona-col:last-child { border-right: none; }
+
+    @media (max-width: 768px) {
+      .sofka-persona-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .sofka-persona-col:last-child { border-bottom: none; }
+    }
+
+    .sofka-persona-col--pain {
+      background: rgba(239, 68, 68, 0.03);
+    }
+
+    .sofka-persona-col-title {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .sofka-persona-col--pain .sofka-persona-col-title {
+      color: #DC2626;
+    }
+
+    .sofka-persona-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sofka-persona-list li {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .sofka-persona-list li::before {
+      content: '·';
+      position: absolute;
+      left: 1px;
+      color: var(--accent);
+      font-size: 1rem;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .sofka-persona-col--pain .sofka-persona-list li::before {
+      color: #DC2626;
+    }
+
+    /* DS features list */
+    .sofka-ds-features {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sofka-ds-feature {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .sofka-ds-feature:last-child { border-bottom: none; }
+
+    .sofka-ds-feature strong {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 5px;
+      letter-spacing: -0.01em;
+    }
+
+    .sofka-ds-feature p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ============================================================
        ABOUT PAGE — sticky left · scrollable right
        ============================================================ */
     .sobre-page-wrap {
@@ -2943,7 +3153,10 @@
                     </p>
                   </div>
                   <div class="project-card__action">
-                    <span class="project-tag project-tag--wip" data-i18n="tag-coming-soon">Próximamente</span>
+                    <button class="btn btn--ghost btn--icon" onclick="openCaseStudy('sofka')" aria-label="Ver caso de estudio Sofka">
+                      <span data-i18n="view-case-study">Ver caso de estudio</span>
+                      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
                   </div>
                 </div>
               </article>
@@ -4314,6 +4527,395 @@
 
 
   <!-- ============================================================
+       CASE STUDY VIEW — Sofka · Manejo de inventario en pyme
+       ============================================================ -->
+  <div id="view-case-sofka" class="case-view" hidden>
+
+    <!-- Back bar -->
+    <div class="case-back-bar">
+      <div class="container">
+        <button class="case-back-btn" onclick="closeCaseStudy()">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          <span data-i18n="back-projects">Proyectos</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="case-hero">
+      <div class="container">
+        <div class="case-logo-row">
+          <div class="case-logo-box">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Geist', sans-serif" font-size="20" font-weight="700"
+                fill="var(--accent)">S</text>
+            </svg>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">UX/UI</span>
+            <span class="project-tag">Mobile</span>
+            <span class="project-tag">Design System</span>
+            <span class="project-tag project-tag--wip" data-i18n="tag-technical-test">Prueba técnica</span>
+          </div>
+        </div>
+        <h1 class="case-hero-title" data-i18n-html="sofka-hero-title">Rediseño de app de gestión<br>de inventario para pymes</h1>
+        <p class="case-hero-desc" data-i18n="sofka-hero-desc">
+          A partir de una app existente con 4.7 ⭐ en Play Store, se identificaron los principales puntos de fricción en la usabilidad y se planteó un rediseño completo de flujos e interfaz. El objetivo: que el usuario sepa en todo momento qué está pasando con su inventario y qué debe hacer a continuación.
+        </p>
+        <div class="case-meta-row">
+          <span class="case-meta-text" data-i18n="sofka-meta">Sofka · Colombia · 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- S1: El reto -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="sofka-s1-title">El reto</h2>
+        <div class="case-insight">
+          <p data-i18n-html="sofka-s1-insight">Se requiere un rediseño que ajuste la interfaz y los flujos para crear una experiencia de gestión <strong>sencilla, rápida y orientada a la acción</strong>. El objetivo es que el usuario sepa en todo momento qué está pasando con su inventario y qué debe hacer a continuación.</p>
+        </div>
+        <div class="case-problem-grid">
+          <div class="case-problem-card">
+            <h4 data-i18n="sofka-reto-c1-title">Alcance del rediseño</h4>
+            <p data-i18n="sofka-reto-c1-body">El rediseño aplica únicamente a la app móvil — pantallas de Home y Stock. Aunque la plataforma es multidispositivo, el foco estuvo en el canal de mayor fricción reportada.</p>
+            <ul class="case-problem-list">
+              <li data-i18n="sofka-reto-c1-li1">Home vacío y Home con datos de inventario</li>
+              <li data-i18n="sofka-reto-c1-li2">Flujo de inventario / Stock</li>
+              <li data-i18n="sofka-reto-c1-li3">Flujos de alta y gestión de productos</li>
+            </ul>
+          </div>
+          <div class="case-problem-card">
+            <h4 data-i18n="sofka-reto-c2-title">Contexto del usuario</h4>
+            <p data-i18n="sofka-reto-c2-body">La app es usada por pymes para mantener información del inventario y llevar un registro de movimientos transaccionales — entradas y salidas de mercancía.</p>
+            <ul class="case-problem-list">
+              <li data-i18n="sofka-reto-c2-li1">Administradores de almacén o dueños de negocio</li>
+              <li data-i18n="sofka-reto-c2-li2">Sesiones diarias cortas, orientadas a tareas concretas</li>
+              <li data-i18n="sofka-reto-c2-li3">Contexto móvil en tienda o bodega, con conexión variable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S2: Descripción / Interpretaciones -->
+    <div class="case-section case-section--alt">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="sofka-s2-title">Descripción</h2>
+        <p class="case-hero-desc" data-i18n="sofka-s2-intro" style="margin-bottom: 28px;">
+          Para acotar el alcance del proyecto, se establecieron interpretaciones clave sobre el reto inicial.
+        </p>
+        <div class="fidu-logros">
+          <div class="fidu-logro">
+            <span class="fidu-logro-num">01</span>
+            <p data-i18n="sofka-interp-1">El rediseño aplica exclusivamente a la app móvil — pantallas de Home y Stock — aunque la plataforma es multidispositivo.</p>
+          </div>
+          <div class="fidu-logro">
+            <span class="fidu-logro-num">02</span>
+            <p data-i18n="sofka-interp-2">El trabajo no es solo de UI: se requiere un ajuste de flujos para mejorar la experiencia, por lo que se construyeron diagramas de flujo como parte del proceso.</p>
+          </div>
+          <div class="fidu-logro">
+            <span class="fidu-logro-num">03</span>
+            <p data-i18n="sofka-interp-3">El público objetivo son pymes, por lo que la app es usada tanto para mantener la información del inventario como para llevar un registro de movimientos transaccionales (entradas y salidas).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S3: Design Statement -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="sofka-s3-title">Design statement</h2>
+        <blockquote class="case-statement" data-i18n="sofka-statement">
+          Los administradores de negocios pyme necesitan ver su inventario, llevar el conteo de los movimientos recientes e identificar cuáles son las acciones más importantes que deben realizar de acuerdo al estado de sus productos. En la app actual el usuario se pierde entre pantallas y acciones no priorizadas, la información crítica no es clara ni visible a primera vista.
+        </blockquote>
+        <div class="case-stat-row">
+          <div class="case-stat">
+            <span class="case-stat-num">4.7 ⭐</span>
+            <span class="case-stat-label" data-i18n="sofka-stat1">Valoración en Google Play Store</span>
+          </div>
+          <div class="case-stat">
+            <span class="case-stat-num">1.265</span>
+            <span class="case-stat-label" data-i18n="sofka-stat2">Reseñas detractoras (1–3 estrellas)</span>
+          </div>
+          <div class="case-stat">
+            <span class="case-stat-num">6%</span>
+            <span class="case-stat-label" data-i18n="sofka-stat3">De usuarios insatisfechos con la usabilidad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S4: User Persona -->
+    <div class="case-section case-section--alt">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="sofka-s4-title">User persona</h2>
+        <div class="sofka-persona">
+          <div class="sofka-persona-header">
+            <div class="sofka-persona-avatar" aria-hidden="true">MG</div>
+            <div>
+              <h3 class="sofka-persona-name">María González</h3>
+              <p class="sofka-persona-role" data-i18n="sofka-persona-role">Administradora del almacén · Retail / Moda · 32 años</p>
+            </div>
+          </div>
+          <div class="sofka-persona-grid">
+            <div class="sofka-persona-col">
+              <h4 class="sofka-persona-col-title" data-i18n="sofka-persona-ctx-title">Contexto</h4>
+              <ul class="sofka-persona-list">
+                <li data-i18n="sofka-persona-ctx-1">Administra Bambino, tienda de ropa con 230 clientes mensuales</li>
+                <li data-i18n="sofka-persona-ctx-2">3 categorías · 5 productos por categoría</li>
+                <li data-i18n="sofka-persona-ctx-3">Gestiona el stock al cierre de cada jornada</li>
+                <li data-i18n="sofka-persona-ctx-4">Presenta informes mensuales a los dueños</li>
+              </ul>
+            </div>
+            <div class="sofka-persona-col">
+              <h4 class="sofka-persona-col-title" data-i18n="sofka-persona-tasks-title">Tareas principales</h4>
+              <ul class="sofka-persona-list">
+                <li data-i18n="sofka-persona-task-1">Revisar el estado del inventario al comenzar el día</li>
+                <li data-i18n="sofka-persona-task-2">Identificar productos con stock bajo o agotado</li>
+                <li data-i18n="sofka-persona-task-3">Solicitar reposición a proveedores</li>
+                <li data-i18n="sofka-persona-task-4">Registrar movimientos de entrada y salida</li>
+              </ul>
+            </div>
+            <div class="sofka-persona-col sofka-persona-col--pain">
+              <h4 class="sofka-persona-col-title" data-i18n="sofka-persona-pain-title">Pain points</h4>
+              <ul class="sofka-persona-list">
+                <li data-i18n="sofka-persona-pain-1">Pierde tiempo buscando el botón para agregar un producto nuevo</li>
+                <li data-i18n="sofka-persona-pain-2">No hay fecha visible en el Home — no sabe si el inventario está al día</li>
+                <li data-i18n="sofka-persona-pain-3">La app no diferencia las acciones cotidianas de las secundarias</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S5: Análisis heurístico -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="sofka-s5-title">Análisis heurístico</h2>
+        <p class="case-hero-desc" style="margin-bottom: 28px; max-width: 54ch;" data-i18n="sofka-s5-intro">
+          Se identificaron los principales problemas de usabilidad en 4 pantallas clave antes de proponer cualquier solución.
+        </p>
+        <div class="case-problem-grid case-problem-grid--4">
+          <div class="case-problem-card">
+            <h4 data-i18n="sofka-h1-title">Home vacío</h4>
+            <ul class="case-problem-list">
+              <li data-i18n="sofka-h1-li1"><strong>Flujos no priorizados:</strong> Las acciones para empezar se mezclan con las que dependen de tener inventario previo — sin diferenciación visual</li>
+              <li data-i18n="sofka-h1-li2"><strong>Incoherencia:</strong> Un usuario nuevo puede acceder a flujos que requieren registros previos (movimientos, documentos)</li>
+              <li data-i18n="sofka-h1-li3"><strong>Sin jerarquía secundaria:</strong> "Nuevo proveedor" y "nuevo cliente" están al mismo nivel visual que las acciones principales</li>
+            </ul>
+          </div>
+          <div class="case-problem-card">
+            <h4 data-i18n="sofka-h2-title">Home con datos</h4>
+            <ul class="case-problem-list">
+              <li data-i18n="sofka-h2-li1"><strong>Sin dashboard:</strong> Con inventario cargado, el usuario no ve métricas de volumen ni señales de alerta para priorizar sus acciones del día</li>
+              <li data-i18n="sofka-h2-li2"><strong>Sin diferenciación de frecuencia:</strong> Todas las acciones tienen la misma jerarquía visual, independiente de su frecuencia de uso real</li>
+              <li data-i18n="sofka-h2-li3"><strong>Redundancia:</strong> Dos botones de "Soporte" sin diferencia visual aparente entre ellos</li>
+            </ul>
+          </div>
+          <div class="case-problem-card">
+            <h4 data-i18n="sofka-h3-title">Agregar artículo</h4>
+            <ul class="case-problem-list">
+              <li data-i18n="sofka-h3-li1"><strong>Input confuso:</strong> El campo "Cantidad" parece editable pero no abre teclado al tocar — se controla solo con (+) y (−), sin indicación visual</li>
+              <li data-i18n="sofka-h3-li2"><strong>Campo oculto:</strong> El grupo/categoría no aparece en el formulario, obligando a un paso adicional para organizar el inventario</li>
+              <li data-i18n="sofka-h3-li3"><strong>Redundancia visual:</strong> Dos campos de carga de imagen generan confusión sobre la función de cada uno</li>
+            </ul>
+          </div>
+          <div class="case-problem-card">
+            <h4 data-i18n="sofka-h4-title">Flujo de bienes (vacío)</h4>
+            <ul class="case-problem-list">
+              <li data-i18n="sofka-h4-li1"><strong>Botones sin contexto:</strong> El ícono de "agregar" aparece en la card del Home, en la marca de agua y en el botón — sin indicar claramente la acción en ninguno</li>
+              <li data-i18n="sofka-h4-li2"><strong>Sin estado vacío orientado:</strong> No hay guía para el usuario que aún no tiene productos registrados — la pantalla simplemente aparece en blanco</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S6: Proceso de diseño -->
+    <div class="case-section case-section--alt">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="sofka-s6-title">Proceso de diseño</h2>
+        <p class="case-hero-desc" style="margin-bottom: 32px; max-width: 54ch;" data-i18n="sofka-s6-intro">
+          Un proceso estructurado en 3 fases — del análisis al prototipo — construyendo sobre hallazgos antes de proponer soluciones.
+        </p>
+        <div class="case-timeline">
+          <div class="case-timeline-rail"></div>
+          <div class="case-timeline-cols">
+
+            <div class="case-timeline-col">
+              <div class="case-timeline-dot"></div>
+              <p class="case-timeline-period" data-i18n="sofka-phase-1">Fase 1</p>
+              <h3 class="case-timeline-theme" data-i18n="sofka-phase-1-theme">Descubrimiento</h3>
+              <ul class="case-timeline-items">
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">01</span>
+                  <span class="case-timeline-item-title" data-i18n="sofka-t1-title">Análisis de la app existente</span>
+                  <span class="case-timeline-item-desc" data-i18n="sofka-t1-desc">Revisión de flujos de Home, Stock y alta de artículos en la app actual</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">02</span>
+                  <span class="case-timeline-item-title" data-i18n="sofka-t2-title">Análisis heurístico</span>
+                  <span class="case-timeline-item-desc" data-i18n="sofka-t2-desc">Identificación de 10+ problemas de usabilidad en 4 pantallas clave</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">03</span>
+                  <span class="case-timeline-item-title" data-i18n="sofka-t3-title">Revisión de reseñas</span>
+                  <span class="case-timeline-item-desc" data-i18n="sofka-t3-desc">1.265 reseñas detractoras — usabilidad como punto de fricción constante en Play Store</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="case-timeline-col">
+              <div class="case-timeline-dot"></div>
+              <p class="case-timeline-period" data-i18n="sofka-phase-2">Fase 2</p>
+              <h3 class="case-timeline-theme" data-i18n="sofka-phase-2-theme">Definición</h3>
+              <ul class="case-timeline-items">
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">04</span>
+                  <span class="case-timeline-item-title" data-i18n="sofka-t4-title">User Persona</span>
+                  <span class="case-timeline-item-desc" data-i18n="sofka-t4-desc">Perfil de María González — administradora pyme, sesiones diarias cortas en contexto móvil</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">05</span>
+                  <span class="case-timeline-item-title" data-i18n="sofka-t5-title">Problem Statement</span>
+                  <span class="case-timeline-item-desc" data-i18n="sofka-t5-desc">Acciones no priorizadas, información crítica no visible, flujos inconsistentes</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">06</span>
+                  <span class="case-timeline-item-title" data-i18n="sofka-t6-title">Hipótesis de propuesta</span>
+                  <span class="case-timeline-item-desc" data-i18n="sofka-t6-desc">+30% suscripciones anuales estimadas → $21.280.000 escenario moderado (380 usuarios)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="case-timeline-col">
+              <div class="case-timeline-dot"></div>
+              <p class="case-timeline-period" data-i18n="sofka-phase-3">Fase 3</p>
+              <h3 class="case-timeline-theme" data-i18n="sofka-phase-3-theme">Diseño</h3>
+              <ul class="case-timeline-items">
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">07</span>
+                  <span class="case-timeline-item-title" data-i18n="sofka-t7-title">Design System</span>
+                  <span class="case-timeline-item-desc" data-i18n="sofka-t7-desc">Estilos, tokens CSS, Atomic Design y documentación pública en repositorio GitHub</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">08</span>
+                  <span class="case-timeline-item-title" data-i18n="sofka-t8-title">UI — Home e Inventario</span>
+                  <span class="case-timeline-item-desc" data-i18n="sofka-t8-desc">Rediseño completo con acciones priorizadas, dashboard informativo e indicadores de stock con color</span>
+                </li>
+                <li class="case-timeline-item">
+                  <span class="case-timeline-item-num">09</span>
+                  <span class="case-timeline-item-title" data-i18n="sofka-t9-title">Prototipo</span>
+                  <span class="case-timeline-item-desc" data-i18n="sofka-t9-desc">Flujos interactivos con criterios WCAG AA y criterios de aceptación definidos y medibles</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S7: Design System -->
+    <div class="case-section">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="sofka-s7-title">Design System</h2>
+        <div class="case-insight">
+          <p data-i18n-html="sofka-s7-insight">Se construyó y escaló un Design System completo — desde la definición de estilos con <strong>Atomic Design</strong> hasta la <strong>tokenización con CSS</strong> puro y publicación en repositorio público de GitHub. Consumible por cualquier tecnología frontend sin dependencias externas.</p>
+        </div>
+        <div class="sofka-ds-features">
+          <div class="sofka-ds-feature">
+            <span class="fidu-flow-num">01</span>
+            <div>
+              <strong data-i18n="sofka-ds-f1-title">Paleta accesible</strong>
+              <p data-i18n="sofka-ds-f1-desc">Construida sobre 3 criterios en jerarquía: contraste WCAG 2.1 AA, coherencia semántica y adaptabilidad a dark mode. Todos los pares de color verificados antes de tokenizar.</p>
+            </div>
+          </div>
+          <div class="sofka-ds-feature">
+            <span class="fidu-flow-num">02</span>
+            <div>
+              <strong data-i18n="sofka-ds-f2-title">Tipografía Poppins</strong>
+              <p data-i18n="sofka-ds-f2-desc">Seleccionada por geometría clara, apertura amplia y rendimiento en dispositivos de gama media — contexto real de uso en pymes colombianas. Subset latin para tiempo de carga bajo.</p>
+            </div>
+          </div>
+          <div class="sofka-ds-feature">
+            <span class="fidu-flow-num">03</span>
+            <div>
+              <strong data-i18n="sofka-ds-f3-title">Atomic Design</strong>
+              <p data-i18n="sofka-ds-f3-desc">Átomos (checkbox) → Moléculas (casilla) → Componentes (dropdown). Botones, tags, cards, inputs y gráficas estandarizados y documentados.</p>
+            </div>
+          </div>
+          <div class="sofka-ds-feature">
+            <span class="fidu-flow-num">04</span>
+            <div>
+              <strong data-i18n="sofka-ds-f4-title">Tokens CSS + repositorio público</strong>
+              <p data-i18n="sofka-ds-f4-desc">Tokens implementados en CSS variables nativas. Documentación con terminología consistente generada con apoyo de IA y publicada en GitHub Pages.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 36px;">
+          <a href="https://juanfonseca46.github.io/sofka-ds/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--icon">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            <span data-i18n="sofka-ds-btn">Ver Design System</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- S8: Prototipo -->
+    <div class="case-section case-section--alt">
+      <div class="container">
+        <h2 class="case-section-title" data-i18n="sofka-s8-title">Prototipo</h2>
+        <div class="case-insight">
+          <p data-i18n-html="sofka-s8-insight">Flujos interactivos del <strong>Home rediseñado</strong> y el <strong>módulo de Inventario</strong>, priorizando las acciones más frecuentes, con indicadores de stock claros y criterios de accesibilidad WCAG AA validados en cada componente.</p>
+        </div>
+        <div style="margin-top: 32px;">
+          <a href="https://www.figma.com/proto/sofka-inventario" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--icon">
+            <!-- TODO: reemplazar con URL real del prototipo en Figma -->
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <span data-i18n="sofka-proto-btn">Ver prototipo en Figma</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="site-footer__inner">
+          <div class="footer-brand">
+            <span class="footer-name">Juan Fonseca<span>.</span></span>
+            <span class="footer-role">Product Designer · UX/UI Designer</span>
+          </div>
+          <div class="footer-actions">
+            <a href="mailto:juanfonseca46@gmail.com" class="btn btn--ghost btn--icon" aria-label="Enviar email">
+              <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+              Email
+            </a>
+            <a href="https://www.linkedin.com/in/juancarlosfonseca/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--icon" aria-label="LinkedIn">
+              <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /view-case-sofka -->
+
+
+  <!-- ============================================================
        JAVASCRIPT — Phase 1
        ============================================================ -->
   <script>
@@ -4693,6 +5295,49 @@
         'fidu-project-desc': 'Fiduciaria de Bogotá · Apertura del FIC Cubrir Internacional transformada de un proceso presencial de +1 semana a un flujo 100% digital en app.',
         'sofka-project-name': 'Manejo de inventario en pyme',
         'sofka-project-desc': 'Sofka · Rediseño de app de gestión de inventario: priorización de flujos, Design System escalable con Atomic Design y prototipos con criterios de accesibilidad WCAG AA.',
+        // Sofka case study
+        'sofka-hero-title': 'Rediseño de app de gestión<br>de inventario para pymes',
+        'sofka-hero-desc': 'A partir de una app existente con 4.7 ⭐ en Play Store, se identificaron los principales puntos de fricción en la usabilidad y se planteó un rediseño completo de flujos e interfaz. El objetivo: que el usuario sepa en todo momento qué está pasando con su inventario y qué debe hacer a continuación.',
+        'sofka-meta': 'Sofka · Colombia · 2025',
+        'sofka-s1-title': 'El reto', 'sofka-s1-insight': 'Se requiere un rediseño que ajuste la interfaz y los flujos para crear una experiencia de gestión <strong>sencilla, rápida y orientada a la acción</strong>. El objetivo es que el usuario sepa en todo momento qué está pasando con su inventario y qué debe hacer a continuación.',
+        'sofka-reto-c1-title': 'Alcance del rediseño', 'sofka-reto-c1-body': 'El rediseño aplica únicamente a la app móvil — pantallas de Home y Stock. Aunque la plataforma es multidispositivo, el foco estuvo en el canal de mayor fricción reportada.',
+        'sofka-reto-c1-li1': 'Home vacío y Home con datos de inventario', 'sofka-reto-c1-li2': 'Flujo de inventario / Stock', 'sofka-reto-c1-li3': 'Flujos de alta y gestión de productos',
+        'sofka-reto-c2-title': 'Contexto del usuario', 'sofka-reto-c2-body': 'La app es usada por pymes para mantener información del inventario y llevar un registro de movimientos transaccionales — entradas y salidas de mercancía.',
+        'sofka-reto-c2-li1': 'Administradores de almacén o dueños de negocio', 'sofka-reto-c2-li2': 'Sesiones diarias cortas, orientadas a tareas concretas', 'sofka-reto-c2-li3': 'Contexto móvil en tienda o bodega, con conexión variable',
+        'sofka-s2-title': 'Descripción', 'sofka-s2-intro': 'Para acotar el alcance del proyecto, se establecieron interpretaciones clave sobre el reto inicial.',
+        'sofka-interp-1': 'El rediseño aplica exclusivamente a la app móvil — pantallas de Home y Stock — aunque la plataforma es multidispositivo.',
+        'sofka-interp-2': 'El trabajo no es solo de UI: se requiere un ajuste de flujos para mejorar la experiencia, por lo que se construyeron diagramas de flujo como parte del proceso.',
+        'sofka-interp-3': 'El público objetivo son pymes, por lo que la app es usada tanto para mantener la información del inventario como para llevar un registro de movimientos transaccionales.',
+        'sofka-s3-title': 'Design statement', 'sofka-statement': 'Los administradores de negocios pyme necesitan ver su inventario, llevar el conteo de los movimientos recientes e identificar cuáles son las acciones más importantes que deben realizar de acuerdo al estado de sus productos. En la app actual el usuario se pierde entre pantallas y acciones no priorizadas, la información crítica no es clara ni visible a primera vista.',
+        'sofka-stat1': 'Valoración en Google Play Store', 'sofka-stat2': 'Reseñas detractoras (1–3 estrellas)', 'sofka-stat3': 'De usuarios insatisfechos con la usabilidad',
+        'sofka-s4-title': 'User persona', 'sofka-persona-role': 'Administradora del almacén · Retail / Moda · 32 años',
+        'sofka-persona-ctx-title': 'Contexto', 'sofka-persona-ctx-1': 'Administra Bambino, tienda de ropa con 230 clientes mensuales', 'sofka-persona-ctx-2': '3 categorías · 5 productos por categoría', 'sofka-persona-ctx-3': 'Gestiona el stock al cierre de cada jornada', 'sofka-persona-ctx-4': 'Presenta informes mensuales a los dueños',
+        'sofka-persona-tasks-title': 'Tareas principales', 'sofka-persona-task-1': 'Revisar el estado del inventario al comenzar el día', 'sofka-persona-task-2': 'Identificar productos con stock bajo o agotado', 'sofka-persona-task-3': 'Solicitar reposición a proveedores', 'sofka-persona-task-4': 'Registrar movimientos de entrada y salida',
+        'sofka-persona-pain-title': 'Pain points', 'sofka-persona-pain-1': 'Pierde tiempo buscando el botón para agregar un producto nuevo', 'sofka-persona-pain-2': 'No hay fecha visible en el Home — no sabe si el inventario está al día', 'sofka-persona-pain-3': 'La app no diferencia las acciones cotidianas de las secundarias',
+        'sofka-s5-title': 'Análisis heurístico', 'sofka-s5-intro': 'Se identificaron los principales problemas de usabilidad en 4 pantallas clave antes de proponer cualquier solución.',
+        'sofka-h1-title': 'Home vacío', 'sofka-h1-li1': '<strong>Flujos no priorizados:</strong> Las acciones para empezar se mezclan con las que dependen de tener inventario previo', 'sofka-h1-li2': '<strong>Incoherencia:</strong> Un usuario nuevo puede acceder a flujos que requieren registros previos', 'sofka-h1-li3': '<strong>Sin jerarquía secundaria:</strong> "Nuevo proveedor" y "nuevo cliente" al mismo nivel que las acciones principales',
+        'sofka-h2-title': 'Home con datos', 'sofka-h2-li1': '<strong>Sin dashboard:</strong> Con inventario cargado, el usuario no ve métricas de volumen ni alertas para priorizar acciones', 'sofka-h2-li2': '<strong>Sin diferenciación de frecuencia:</strong> Todas las acciones tienen la misma jerarquía visual', 'sofka-h2-li3': '<strong>Redundancia:</strong> Dos botones de "Soporte" sin diferencia visual entre ellos',
+        'sofka-h3-title': 'Agregar artículo', 'sofka-h3-li1': '<strong>Input confuso:</strong> Campo "Cantidad" parece editable pero no abre teclado — se controla con (+) y (−) sin indicación', 'sofka-h3-li2': '<strong>Campo oculto:</strong> El grupo/categoría no aparece en el formulario, obligando a un paso adicional', 'sofka-h3-li3': '<strong>Redundancia visual:</strong> Dos campos de carga de imagen sin claridad sobre la función de cada uno',
+        'sofka-h4-title': 'Flujo de bienes (vacío)', 'sofka-h4-li1': '<strong>Botones sin contexto:</strong> El ícono de "agregar" aparece en tres lugares distintos sin indicar claramente la acción', 'sofka-h4-li2': '<strong>Sin estado vacío orientado:</strong> No hay guía para el usuario sin productos registrados',
+        'sofka-s6-title': 'Proceso de diseño', 'sofka-s6-intro': 'Un proceso estructurado en 3 fases — del análisis al prototipo — construyendo sobre hallazgos antes de proponer soluciones.',
+        'sofka-phase-1': 'Fase 1', 'sofka-phase-1-theme': 'Descubrimiento', 'sofka-phase-2': 'Fase 2', 'sofka-phase-2-theme': 'Definición', 'sofka-phase-3': 'Fase 3', 'sofka-phase-3-theme': 'Diseño',
+        'sofka-t1-title': 'Análisis de la app existente', 'sofka-t1-desc': 'Revisión de flujos de Home, Stock y alta de artículos en la app actual',
+        'sofka-t2-title': 'Análisis heurístico', 'sofka-t2-desc': 'Identificación de 10+ problemas de usabilidad en 4 pantallas clave',
+        'sofka-t3-title': 'Revisión de reseñas', 'sofka-t3-desc': '1.265 reseñas detractoras — usabilidad como punto de fricción constante en Play Store',
+        'sofka-t4-title': 'User Persona', 'sofka-t4-desc': 'Perfil de María González — administradora pyme, sesiones diarias cortas en contexto móvil',
+        'sofka-t5-title': 'Problem Statement', 'sofka-t5-desc': 'Acciones no priorizadas, información crítica no visible, flujos inconsistentes',
+        'sofka-t6-title': 'Hipótesis de propuesta', 'sofka-t6-desc': '+30% suscripciones anuales estimadas → $21.280.000 escenario moderado (380 usuarios)',
+        'sofka-t7-title': 'Design System', 'sofka-t7-desc': 'Estilos, tokens CSS, Atomic Design y documentación pública en repositorio GitHub',
+        'sofka-t8-title': 'UI — Home e Inventario', 'sofka-t8-desc': 'Rediseño completo con acciones priorizadas, dashboard informativo e indicadores de stock con color',
+        'sofka-t9-title': 'Prototipo', 'sofka-t9-desc': 'Flujos interactivos con criterios WCAG AA y criterios de aceptación definidos y medibles',
+        'sofka-s7-title': 'Design System', 'sofka-s7-insight': 'Se construyó y escaló un Design System completo — desde la definición de estilos con <strong>Atomic Design</strong> hasta la <strong>tokenización con CSS</strong> puro y publicación en repositorio público de GitHub. Consumible por cualquier tecnología frontend sin dependencias externas.',
+        'sofka-ds-f1-title': 'Paleta accesible', 'sofka-ds-f1-desc': 'Construida sobre 3 criterios en jerarquía: contraste WCAG 2.1 AA, coherencia semántica y adaptabilidad a dark mode. Todos los pares verificados antes de tokenizar.',
+        'sofka-ds-f2-title': 'Tipografía Poppins', 'sofka-ds-f2-desc': 'Seleccionada por geometría clara, apertura amplia y rendimiento en dispositivos de gama media — contexto real de uso en pymes colombianas.',
+        'sofka-ds-f3-title': 'Atomic Design', 'sofka-ds-f3-desc': 'Átomos (checkbox) → Moléculas (casilla) → Componentes (dropdown). Botones, tags, cards, inputs y gráficas estandarizados y documentados.',
+        'sofka-ds-f4-title': 'Tokens CSS + repositorio público', 'sofka-ds-f4-desc': 'Tokens en CSS variables nativas. Documentación con terminología consistente generada con apoyo de IA y publicada en GitHub Pages.',
+        'sofka-ds-btn': 'Ver Design System',
+        'sofka-s8-title': 'Prototipo', 'sofka-s8-insight': 'Flujos interactivos del <strong>Home rediseñado</strong> y el <strong>módulo de Inventario</strong>, priorizando las acciones más frecuentes, con indicadores de stock claros y criterios WCAG AA validados en cada componente.',
+        'sofka-proto-btn': 'Ver prototipo en Figma',
         'view-case-study': 'Ver caso de estudio',
         // Contact
         'contact-headline': '¿Quieres que trabajemos?', 'contact-sub': 'Empecemos tomándonos un café.',
@@ -4939,6 +5584,49 @@
         'fidu-project-desc': 'Fiduciaria de Bogotá · Opening of the FIC Cubrir Internacional transformed from an in-person process of over a week to a 100% digital flow in the app.',
         'sofka-project-name': 'Inventory management for SMEs',
         'sofka-project-desc': 'Sofka · Inventory management app redesign: flow prioritization, scalable Design System with Atomic Design, and prototypes meeting WCAG AA accessibility criteria.',
+        // Sofka case study
+        'sofka-hero-title': 'Inventory management app<br>redesign for SMEs',
+        'sofka-hero-desc': 'Starting from an existing app with 4.7 ⭐ on the Play Store, the main usability friction points were identified and a full redesign of flows and interface was proposed. The goal: users should always know what is happening with their inventory and what to do next.',
+        'sofka-meta': 'Sofka · Colombia · 2025',
+        'sofka-s1-title': 'The challenge', 'sofka-s1-insight': 'A redesign was required to adjust the interface and flows to create a <strong>simple, fast, and action-oriented</strong> management experience. The goal is for the user to always know what is happening with their inventory and what to do next.',
+        'sofka-reto-c1-title': 'Redesign scope', 'sofka-reto-c1-body': 'The redesign applies only to the mobile app — Home and Stock screens. Although the platform is multi-device, the focus was on the channel with the most reported friction.',
+        'sofka-reto-c1-li1': 'Empty Home and Home with inventory data', 'sofka-reto-c1-li2': 'Inventory / Stock flow', 'sofka-reto-c1-li3': 'Product creation and management flows',
+        'sofka-reto-c2-title': 'User context', 'sofka-reto-c2-body': 'The app is used by SMEs to maintain inventory information and track transactional movements — incoming and outgoing goods.',
+        'sofka-reto-c2-li1': 'Warehouse managers or business owners', 'sofka-reto-c2-li2': 'Daily short sessions, task-oriented', 'sofka-reto-c2-li3': 'Mobile context in store or warehouse, with variable connectivity',
+        'sofka-s2-title': 'Description', 'sofka-s2-intro': 'To define the project scope, key interpretations of the initial challenge were established.',
+        'sofka-interp-1': 'The redesign applies exclusively to the mobile app — Home and Stock screens — although the platform is multi-device.',
+        'sofka-interp-2': 'The work is not just UI: flow adjustments are required to improve the experience, so flow diagrams were built as part of the process.',
+        'sofka-interp-3': 'The target audience is SMEs, so the app is used both to maintain inventory information and to track transactional movements.',
+        'sofka-s3-title': 'Design statement', 'sofka-statement': 'SME business administrators need to view their inventory, track recent movements, and identify which actions are most important based on their product status. In the current app, the user gets lost between screens and unprioritized actions — critical information is not clear or visible at first glance.',
+        'sofka-stat1': 'Rating on Google Play Store', 'sofka-stat2': 'Negative reviews (1–3 stars)', 'sofka-stat3': 'Of users unsatisfied with usability',
+        'sofka-s4-title': 'User persona', 'sofka-persona-role': 'Store administrator · Retail / Fashion · 32 years old',
+        'sofka-persona-ctx-title': 'Context', 'sofka-persona-ctx-1': 'Manages Bambino, a clothing store with 230 monthly customers', 'sofka-persona-ctx-2': '3 product categories · 5 products per category', 'sofka-persona-ctx-3': 'Manages stock at the end of each workday', 'sofka-persona-ctx-4': 'Presents monthly reports to the owners',
+        'sofka-persona-tasks-title': 'Main tasks', 'sofka-persona-task-1': 'Review inventory status at the start of the day', 'sofka-persona-task-2': 'Identify low-stock or out-of-stock products', 'sofka-persona-task-3': 'Request restocking from suppliers', 'sofka-persona-task-4': 'Record incoming and outgoing movements',
+        'sofka-persona-pain-title': 'Pain points', 'sofka-persona-pain-1': 'Wastes time looking for the button to add a new product', 'sofka-persona-pain-2': 'No date visible on Home — does not know if inventory is up to date', 'sofka-persona-pain-3': 'The app does not differentiate daily actions from secondary ones',
+        'sofka-s5-title': 'Heuristic analysis', 'sofka-s5-intro': 'The main usability issues were identified in 4 key screens before proposing any solution.',
+        'sofka-h1-title': 'Empty Home', 'sofka-h1-li1': '<strong>Unprioritized flows:</strong> Actions to get started are mixed with those that require existing inventory', 'sofka-h1-li2': '<strong>Inconsistency:</strong> A new user can access flows that require previous records', 'sofka-h1-li3': '<strong>No secondary hierarchy:</strong> "New supplier" and "new customer" at the same visual level as primary actions',
+        'sofka-h2-title': 'Home with data', 'sofka-h2-li1': '<strong>No dashboard:</strong> With inventory loaded, the user sees no volume metrics or alerts to prioritize actions', 'sofka-h2-li2': '<strong>No frequency differentiation:</strong> All actions have the same visual hierarchy regardless of frequency', 'sofka-h2-li3': '<strong>Redundancy:</strong> Two "Support" buttons with no visual difference between them',
+        'sofka-h3-title': 'Add item', 'sofka-h3-li1': '<strong>Confusing input:</strong> "Quantity" field appears editable but does not open keyboard on tap — controlled only with (+) and (−)', 'sofka-h3-li2': '<strong>Hidden field:</strong> Group/category does not appear in the form, requiring an extra step to organize inventory', 'sofka-h3-li3': '<strong>Visual redundancy:</strong> Two image upload fields with no clarity about the function of each',
+        'sofka-h4-title': 'Goods flow (empty)', 'sofka-h4-li1': '<strong>Buttons without context:</strong> The "add" icon appears in three different places without clearly indicating the action', 'sofka-h4-li2': '<strong>No guided empty state:</strong> No guidance for the user who has no registered products yet',
+        'sofka-s6-title': 'Design process', 'sofka-s6-intro': 'A structured 3-phase process — from analysis to validated prototype — building on findings before proposing solutions.',
+        'sofka-phase-1': 'Phase 1', 'sofka-phase-1-theme': 'Discovery', 'sofka-phase-2': 'Phase 2', 'sofka-phase-2-theme': 'Definition', 'sofka-phase-3': 'Phase 3', 'sofka-phase-3-theme': 'Design',
+        'sofka-t1-title': 'Existing app analysis', 'sofka-t1-desc': 'Review of Home, Stock, and item creation flows in the current app',
+        'sofka-t2-title': 'Heuristic analysis', 'sofka-t2-desc': '10+ usability issues identified across 4 key screens',
+        'sofka-t3-title': 'Review analysis', 'sofka-t3-desc': '1,265 negative reviews — usability as constant friction point on Play Store',
+        'sofka-t4-title': 'User Persona', 'sofka-t4-desc': 'Profile of María González — SME administrator, short daily sessions in mobile context',
+        'sofka-t5-title': 'Problem Statement', 'sofka-t5-desc': 'Unprioritized actions, critical information not visible, inconsistent flows',
+        'sofka-t6-title': 'Proposal hypothesis', 'sofka-t6-desc': '+30% estimated annual subscriptions → $21,280,000 moderate scenario (380 users)',
+        'sofka-t7-title': 'Design System', 'sofka-t7-desc': 'Styles, CSS tokens, Atomic Design, and public documentation in GitHub repository',
+        'sofka-t8-title': 'UI — Home & Inventory', 'sofka-t8-desc': 'Full redesign with prioritized actions, informative dashboard, and color-coded stock indicators',
+        'sofka-t9-title': 'Prototype', 'sofka-t9-desc': 'Interactive flows with WCAG AA criteria and defined, measurable acceptance criteria',
+        'sofka-s7-title': 'Design System', 'sofka-s7-insight': 'A complete Design System was built and scaled — from style definition using <strong>Atomic Design</strong> to <strong>CSS tokenization</strong> and publication in a public GitHub repository. Consumable by any frontend technology without external dependencies.',
+        'sofka-ds-f1-title': 'Accessible palette', 'sofka-ds-f1-desc': 'Built on 3 hierarchical criteria: WCAG 2.1 AA contrast, semantic consistency, and dark mode adaptability. All color pairs verified before tokenization.',
+        'sofka-ds-f2-title': 'Poppins typography', 'sofka-ds-f2-desc': 'Selected for clear geometry, wide aperture, and performance on mid-range devices — the real context of Colombian SMEs.',
+        'sofka-ds-f3-title': 'Atomic Design', 'sofka-ds-f3-desc': 'Atoms (checkbox) → Molecules (field) → Components (dropdown). Buttons, tags, cards, inputs, and charts standardized and documented.',
+        'sofka-ds-f4-title': 'CSS tokens + public repository', 'sofka-ds-f4-desc': 'Tokens implemented as native CSS variables. Documentation with consistent terminology generated with AI assistance and published on GitHub Pages.',
+        'sofka-ds-btn': 'View Design System',
+        'sofka-s8-title': 'Prototype', 'sofka-s8-insight': 'Interactive flows for the <strong>redesigned Home</strong> and the <strong>Inventory module</strong>, prioritizing the most frequent actions, with clear stock indicators and WCAG AA accessibility criteria validated in every component.',
+        'sofka-proto-btn': 'View Figma prototype',
         'view-case-study': 'View case study',
         // Contact
         'contact-headline': 'Want to work together?', 'contact-sub': "Let's start with a coffee.",
