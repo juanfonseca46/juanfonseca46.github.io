@@ -2720,11 +2720,11 @@
       object-fit: contain;
     }
 
-    /* Wireframes grid — 6 items, 3 cols */
+    /* Wireframes grid — 7 items, 3 cols */
     .sofka-wireframes {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 20px;
       max-width: 860px;
       margin: 0 auto 40px;
     }
@@ -2736,33 +2736,51 @@
       .sofka-wireframes { grid-template-columns: 1fr; }
     }
 
+    /* Center the lone 7th item in a 3-col grid */
+    .sofka-wireframes .sofka-wireframe:last-child:nth-child(3n+1) {
+      grid-column: 2;
+    }
+    @media (max-width: 720px) {
+      .sofka-wireframes .sofka-wireframe:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 260px;
+        justify-self: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .sofka-wireframes .sofka-wireframe:last-child:nth-child(odd) {
+        max-width: 100%;
+        justify-self: stretch;
+      }
+    }
+
     .sofka-wireframe {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .sofka-wireframe-img {
       border-radius: var(--r-md);
       overflow: hidden;
       border: 1px solid var(--border);
       background: var(--bg-surface);
-      aspect-ratio: 9 / 16;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
     }
 
-    .sofka-wireframe img {
+    .sofka-wireframe-img img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
     }
 
-    .sofka-wireframe--empty {
-      background: repeating-linear-gradient(
-        -45deg,
-        var(--bg-surface),
-        var(--bg-surface) 4px,
-        var(--bg-elevated) 4px,
-        var(--bg-elevated) 8px
-      );
-      border-style: dashed;
+    .sofka-wireframe-caption {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      letter-spacing: 0.03em;
     }
 
     /* ============================================================
@@ -4953,14 +4971,36 @@
           </video>
         </div>
 
-        <!-- Wireframes — 6 slots, se llenan cuando el usuario comparte las imágenes -->
+        <!-- Wireframes — 7 pantallas del rediseño -->
         <div class="sofka-wireframes" id="sofka-wireframes">
-          <!-- slot 1 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
-          <!-- slot 2 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
-          <!-- slot 3 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
-          <!-- slot 4 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
-          <!-- slot 5 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
-          <!-- slot 6 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
+          <figure class="sofka-wireframe">
+            <div class="sofka-wireframe-img"><img src="./sofka ui/1.png" alt="Home empty" loading="lazy"></div>
+            <figcaption class="sofka-wireframe-caption">Home empty</figcaption>
+          </figure>
+          <figure class="sofka-wireframe">
+            <div class="sofka-wireframe-img"><img src="./sofka ui/2.png" alt="Home fill" loading="lazy"></div>
+            <figcaption class="sofka-wireframe-caption">Home fill</figcaption>
+          </figure>
+          <figure class="sofka-wireframe">
+            <div class="sofka-wireframe-img"><img src="./sofka ui/3.png" alt="Home filtros" loading="lazy"></div>
+            <figcaption class="sofka-wireframe-caption">Home filtros</figcaption>
+          </figure>
+          <figure class="sofka-wireframe">
+            <div class="sofka-wireframe-img"><img src="./sofka ui/4.png" alt="Home dark mode" loading="lazy"></div>
+            <figcaption class="sofka-wireframe-caption">Home dark mode</figcaption>
+          </figure>
+          <figure class="sofka-wireframe">
+            <div class="sofka-wireframe-img"><img src="./sofka ui/5.png" alt="Acciones" loading="lazy"></div>
+            <figcaption class="sofka-wireframe-caption">Acciones</figcaption>
+          </figure>
+          <figure class="sofka-wireframe">
+            <div class="sofka-wireframe-img"><img src="./sofka ui/6.png" alt="Inventario" loading="lazy"></div>
+            <figcaption class="sofka-wireframe-caption">Inventario</figcaption>
+          </figure>
+          <figure class="sofka-wireframe">
+            <div class="sofka-wireframe-img"><img src="./sofka ui/7.png" alt="Inventario dark" loading="lazy"></div>
+            <figcaption class="sofka-wireframe-caption">Inventario dark</figcaption>
+          </figure>
         </div>
 
         <!-- CTA Figma -->
