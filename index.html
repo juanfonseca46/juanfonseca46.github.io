@@ -2699,6 +2699,72 @@
       margin: 0;
     }
 
+    /* Video embed — Sofka */
+    .sofka-video-wrap {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto 48px;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+      box-shadow: 0 8px 40px rgba(11, 19, 51, 0.10),
+                  0 2px 8px rgba(11, 19, 51, 0.06);
+    }
+
+    .sofka-video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+    }
+
+    /* Wireframes grid — 6 items, 3 cols */
+    .sofka-wireframes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto 40px;
+    }
+
+    @media (max-width: 720px) {
+      .sofka-wireframes { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .sofka-wireframes { grid-template-columns: 1fr; }
+    }
+
+    .sofka-wireframe {
+      border-radius: var(--r-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      aspect-ratio: 9 / 16;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sofka-wireframe img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sofka-wireframe--empty {
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--bg-surface),
+        var(--bg-surface) 4px,
+        var(--bg-elevated) 4px,
+        var(--bg-elevated) 8px
+      );
+      border-style: dashed;
+    }
+
     /* ============================================================
        ABOUT PAGE — sticky left · scrollable right
        ============================================================ */
@@ -4871,14 +4937,34 @@
       </div>
     </div>
 
-    <!-- S8: Prototipo -->
+    <!-- S8: UI y prototipo -->
     <div class="case-section case-section--alt">
       <div class="container">
-        <h2 class="case-section-title" data-i18n="sofka-s8-title">Prototipo</h2>
-        <div class="case-insight">
-          <p data-i18n-html="sofka-s8-insight">Flujos interactivos del <strong>Home rediseñado</strong> y el <strong>módulo de Inventario</strong>, priorizando las acciones más frecuentes, con indicadores de stock claros y criterios de accesibilidad WCAG AA validados en cada componente.</p>
+        <h2 class="case-section-title" data-i18n="sofka-s8-title">UI y prototipo</h2>
+        <p class="case-hero-desc" style="margin-bottom: 36px; max-width: 54ch; margin-left: auto; margin-right: auto; text-align: center;" data-i18n="sofka-s8-desc">
+          Rediseño completo de las pantallas de Home e Inventario, priorizando las acciones más frecuentes con indicadores de stock claros y criterios de accesibilidad WCAG AA.
+        </p>
+
+        <!-- Video -->
+        <div class="sofka-video-wrap">
+          <video class="sofka-video" controls preload="metadata" playsinline>
+            <source src="./sofka-prueba.mp4" type="video/mp4">
+            <source src="./sofka prueba.mov" type="video/quicktime">
+          </video>
         </div>
-        <div style="margin-top: 32px;">
+
+        <!-- Wireframes — 6 slots, se llenan cuando el usuario comparte las imágenes -->
+        <div class="sofka-wireframes" id="sofka-wireframes">
+          <!-- slot 1 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
+          <!-- slot 2 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
+          <!-- slot 3 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
+          <!-- slot 4 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
+          <!-- slot 5 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
+          <!-- slot 6 --><div class="sofka-wireframe sofka-wireframe--empty"></div>
+        </div>
+
+        <!-- CTA Figma -->
+        <div style="text-align: center; margin-top: 8px;">
           <a href="https://www.figma.com/proto/sofka-inventario" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--icon">
             <!-- TODO: reemplazar con URL real del prototipo en Figma -->
             <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -5336,7 +5422,8 @@
         'sofka-ds-f3-title': 'Atomic Design', 'sofka-ds-f3-desc': 'Átomos (checkbox) → Moléculas (casilla) → Componentes (dropdown). Botones, tags, cards, inputs y gráficas estandarizados y documentados.',
         'sofka-ds-f4-title': 'Tokens CSS + repositorio público', 'sofka-ds-f4-desc': 'Tokens en CSS variables nativas. Documentación con terminología consistente generada con apoyo de IA y publicada en GitHub Pages.',
         'sofka-ds-btn': 'Ver Design System',
-        'sofka-s8-title': 'Prototipo', 'sofka-s8-insight': 'Flujos interactivos del <strong>Home rediseñado</strong> y el <strong>módulo de Inventario</strong>, priorizando las acciones más frecuentes, con indicadores de stock claros y criterios WCAG AA validados en cada componente.',
+        'sofka-s8-title': 'UI y prototipo',
+        'sofka-s8-desc': 'Rediseño completo de las pantallas de Home e Inventario, priorizando las acciones más frecuentes con indicadores de stock claros y criterios de accesibilidad WCAG AA.',
         'sofka-proto-btn': 'Ver prototipo en Figma',
         'view-case-study': 'Ver caso de estudio',
         // Contact
@@ -5625,7 +5712,8 @@
         'sofka-ds-f3-title': 'Atomic Design', 'sofka-ds-f3-desc': 'Atoms (checkbox) → Molecules (field) → Components (dropdown). Buttons, tags, cards, inputs, and charts standardized and documented.',
         'sofka-ds-f4-title': 'CSS tokens + public repository', 'sofka-ds-f4-desc': 'Tokens implemented as native CSS variables. Documentation with consistent terminology generated with AI assistance and published on GitHub Pages.',
         'sofka-ds-btn': 'View Design System',
-        'sofka-s8-title': 'Prototype', 'sofka-s8-insight': 'Interactive flows for the <strong>redesigned Home</strong> and the <strong>Inventory module</strong>, prioritizing the most frequent actions, with clear stock indicators and WCAG AA accessibility criteria validated in every component.',
+        'sofka-s8-title': 'UI & prototype',
+        'sofka-s8-desc': 'Full redesign of the Home and Inventory screens, prioritizing the most frequent actions with clear stock indicators and WCAG AA accessibility criteria.',
         'sofka-proto-btn': 'View Figma prototype',
         'view-case-study': 'View case study',
         // Contact
