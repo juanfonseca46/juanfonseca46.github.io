@@ -2699,88 +2699,92 @@
       margin: 0;
     }
 
-    /* Video embed — Sofka */
-    .sofka-video-wrap {
-      width: 100%;
-      max-width: 860px;
-      margin: 0 auto 48px;
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #000;
-      box-shadow: 0 8px 40px rgba(11, 19, 51, 0.10),
-                  0 2px 8px rgba(11, 19, 51, 0.06);
+    /* ── Sofka UI carousel: GIF sticky-left + horizontal scroll ── */
+    .sofka-ui-wrap {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
     }
 
-    .sofka-video {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-height: 520px;
-      object-fit: contain;
-    }
-
-    /* Wireframes grid — 7 items, 3 cols */
-    .sofka-wireframes {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 860px;
-      margin: 0 auto 40px;
-    }
-
-    @media (max-width: 720px) {
-      .sofka-wireframes { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 480px) {
-      .sofka-wireframes { grid-template-columns: 1fr; }
-    }
-
-    /* Center the lone 7th item in a 3-col grid */
-    .sofka-wireframes .sofka-wireframe:last-child:nth-child(3n+1) {
-      grid-column: 2;
-    }
-    @media (max-width: 720px) {
-      .sofka-wireframes .sofka-wireframe:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
-        max-width: 260px;
-        justify-self: center;
-      }
-    }
-    @media (max-width: 480px) {
-      .sofka-wireframes .sofka-wireframe:last-child:nth-child(odd) {
-        max-width: 100%;
-        justify-self: stretch;
-      }
-    }
-
-    .sofka-wireframe {
+    /* GIF panel — sticky while carousel scrolls */
+    .sofka-gif-panel {
+      position: sticky;
+      top: 128px; /* nav 68 + back-bar 46 + 14px */
+      align-self: flex-start; /* required for sticky inside flex */
+      flex-shrink: 0;
+      width: 200px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
+    }
+
+    .sofka-gif-panel video {
+      width: 100%;
+      height: auto;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    .sofka-gif-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Horizontal scroll carousel */
+    .sofka-carousel {
+      flex: 1;
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 14px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .sofka-carousel::-webkit-scrollbar { height: 4px; }
+    .sofka-carousel::-webkit-scrollbar-track { background: transparent; }
+    .sofka-carousel::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .sofka-carousel-item {
+      flex-shrink: 0;
+      width: 190px;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       margin: 0;
     }
 
-    .sofka-wireframe-img {
-      border-radius: var(--r-md);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--bg-surface);
-      width: 100%;
-    }
-
-    .sofka-wireframe-img img {
+    .sofka-carousel-item img {
       width: 100%;
       height: auto;
+      border-radius: var(--r-md);
+      border: 1px solid var(--border);
       display: block;
     }
 
-    .sofka-wireframe-caption {
+    .sofka-carousel-caption {
       font-size: 0.75rem;
       font-weight: 600;
       color: var(--text-muted);
       text-align: center;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 640px) {
+      .sofka-ui-wrap { flex-direction: column; }
+      .sofka-gif-panel { position: static; width: 100%; max-width: 220px; }
+      .sofka-carousel-item { width: 160px; }
     }
 
     /* ============================================================
@@ -4963,44 +4967,50 @@
           Rediseño completo de las pantallas de Home e Inventario, priorizando las acciones más frecuentes con indicadores de stock claros y criterios de accesibilidad WCAG AA.
         </p>
 
-        <!-- Video -->
-        <div class="sofka-video-wrap">
-          <video class="sofka-video" controls preload="metadata" playsinline>
-            <source src="./sofka-prueba.mp4" type="video/mp4">
-            <source src="./sofka prueba.mov" type="video/quicktime">
-          </video>
-        </div>
+        <!-- Carrusel: GIF fijo izq + wireframes scroll horizontal -->
+        <div class="sofka-ui-wrap">
 
-        <!-- Wireframes — 7 pantallas del rediseño -->
-        <div class="sofka-wireframes" id="sofka-wireframes">
-          <figure class="sofka-wireframe">
-            <div class="sofka-wireframe-img"><img src="./sofka ui/1.png" alt="Home empty" loading="lazy"></div>
-            <figcaption class="sofka-wireframe-caption">Home empty</figcaption>
-          </figure>
-          <figure class="sofka-wireframe">
-            <div class="sofka-wireframe-img"><img src="./sofka ui/2.png" alt="Home fill" loading="lazy"></div>
-            <figcaption class="sofka-wireframe-caption">Home fill</figcaption>
-          </figure>
-          <figure class="sofka-wireframe">
-            <div class="sofka-wireframe-img"><img src="./sofka ui/3.png" alt="Home filtros" loading="lazy"></div>
-            <figcaption class="sofka-wireframe-caption">Home filtros</figcaption>
-          </figure>
-          <figure class="sofka-wireframe">
-            <div class="sofka-wireframe-img"><img src="./sofka ui/4.png" alt="Home dark mode" loading="lazy"></div>
-            <figcaption class="sofka-wireframe-caption">Home dark mode</figcaption>
-          </figure>
-          <figure class="sofka-wireframe">
-            <div class="sofka-wireframe-img"><img src="./sofka ui/5.png" alt="Acciones" loading="lazy"></div>
-            <figcaption class="sofka-wireframe-caption">Acciones</figcaption>
-          </figure>
-          <figure class="sofka-wireframe">
-            <div class="sofka-wireframe-img"><img src="./sofka ui/6.png" alt="Inventario" loading="lazy"></div>
-            <figcaption class="sofka-wireframe-caption">Inventario</figcaption>
-          </figure>
-          <figure class="sofka-wireframe">
-            <div class="sofka-wireframe-img"><img src="./sofka ui/7.png" alt="Inventario dark" loading="lazy"></div>
-            <figcaption class="sofka-wireframe-caption">Inventario dark</figcaption>
-          </figure>
+          <!-- GIF (video autoplay sin controles) -->
+          <div class="sofka-gif-panel">
+            <video autoplay loop muted playsinline>
+              <source src="./sofka-prueba.mp4" type="video/mp4">
+              <source src="./sofka prueba.mov" type="video/quicktime">
+            </video>
+            <span class="sofka-gif-label">Prototipo</span>
+          </div>
+
+          <!-- Imágenes en scroll horizontal -->
+          <div class="sofka-carousel">
+            <figure class="sofka-carousel-item">
+              <img src="./sofka ui/1.png" alt="Home empty" loading="lazy">
+              <figcaption class="sofka-carousel-caption">Home empty</figcaption>
+            </figure>
+            <figure class="sofka-carousel-item">
+              <img src="./sofka ui/2.png" alt="Home fill" loading="lazy">
+              <figcaption class="sofka-carousel-caption">Home fill</figcaption>
+            </figure>
+            <figure class="sofka-carousel-item">
+              <img src="./sofka ui/3.png" alt="Home filtros" loading="lazy">
+              <figcaption class="sofka-carousel-caption">Home filtros</figcaption>
+            </figure>
+            <figure class="sofka-carousel-item">
+              <img src="./sofka ui/4.png" alt="Home dark mode" loading="lazy">
+              <figcaption class="sofka-carousel-caption">Home dark mode</figcaption>
+            </figure>
+            <figure class="sofka-carousel-item">
+              <img src="./sofka ui/5.png" alt="Acciones" loading="lazy">
+              <figcaption class="sofka-carousel-caption">Acciones</figcaption>
+            </figure>
+            <figure class="sofka-carousel-item">
+              <img src="./sofka ui/6.png" alt="Inventario" loading="lazy">
+              <figcaption class="sofka-carousel-caption">Inventario</figcaption>
+            </figure>
+            <figure class="sofka-carousel-item">
+              <img src="./sofka ui/7.png" alt="Inventario dark" loading="lazy">
+              <figcaption class="sofka-carousel-caption">Inventario dark</figcaption>
+            </figure>
+          </div>
+
         </div>
 
         <!-- CTA Figma -->
