@@ -163,12 +163,158 @@
       transform: none;
     }
 
+    /* Reveal direction variants */
+    .reveal--left {
+      transform: translateX(-28px);
+    }
+    .reveal--right {
+      transform: translateX(28px);
+    }
+    .reveal--left.is-visible,
+    .reveal--right.is-visible {
+      transform: none;
+    }
+
+    /* Staggered delays for grid children */
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+    .reveal-d6 { transition-delay: 0.48s; }
+    .reveal-d7 { transition-delay: 0.56s; }
+
+    /* Scale-pop for dots, avatars, logos */
+    .reveal--pop {
+      transform: scale(0);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .reveal--pop.is-visible { transform: scale(1); }
+
+    /* ── Scroll progress bar ── */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--accent);
+      z-index: 200;
+      transition: none;
+      pointer-events: none;
+    }
+
+    /* ── Nav underline on hover ── */
+    .nav__links a {
+      position: relative;
+    }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+      transition: width 0.25s var(--ease-out), left 0.25s var(--ease-out);
+    }
+
+    .nav__links a:hover::after,
+    .nav__links a.active::after {
+      width: 60%;
+      left: 20%;
+    }
+
+    /* ── Card hover: scale + chevron slide + tag glow ── */
+    .project-card--horizontal .btn-icon {
+      transition: transform 220ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .project-card--horizontal:hover .btn-icon {
+        transform: translateX(4px);
+      }
+      .project-card--horizontal:hover .project-tag {
+        box-shadow: 0 0 8px rgba(79, 126, 255, 0.25);
+      }
+    }
+
+    /* ── Case study view fade-in ── */
+    .case-view {
+      opacity: 0;
+      transition: opacity 0.35s var(--ease-out);
+    }
+    .case-view.is-entering {
+      opacity: 1;
+    }
+    .case-view[hidden] {
+      opacity: 0;
+      transition: none;
+    }
+
+    /* Hero stagger for case studies */
+    .case-hero .case-logo-row,
+    .case-hero .case-hero-title,
+    .case-hero .case-hero-desc,
+    .case-hero .case-meta-row {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    }
+    .case-view.is-entering .case-hero .case-logo-row   { opacity: 1; transform: none; transition-delay: 0.05s; }
+    .case-view.is-entering .case-hero .case-hero-title  { opacity: 1; transform: none; transition-delay: 0.12s; }
+    .case-view.is-entering .case-hero .case-hero-desc   { opacity: 1; transform: none; transition-delay: 0.20s; }
+    .case-view.is-entering .case-hero .case-meta-row    { opacity: 1; transform: none; transition-delay: 0.28s; }
+
+    /* ── Accordion content fade ── */
+    .projects__accordion-overflow .project-card--horizontal {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out),
+                  border-color 220ms var(--ease-out), background 220ms var(--ease-out),
+                  box-shadow 220ms var(--ease-out);
+    }
+    .projects__accordion-body.is-open .project-card--horizontal {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Button ripple ── */
+    .btn { position: relative; overflow: hidden; }
+    .btn__ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(0);
+      animation: ripple-out 0.5s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes ripple-out {
+      to { transform: scale(3.5); opacity: 0; }
+    }
+
+    /* ── CountUp — numbers start invisible until animated ── */
+    .countup { display: inline-block; }
+
     @media (prefers-reduced-motion: reduce) {
-      .reveal {
+      .reveal,
+      .reveal--left,
+      .reveal--right,
+      .reveal--pop {
         opacity: 1;
         transform: none;
         transition: none;
       }
+      .scroll-progress { display: none; }
+      .case-view { opacity: 1; transition: none; }
+      .case-hero .case-logo-row,
+      .case-hero .case-hero-title,
+      .case-hero .case-hero-desc,
+      .case-hero .case-meta-row { opacity: 1; transform: none; transition: none; }
+      .projects__accordion-overflow .project-card--horizontal { opacity: 1; transform: none; }
+      .btn__ripple { display: none; }
     }
 
     /* ============================================================
@@ -1210,7 +1356,7 @@
       .project-card--horizontal:hover {
         border-color: rgba(255, 255, 255, 0.16);
         background: rgba(255, 255, 255, 0.055);
-        transform: translateY(-2px);
+        transform: translateY(-2px) scale(1.008);
         box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35),
                     0 2px 8px rgba(0, 0, 0, 0.22);
       }
@@ -2870,6 +3016,9 @@
 </head>
 <body>
 
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
   <!-- Cursor glow -->
   <div id="cursor-glow" aria-hidden="true"></div>
 
@@ -3009,10 +3158,10 @@
         </div>
 
         <!-- Right: strength list -->
-        <div class="reveal" style="transition-delay: 0.12s;">
+        <div>
           <ul class="strength-list">
 
-            <li class="strength-item">
+            <li class="strength-item reveal reveal-d1">
               <div class="strength-icon" aria-hidden="true">
                 <!-- Design Systems icon -->
                 <svg viewBox="0 0 24 24">
@@ -3028,7 +3177,7 @@
               </div>
             </li>
 
-            <li class="strength-item">
+            <li class="strength-item reveal reveal-d2">
               <div class="strength-icon" aria-hidden="true">
                 <!-- Product Thinking icon -->
                 <svg viewBox="0 0 24 24">
@@ -3042,7 +3191,7 @@
               </div>
             </li>
 
-            <li class="strength-item">
+            <li class="strength-item reveal reveal-d3">
               <div class="strength-icon" aria-hidden="true">
                 <!-- Bank/Fintech icon -->
                 <svg viewBox="0 0 24 24">
@@ -3057,7 +3206,7 @@
               </div>
             </li>
 
-            <li class="strength-item">
+            <li class="strength-item reveal reveal-d4">
               <div class="strength-icon" aria-hidden="true">
                 <!-- Research icon -->
                 <svg viewBox="0 0 24 24">
@@ -3072,7 +3221,7 @@
             </li>
 
 
-            <li class="strength-item">
+            <li class="strength-item reveal reveal-d5">
               <div class="strength-icon" aria-hidden="true">
                 <!-- Accessibility icon -->
                 <svg viewBox="0 0 24 24">
@@ -5115,6 +5264,97 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+    // ── Auto-reveal for case study elements ──────────────────────
+    function initCaseReveals(container) {
+      const selectors = [
+        '.case-section-title',
+        '.case-insight',
+        '.case-problem-card',
+        '.case-stat',
+        '.fidu-logro',
+        '.fidu-flow-step',
+        '.case-timeline-col',
+        '.sofka-persona',
+        '.sofka-ds-feature',
+        '.case-statement',
+        '.sofka-carousel-item',
+      ];
+      const els = container.querySelectorAll(selectors.join(','));
+      let groupParent = null;
+      let groupIdx = 0;
+      els.forEach(el => {
+        if (el.classList.contains('reveal')) return;
+        el.classList.add('reveal');
+        const parent = el.parentElement;
+        if (parent !== groupParent) { groupParent = parent; groupIdx = 0; }
+        if (groupIdx > 0 && groupIdx <= 7) el.classList.add('reveal-d' + groupIdx);
+        groupIdx++;
+        revealObserver.observe(el);
+      });
+    }
+
+    // ── Scroll progress bar ──────────────────────────────────────
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      if (progressBar) {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = h > 0 ? ((window.scrollY / h) * 100) + '%' : '0%';
+      }
+    }, { passive: true });
+
+    // ── CountUp animation for stat numbers ───────────────────────
+    function animateCountUp(el) {
+      const raw = el.textContent.trim();
+      const match = raw.match(/^([+-]?)([\d.,]+)(.*)$/);
+      if (!match) return;
+      const prefix = match[1];
+      const numStr = match[2];
+      const suffix = match[3];
+      const hasComma = numStr.includes(',');
+      const hasDot = numStr.includes('.');
+      const target = parseFloat(numStr.replace(/,/g, '.').replace(/\.(?=.*\.)/g, ''));
+      const decimals = hasDot ? (numStr.split('.').pop() || '').length : 0;
+      const duration = 900;
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3);
+        let val = (target * ease).toFixed(decimals);
+        if (hasComma) val = val.replace('.', ',');
+        el.textContent = prefix + val + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const countObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCountUp(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.case-stat-num, .case-metric-value, .fidu-r3-value').forEach(el => {
+      countObserver.observe(el);
+    });
+
+    // ── Button ripple effect ─────────────────────────────────────
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn');
+      if (!btn || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const rect = btn.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'btn__ripple';
+      const size = Math.max(rect.width, rect.height) * 2;
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      btn.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+
     // ── Internal case study navigation ───────────────────────────
     const viewHome      = document.getElementById('view-home');
     const viewAboutPage = document.getElementById('view-sobre-mi');
@@ -5128,26 +5368,26 @@
     }
 
     function openCaseStudy(id) {
-      // Hide home
       if (viewHome) viewHome.hidden = true;
 
-      // Show requested case study
       const caseView = document.getElementById('view-case-' + id);
-      if (caseView) caseView.hidden = false;
-
-      // Scroll to top instantly (no animation — it's a page-level change)
+      if (!caseView) return;
+      caseView.hidden = false;
+      initCaseReveals(caseView);
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // Push state for browser back support
+      setTimeout(() => caseView.classList.add('is-entering'), 30);
+
       history.pushState({ caseStudy: id }, '', '#proyecto-' + id);
     }
 
     function closeCaseStudy() {
-      // Show home
       if (viewHome) viewHome.hidden = false;
 
-      // Hide all case study views
-      document.querySelectorAll('.case-view').forEach(v => v.hidden = true);
+      document.querySelectorAll('.case-view').forEach(v => {
+        v.classList.remove('is-entering');
+        v.hidden = true;
+      });
 
       window.scrollTo({ top: 0, behavior: 'instant' });
       history.pushState({ caseStudy: null }, '', window.location.pathname);
