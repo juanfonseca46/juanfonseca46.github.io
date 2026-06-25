@@ -5395,8 +5395,11 @@
 
     function openAboutPage() {
       if (viewHome) viewHome.hidden = true;
-      document.querySelectorAll('.case-view').forEach(v => v.hidden = true);
-      if (viewAboutPage) viewAboutPage.hidden = false;
+      document.querySelectorAll('.case-view').forEach(v => { v.hidden = true; v.classList.remove('is-entering'); });
+      if (viewAboutPage) {
+        viewAboutPage.hidden = false;
+        setTimeout(() => viewAboutPage.classList.add('is-entering'), 30);
+      }
       window.scrollTo({ top: 0, behavior: 'instant' });
       history.pushState({ page: 'sobre-mi' }, '', '#sobre-mi');
     }
